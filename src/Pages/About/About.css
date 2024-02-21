@@ -1,0 +1,216 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+
+.whyHolder{
+    width: 100%;
+    height: 72vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f5f5ff;
+}
+
+.whyHolderWrap{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.whyLeft{
+    width: 50%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    font-family: "Poppins";
+}
+
+.whyleftWrapper{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    font-family: "Poppins";
+}
+
+.whyLeft h1{
+    font-size: 60px;
+    font-family: "Poppins";
+    color: #003482ff;
+}
+
+.whyLeft p{
+    color: #606060;
+    font-size: 15px;
+    width: 80%;
+}
+
+.whyRight{
+    width: 40%;
+    height: 100%;
+}
+
+
+.whyRight img{
+    width: 90%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.storyHolder{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.stroyHolderWrap{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stroyLeft{
+    width: 50%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.divv{
+    width: 50%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.divv p{
+    font-size: 14px;
+    
+}
+
+.stroyLeft img{
+    width:  80%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.storyRight{
+    width: 40%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+.storyRight h1{
+    font-size: 40px;
+    color: #003482ff;
+}
+
+.storyRight p{
+    font-size: 14px;
+    color: #606060;
+    
+}
+
+.storie{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    gap: 10px;
+}
+
+.stories button{
+       width: 25%;
+       height: 45px;
+       font-size: 20px;
+       border-radius: 4px;
+       background-color: #003482ff;
+       color: white;
+       border: none;
+
+}
+button:hover {
+    color: white !important;
+    border-radius: 50px;
+    border-color: black !important;
+    transition: all 0.3s ease 0s;
+    background-color: black !important;
+    }
+
+
+
+.csrHolder{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.csrHolderWrap{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stroyLeftt{
+    width: 50%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.stroyLeftt h1{
+    font-size: 40px;
+    color: #003482ff;
+    padding: 10px;
+}
+.stroyLeftt img{
+    width:  70%;
+    height: 70%;
+}
+
+.storyRightt{
+    width: 40%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+.storyRightt h1{
+    font-size: 40px;
+    color: #003482ff;
+}
+
+.storyRightt p{
+    font-size: 14px;
+    color: #606060;
+}
+
+.storie{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    gap: 10px;
+}
