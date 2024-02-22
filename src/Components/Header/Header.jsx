@@ -30,7 +30,7 @@ const Header = ({ show, setShow }) => {
                 <li>Contact Us</li>
               </Link>
 
-              <Link className="link" to="">
+              <Link className="link" to="/login">
                 <li>Login</li>
               </Link>
             </ul>

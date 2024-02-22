@@ -33,10 +33,6 @@ const PricingCard = (props) => {
             <FaCheck fill='#FFA500' />
             <p>{props.feature3}</p>
             </div>
-            {/* <div className="features-icon">
-            <FaCheck fill='#FFA500' />
-            <p>{props.feature4}</p>
-            </div> */}
              {!hideLastIcon && ( 
           <div className="features-icon">
             <FaCheck fill="#FFA500" />
