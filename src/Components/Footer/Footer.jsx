@@ -5,6 +5,8 @@ import sociallink2 from "../../assets/sociallink2.png"
 import sociallink4 from "../../assets/sociallink4.png"
 import sociallink3 from "../../assets/sociallink3.png"
 import socialLink1 from "../../assets/socialLink1.png"
+import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 
 
@@ -19,7 +21,12 @@ return(
                         <p>Write your concerns to us and our specialist will get back to you</p>
                     </div>
                     <div className="conts">
-                        <button>Contact us</button>
+                    <Link  className="link" to="/contact"> 
+                    <button>Contact us</button>
+                  </Link>
+                        
+                    
+                       
                     </div>
                 </div>
                 <div className="body">
@@ -38,7 +45,10 @@ return(
                             <h6>About</h6>
                             </div>
                             <div className="textz">
-                            <p>click here</p>
+                                <Link className="link" to="/about">
+                                <p>click here</p>
+                                </Link>
+                           
                             </div>
                         </div>
                         <div className="renders">
@@ -46,7 +56,9 @@ return(
                             <h6>Services</h6>
                             </div>
                             <div className="textz">
-                            <p>click here</p>
+                                <Link className="link" to="/service">
+                                <p>click here</p>
+                                </Link>
                             </div>
                         </div>
                         <div className="renders">
@@ -55,7 +67,9 @@ return(
                             </div>
                             
                             <div className="textz">
-                            <p>click here</p>
+                            <Link className="link" to="/contact">
+                                <p>click here</p>
+                                </Link>
                             </div>
                         </div>
                        

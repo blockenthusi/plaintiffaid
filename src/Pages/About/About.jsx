@@ -4,6 +4,7 @@ import "./About.css";
 import goal from "../../assets/goal.png"
 import data from "../../assets/data.png"
 import both from "../../assets/both.png"
+import { Link } from "react-router-dom";
 
 export default function AboutPage() {
   return (
@@ -64,7 +65,10 @@ export default function AboutPage() {
             </div>
 
             <div className="stories">
+              <Link className="link" to="/service">
               <button>Read More</button>
+              </Link>
+              
             </div>
           </div>
         </div>
@@ -72,7 +76,7 @@ export default function AboutPage() {
       <div className="csrHolder">
         <div className="csrHolderWrap">
           <div className="stroyLeftt">
-            <h1>What Matter to us</h1>
+            <h1>What Matters to us</h1>
 
             <img src={goal} alt="" />
           </div>

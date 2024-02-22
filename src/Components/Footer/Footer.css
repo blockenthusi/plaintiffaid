@@ -67,7 +67,7 @@
 }
 
 .conts button{
-    width: 60%;
+    width: 120px;
     height: 35px;
     font-family: "poppins";
     font-size: 14px;
@@ -540,13 +540,14 @@ button:hover {
       display: flex;
       flex-direction: column;
       gap: 5px;
-      margin-top: 10%;
+      margin-top: 2%;
   
    }
    .text h6{
       font-size: 13px; 
       font-family: "poppins";
       color: #003482ff;
+
    }
   
    .social{
@@ -815,7 +816,7 @@ button:hover {
   }
   
   .conts button{
-      width: 100%;
+      width: 75px;
       height: 30px;
       font-family: "poppins";
       font-size: 13px;

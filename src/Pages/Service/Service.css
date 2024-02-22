@@ -100,7 +100,15 @@
     object-fit: contain;
 }
 
-.topp, .midd, .lowerr p{
+.topp p{
+    font-size: 14px;
+    line-height: 1.5;
+}
+.midd p{
+    font-size: 14px;
+    line-height: 1.5;
+}
+.lowerr p{
     font-size: 14px;
     line-height: 1.5;
 }
