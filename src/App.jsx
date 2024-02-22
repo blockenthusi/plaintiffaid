@@ -6,7 +6,7 @@ import AboutPage from "./Pages/About/About"
 import Service from "./Pages/Service/Service"
 import Home from "./Pages/Home/Home"
 import Contact from "./Pages/Contact/Contact"
-import Signup from "./Pages/Auth/SignUp/Signup"
+import Signup from "./Pages/SignUp/Signup"
 import Pricing from './Pages/Pricing/Pricing'
 import Login from './Pages/Auth/Login/Login'
 
