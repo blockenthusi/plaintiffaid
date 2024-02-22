@@ -1,14 +1,13 @@
 import React,{useState} from "react";
 import "./Contact.css";
-import Header from "../Header/Header";
-import Input from "../Input/Input";
-import Dropdown from "../Dropdown/Dropdown";
+import Input from "../../Components/Input/Input";
+import Dropdown from "../../Components/Dropdown/Dropdown";
 import Header from "../../Components/Header/Header"
 
 
 
 
-export default function contact() {
+export default function Contact() {
 
     const data = [
         {
@@ -18,7 +17,7 @@ export default function contact() {
         { label: "Company" },
       ];
 
-    //   const [show, setShow] = useState(false)
+      const [show, setShow] = useState(false)
     
     return(
         <div className="contactHolder">

@@ -1,4 +1,5 @@
 import Header from "../../Components/Header/Header";
+import Footer from "../../Components/Footer/Footer";
 import "./Home.css";
 import "animate.css";
 import { BsCalendar2Date } from "react-icons/bs";
@@ -9,10 +10,31 @@ import Dropdown from "../../Components/Dropdown/Dropdown";
 import { GiPentarrowsTornado } from "react-icons/gi";
 import Curve from "../../assets/Curve.png";
 import court from "../../assets/court.png";
-import Kora_logo from "../../assets/Kora_Logo.png"
+import Kora_logo from "../../assets/Kora_Logo.png";
+import freq from "../../assets/freq.png";
+import law1 from "../../assets/law1.jpg";
+import law from "../../assets/law.jpg";
+import law3 from "../../assets/law3.avif";
 
 export default function Home() {
   const [show, setShow] = useState(false);
+  const list = [
+    {
+      image: law1 ,
+      alt: "img1",
+      topic: "Adjournment of legal bill",
+    },
+    {
+      image: law,
+      alt: "img2",
+      topic: "Top paid lawyers",
+    },
+    {
+      image: law3,
+      alt: "img3",
+      topic: "Check out the protected libray",
+    },
+  ];
   return (
     <>
       <Header show={show} setShow={setShow} />
@@ -136,6 +158,59 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div className="latestHolders">
+        <div className="lates">
+          <h1>Lastest Blogs</h1>
+        </div>
+
+        <div className="blogss">
+          <div className="blogCards">
+            {list?.map((props) => (
+              <div className="cardss">
+                <div className="imagerys">
+                  <img src={props.image} alt={props.alt} />
+                </div>
+                <div className="topics">
+                  <h4>{props.topic}</h4>
+                </div>
+                <div className="learn">
+                  <p>Learn more..</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="descsss">
+            <button className="butzzz">Login</button>
+          </div>
+        </div>
+      </div>
+      <div className="desccHolder">
+        <div className="desccWrapper">
+          <h1>Frequently Asked Questions</h1>
+          <div className="bodyHoldd">
+            <div className="bodyHoldWrapp">
+              <div className="leftHoldd">
+                <img src={freq} alt />
+              </div>
+              <div className="rightHoldd">
+                <div className="descc">
+                  <GiPentarrowsTornado />
+                  <p>What industries do you serve?</p>
+                </div>
+                <div className="descc">
+                  <GiPentarrowsTornado />
+                  <p>Do you offer free version solutions?</p>
+                </div>
+                <div className="descc">
+                  <GiPentarrowsTornado />
+                  <p>Do I need a web Application for client data Management?</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
     </>
   );
 }

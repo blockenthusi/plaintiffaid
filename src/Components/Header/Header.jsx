@@ -2,6 +2,7 @@ import "./Header.css";
 import React, { useState } from "react";
 import { HiMenu } from "react-icons/hi";
 import { GiCancel } from "react-icons/gi";
+import { IoIosClose } from "react-icons/io";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
@@ -17,16 +18,18 @@ const Header = ({ show, setShow }) => {
           </div>
           <div className="midHeader">
             <ul>
-              <Link className="link" to="/service">
-                <li>Services</li>
-              </Link>
-              <li>Pricing</li>
               <Link className="link" to="/about">
                 <li>About</li>
               </Link>
-              <Link className="link" to="">
+
+              <li>Pricing</li>
+              <Link className="link" to="/service">
+                <li>Services</li>
+              </Link>
+              <Link className="link" to="/contact">
                 <li>Contact Us</li>
               </Link>
+
               <Link className="link" to="">
                 <li>Login</li>
               </Link>
@@ -43,7 +46,7 @@ const Header = ({ show, setShow }) => {
             {show === false ? (
               <HiMenu style={{ direction: "right", duration: "0.5" }} />
             ) : (
-              <GiCancel
+              <IoIosClose
                 style={{
                   color: "#003482ff",
                   fontSize: "30px",
