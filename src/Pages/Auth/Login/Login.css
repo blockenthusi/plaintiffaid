@@ -1,193 +1,219 @@
-.loginHolder{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-
+.loginHolder {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
-.loginHolderWrap{
-    width: 90%;
-    height: 90%;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    /* background-color: blue; */
+.loginHolderWrap {
+  width: 90%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* background-color: blue; */
 }
 
-.toplogo{
-    width: 100%;
-    height: 8%;
-    display: flex;
-    
-
+.toplogo {
+  width: 100%;
+  height: 8%;
+  display: flex;
+  justify-content: space-between;
 }
-.toplogo img{
-    width: 20%;
-    height:70%;
-}
-
-.lowerHold{
-    width: 80%;
-    height: 90%;
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-.loginLeftz{
-    width: 45%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.loginLeftz img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+.toplogo img {
+  width: 20%;
+  height: 70%;
 }
 
-.loginRightz{
-    width: 30%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 20px;
+.lowerHold {
+  width: 80%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.loginLeftz {
+  width: 45%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginLeftz img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-
-.welcome{
-    width: 60%;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #003382;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
+.loginRightz {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.welcome p{
-    color: white;
-    font-size: 20px;
+.welcome {
+  width: 60%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #003382;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 
-.bigText{
-    width: 100%;
-    height: 5%;
-    display: flex;
-   
+.welcome p {
+  color: white;
+  font-size: 20px;
 }
 
-.bigText p{
-    color: #003382;
-    font-size: 20px; 
-    margin-left: 15%;
-    margin-top: 5%;
-    font-family: "Poppins";
-    font-weight: 600;
-    
+.bigText {
+  width: 100%;
+  height: 5%;
+  display: flex;
 }
 
-.form{
-    width: 100%;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    margin-top: 2%;
+.bigText p {
+  color: #003382;
+  font-size: 20px;
+  margin-left: 15%;
+  margin-top: 5%;
+  font-family: "Poppins";
+  font-weight: 600;
 }
 
-.formWrap{
-    width: 90%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.form {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+  /* background-color: red; */
 }
 
-.take{
-    width: 100%;
-    height: 25%;
-    display: flex;
-    padding: 5px;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #003482ff;
+.formWrap {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.fills{
-    width:60%;
-    height: 100%;
-    border: none;
-    outline: none;
-    padding: 6px;
-    cursor: pointer;
+.take {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+::placeholder {
+  color: #003382;
+  opacity: 1;
+  font-size: 16px;
+  font-weight: 500;
+}
+::-ms-input-placeholder{
+  color: #003382;
+}
+
+.fills {
+  width: 80%;
+  height: 70%;
+  border: none;
+  outline: none;
+  padding: 6px;
+  cursor: pointer;
+  border-bottom: 1px solid #003482ff;
+}
+
+.takes {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
   
 }
-
-.takes{
-    width: 100%;
-    height: 25%;
-    display: flex;
-    padding: 5px;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #003482ff;
+.topTakes{
+  width: 100%;
+  height: 55%;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.topa{
+  width: 100%;
+  height: 55%;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
 }
 
-
-.forgot{
-    width: 100%;
-    height: 5%;
-    display: flex;
-    justify-content: flex-end;
-   
+.forgotPassword {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.forgot p{
-     font-size: 12px;
-     color: #003482ff;
-     font-weight: 600;
+.forgotPassword p {
+  font-size: 12px;
+  color: #003482ff;
+  font-weight: 600;
 }
 
-.login{
-    width: 100%;
-    height: 20%;
-    display: flex;
-    align-items: center;
+.loginButton{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+
+
 }
 
-
-.login button{
-    width: 35%;
-    height: 35px;
-    border-radius: 1px;
-    font-size: 14px;
+.loginButton button {
+  width: 49%;
+  height: 35px;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
-.signup{
-    width: 100%;
-    height: 10%;
-    display: flex;
-    align-items: center;
+.signup {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
 }
 
-.signup p{
-        font-size: 16px;
-        color: #003482ff;
-        font-weight: 600;
-        font-family: "Poppins";
+.signup p {
+  font-size: 16px;
+  color: #003482ff;
+  font-weight: 600;
+  font-family: "Poppins";
 }
 
-.link{
-    text-decoration: none;
-    outline: none;
-    color: black;
-  }
-
+.link {
+  text-decoration: none;
+  outline: none;
+  color: black;
+}
+.inf{
+  width: 40%;
+  height: 20%;
+  font-size: 8px;
+  display: flex;
+  /* justify-content: flex-start;
+  align-items: flex-start; */
+}

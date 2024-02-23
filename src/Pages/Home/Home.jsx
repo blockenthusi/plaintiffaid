@@ -15,6 +15,7 @@ import freq from "../../assets/freq.png";
 import law1 from "../../assets/law1.jpg";
 import law from "../../assets/law.jpg";
 import law3 from "../../assets/law3.avif";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [show, setShow] = useState(false);
@@ -64,7 +65,7 @@ export default function Home() {
           <div className="videoHolder">
             <img src={Variation} className="vid" />
 
-            <div className="box">
+            <div className="boxx">
               <div className="top">
                 <h6>Add a new Client</h6>
               </div>
@@ -135,7 +136,10 @@ export default function Home() {
                   <p>HIPAA,SOC2,PCI compliance and more</p>
                 </div>
                 <div className="descs">
+                  <Link className="link" to="/signup">
                   <button className="butz">Try for free</button>
+                  </Link>
+                 
                 </div>
               </div>
             </div>
@@ -179,9 +183,10 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="descsss">
-            <button className="butzzz">Login</button>
-          </div>
+          {/* <div className="descsss">
+            <Link className="link" to="/login"><button className="butzzz">Login</button></Link>
+            
+          </div> */}
         </div>
       </div>
       <div className="desccHolder">

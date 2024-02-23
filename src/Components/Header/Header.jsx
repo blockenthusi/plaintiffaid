@@ -21,8 +21,10 @@ const Header = ({ show, setShow }) => {
               <Link className="link" to="/about">
                 <li>About</li>
               </Link>
-
+              <Link className="link" to="/pricing">
               <li>Pricing</li>
+              </Link>
+              
               <Link className="link" to="/service">
                 <li>Services</li>
               </Link>
@@ -36,7 +38,10 @@ const Header = ({ show, setShow }) => {
             </ul>
           </div>
           <div className="rightHeader">
+            <Link className="link" to="/signup">
             <button className="btn">Try PlaintiffAid </button>
+            </Link>
+            
           </div>
           <div className="rightHeader1">
             <button className="btn">Try for free</button>
