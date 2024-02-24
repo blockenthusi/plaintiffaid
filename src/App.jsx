@@ -14,6 +14,8 @@ import Demo from "./Pages/Demo/Demo"
 import Clients from "./Components/route/clients"
 import Dashboards from "./Components/route/dashboard";
 import Setting from "./Components/route/settings";
+import History from "./Components/route/history"
+import Schedule from "./Components/route/schedule"
 
 function App() {
   return (
@@ -32,6 +34,10 @@ function App() {
       <Route path="/dashboards" element={<Dashboards />} />
         <Route path="/clients" element={<Clients />} />
         <Route path="/settings" element={<Setting />} />
+        <Route path="/historys" element={<History/>} />
+        <Route path="/payments" element={<Payment/>} />
+        <Route path="/calendars" element={<Calendar/>} />
+        <Route path="/schedules" element={<Schedule/>} />
     </Routes> 
        
     </>
