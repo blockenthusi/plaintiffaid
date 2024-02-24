@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+aside {
+  &:not(a) {
+    @apply font-normal text-green-600 hover:border-b-2 focus:border-b-2 border-green-600;
+  }
+}
+
+aside {
+  position: fixed !important;
+  height: 100vh;
+}
+
+.main__area {
+  margin-left: 300px;
+  width: calc(100% - 300px);
+}
+
+.auth__title {
+  margin-bottom: 40px;
+
+  h1 {
+    font-size: 1.7rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+    font-weight: 400;
+  }
+}
+

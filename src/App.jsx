@@ -11,11 +11,13 @@ import Pricing from './Pages/Pricing/Pricing'
 import Login from './Pages/Auth/Login/Login'
 import ForgotPassword from "./Pages/Auth/ForgotPassword/ForgotPassword"
 import Demo from "./Pages/Demo/Demo"
+import Clients from "./Components/route/clients"
+import Dashboards from "./Components/route/dashboard";
+import Setting from "./Components/route/settings";
 
 function App() {
   return (
     <>
-
     <Routes>
       <Route path="/"  element={<Home/>}/>
       <Route path="/service"  element={<Service/>} />
@@ -27,6 +29,9 @@ function App() {
       <Route path="/signup"  element={<Signup/>} />
       <Route path="/forgotpassword"  element={<ForgotPassword/>}/>
       <Route path="/request"  element={<Demo/>} />
+      <Route path="/dashboards" element={<Dashboards />} />
+        <Route path="/clients" element={<Clients />} />
+        <Route path="/settings" element={<Setting />} />
     </Routes> 
        
     </>
