@@ -270,9 +270,13 @@ ul li:hover {
  
   ul li{
     display: flex;
-    font-size: 14px;
-    font-weight: 900;
+    font-size: 12px;
+    font-weight: 700;
     
+  }
+  .midHeader{
+    width: 45%;
+    font-size: 10px;
   }
 
   .header{

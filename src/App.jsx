@@ -9,7 +9,8 @@ import Contact from "./Pages/Contact/Contact"
 import Signup from "./Pages/SignUp/Signup"
 import Pricing from './Pages/Pricing/Pricing'
 import Login from './Pages/Auth/Login/Login'
-
+import ForgotPassword from "./Pages/Auth/ForgotPassword/ForgotPassword"
+import Demo from "./Pages/Demo/Demo"
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
       <Route path="/pricing"  element={<Pricing/>} />
       <Route path="/login"  element={<Login/>} />
       <Route path="/signup"  element={<Signup/>} />
-
+      <Route path="/forgotpassword"  element={<ForgotPassword/>}/>
+      <Route path="/request"  element={<Demo/>} />
     </Routes> 
        
     </>

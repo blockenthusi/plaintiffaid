@@ -49,7 +49,9 @@ export default function Home() {
             </div>
 
             <div className="demo">
+              <Link className="link" to="/request">
               <button className="btn">Request a Demo</button>
+              </Link>
             </div>
 
             <div id="wrappers">

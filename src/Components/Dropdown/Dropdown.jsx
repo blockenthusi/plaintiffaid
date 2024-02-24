@@ -4,6 +4,7 @@ import { GiPentarrowsTornado } from "react-icons/gi";
 // import { motion } from "framer-motion"
 import { useState } from "react";
 import Header from "../Header/Header";
+import { Link } from "react-router-dom";
 
 
 export default function Dropdown(){
@@ -13,30 +14,54 @@ export default function Dropdown(){
      
      <div className="dropdown">
     
-        <div className="option">
-            <p>Services</p>
+      <div className="option">
+        <Link className="link" to="/about">
+        <p>About</p>
+        </Link>
+            <Link className="link" to="/">
             <GiPentarrowsTornado style={{fontSize: "25px", color: "#003482ff"}}/>
+            </Link>
         </div>
+
         <div className="option">
             <p>Pricing</p>
             <GiPentarrowsTornado style={{fontSize: "25px",color: "#003482ff"}}/>
         </div>
+
         <div className="option">
-            <p>About</p>
+            <Link className="link" to="/service">
+            <p>Services</p>
+            </Link>
+            <Link className="link" to="/">
             <GiPentarrowsTornado style={{fontSize: "25px", color: "#003482ff"}}/>
+        </Link>
         </div>
+        
+       
         <div className="option">
-            <p>Contact Us</p>
+        <Link className="link" to="/contact">
+        <p>Contact Us</p>
+            </Link>
+        <Link className="link" to="/">
             <GiPentarrowsTornado style={{fontSize: "25px", color: "#003482ff"}}/>
-        </div>
-        <div className="option">
-            <p>Login</p>
-            <GiPentarrowsTornado style={{fontSize: "25px", color: "#003482ff"}}/>
+        </Link>
         </div>
 
-        <div className="exit">
-            <button>Exit</button>
+        <div className="option">
+        <Link className="link" to="/login">
+        <p>Login</p>
+            </Link>
+            <Link className="link" to="/">
+            <GiPentarrowsTornado style={{fontSize: "25px", color: "#003482ff"}}/>
+            </Link>
         </div>
+{/* 
+        <div className="exit">
+            <Link className="link" to="/">
+            <button>Exit</button>
+            </Link>
+           
+        </div> */}
        </div>
      
     )
