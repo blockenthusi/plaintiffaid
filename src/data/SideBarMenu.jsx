@@ -1,60 +1,60 @@
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaRegCalendarCheck } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
+import { MdPayments } from "react-icons/md";
+import { AiFillSchedule } from "react-icons/ai";
+import { AiFillFolder } from "react-icons/ai";
+import { FaHistory } from "react-icons/fa";
 
 const SidebarMenuData = [
   {
     id: 1,
     label: "Dashboard",
-    path: "/dashboards",
+    path: "/dashboard",
     icon: <FaHome style={{ fontSize: "19px" }} />,
   },
   {
     id: 2,
     label: "Clients data",
     path: "/clients",
-    icon: <FaHome style={{ fontSize: "19px" }} />,
+    icon: <AiFillFolder style={{ fontSize: "19px" }} />,
     children: [
-      { id: 2.1, label: "My Wallets", path: "/wallets" },
-      { id: 2.2, label: "Fund Wallets", path: "/wallets/deposit" },
-      { id: 2.3, label: "Funding History", path: "/wallets/history" },
+      { id: 2.1, label: "My clients ", path: "/b" },
+      { id: 2.2, label: "client info", path: "/b" },
     ],
   },
   {
     id: 3,
     label: "Calendar",
-    path: "/calendar",
-    icon: <FaHome style={{ fontSize: "20px" }} />,
-    children: [
-      { id: 3.1, label: "Make Transfer", path: "/transfers" },
-      { id: 3.2, label: "Tranfer History", path: "/transfers/history" },
-    ],
+    path: "/calendars",
+    icon: <FaRegCalendarCheck style={{ fontSize: "20px" }} />,
   },
   {
     id: 4,
     label: "Schedule",
-    path: "/schedule",
-    icon: <FaHome style={{ fontSize: "20px" }} />,
+    path: "/schedules",
+    icon: <AiFillSchedule style={{ fontSize: "20px" }} />,
     children: [
-      { id: 4.1, label: "New Conversion", path: "/conversions" },
-      { id: 4.2, label: "Conversion History", path: "/conversions/history" },
+      { id: 4.1, label: "New Schedule", path: "/" },
+      { id: 4.2, label: "Schedule History", path: "/schedule/history" },
     ],
   },
   {
     id: 5,
     label: "Payment",
-    path: "/payment",
-    icon: <FaHome style={{ fontSize: "20px" }} />,
+    path: "/payments",
+    icon: <MdPayments style={{ fontSize: "20px" }} />,
   },
   {
     id: 6,
     label: "History",
-    path: "/history",
-    icon: <FaHome style={{ fontSize: "20px" }} />,
+    path: "/historys",
+    icon: <FaHistory style={{ fontSize: "20px" }} />,
   },
   {
     id: 7,
     label: "Setting",
     path: "/settings",
-    icon: <FaHome style={{ fontSize: "20px" }} />,
+    icon: <IoMdSettings style={{ fontSize: "20px" }} />,
   },
 ];
 
