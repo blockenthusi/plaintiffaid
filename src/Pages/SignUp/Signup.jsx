@@ -2,6 +2,8 @@ import "./Signup.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Messages from "../../assets/Messages.png"
+import logo2 from "../../assets/logo2.png"
+import image from "../../assets/image.png"
 
 const Signup = () => {
   const [pop, setPop] = useState(false);
@@ -15,7 +17,7 @@ const Signup = () => {
       <header>
         <div className="logoDiv">
           <Link className="link" to="/">
-            <img src="src/assets/logo2.png" className="logo" />
+            <img src={logo2} className="logo" />
           </Link>
         </div>
       </header>
@@ -25,7 +27,7 @@ const Signup = () => {
             Better way to organize your client <br /> data
           </p>
           <div className="imageDiv">
-            <img src="src/assets/image.png" className="image" />
+            <img src={image} className="image" />
           </div>
         </div>
         <div className="right">
@@ -58,7 +60,7 @@ const Signup = () => {
       <div className="confirmHold">
          <div className='box'>
         <div className="messageImageDiv">
-            <img src='src/assets/Messages.png'/>
+            <img src={Messages}/>
         </div>
         <h2>Verify your email</h2>
         <p>Almost there ! We’ve sent a verification email to ..........@gmail.com<br/>You need to verify your email address to login into PlattiffAid.</p>
