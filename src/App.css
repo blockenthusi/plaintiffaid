@@ -32,3 +32,21 @@ aside {
   }
 }
 
+.half-border {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2.6em;
+  @apply font-bold;
+
+  &::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 45%;
+    margin-top: 5px;
+    position: absolute;
+    @apply bg-blue-700 rounded;
+    z-index: 1;
+  }
+
+}
