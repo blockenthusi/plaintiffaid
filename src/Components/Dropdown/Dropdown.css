@@ -66,4 +66,9 @@
     }
 }
 
-  
+@media screen and (max-width:320px){
+
+ p{
+  font-size: 18px;
+ }
+ }

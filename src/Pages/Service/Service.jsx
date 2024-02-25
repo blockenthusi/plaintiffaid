@@ -5,11 +5,18 @@ import security from "../../assets/security.png";
 import data from "../../assets/data.png";
 import Scheduler from "../../assets/Scheduler.png";
 import court from "../../assets/court.png";
+import { useState } from "react";
+import Dropdown from "../../Components/Dropdown/Dropdown";
+
 
 export default function Service() {
+  const [show, setShow] = useState(false);
+
   return (
     <>
-      <Header />
+      <Header show={show} setShow={setShow} />
+      {show === true ? <Dropdown /> : null}
+
       <div className="serviceHeroPageHolder">
         <div className="serviceHeroPageWrap">
           <h1>A complete IT Managed Services solution</h1>

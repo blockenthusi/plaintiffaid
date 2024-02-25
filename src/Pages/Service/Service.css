@@ -114,4 +114,67 @@
 }
 
 
+@media screen and (max-width:428px){
+    .serviceInfoHolder{
+        margin-bottom: 310px;
 
+    }
+    .serviceHeroPageHolder{
+        height: 35vh;
+    }
+    .serviceHeroPageWrap h1{
+        font-size: 24px;
+    }
+    .serviceInfoWrap{
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+    }
+    .serviceInfoLeft{
+        width: 100%;
+        margin-top: 250px;
+    }
+    .serviceInfoRight{
+        width: 85%;
+        height: max-content;
+    }
+    .topp, .midd, .lowerr{
+        margin-bottom: 40px;
+    }
+}
+
+
+@media screen and (max-width:320px){
+    .serviceInfoHolder{
+        margin-bottom: 380px;
+
+    }
+    .serviceHeroPageHolder{
+        height: 35vh;
+    }
+    .serviceHeroPageWrap h1{
+        font-size: 24px;
+    }
+    .serviceInfoWrap{
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+    }
+    .serviceInfoLeft{
+        width: 100%;
+        margin-top: 350px;
+    }
+    .serviceInfoRight{
+        width: 85%;
+        height: max-content;
+    }
+    .topp, .midd, .lowerr{
+        margin-bottom: 40px;
+    }
+}
