@@ -1,11 +1,12 @@
 import './ConfirmedEmail.css'
+import Messages from "../../assets/Messages.png"
 
 
 const ConfirmedEmail = () => {
   return (
     <div className='confirm'>
         <div className="messageImageDiv">
-            <img src='src/assets/Messages.png'/>
+            <img src={Messages}/>
         </div>
         <h3>Email Address Confirmed!</h3>
         <button>Login</button>
