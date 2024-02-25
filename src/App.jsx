@@ -16,6 +16,8 @@ import Dashboards from "./Components/route/dashboard";
 import Setting from "./Components/route/settings";
 import History from "./Components/route/history"
 import Schedule from "./Components/route/schedule"
+import Payment from "./Components/route/payment"
+import Calendar from "./Components/route/calendar"
 
 function App() {
   return (
@@ -34,10 +36,10 @@ function App() {
       <Route path="/dashboards" element={<Dashboards />} />
         <Route path="/clients" element={<Clients />} />
         <Route path="/settings" element={<Setting />} />
-        <Route path="/historys" element={<History/>} />
-        <Route path="/payments" element={<Payment/>} />
-        <Route path="/calendars" element={<Calendar/>} />
-        <Route path="/schedules" element={<Schedule/>} />
+        <Route path="/history" element={<History/>} />
+        <Route path="/payment" element={<Payment/>} />
+        <Route path="/calendar" element={<Calendar/>} />
+        <Route path="/schedule" element={<Schedule/>} />
     </Routes> 
        
     </>

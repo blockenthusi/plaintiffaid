@@ -1,4 +1,11 @@
 import { FaHome } from "react-icons/fa";
+import { RiSecurePaymentLine } from "react-icons/ri";
+import { AiOutlineSchedule } from "react-icons/ai";
+import { MdOutlineWorkHistory } from "react-icons/md";
+import { IoSettings } from "react-icons/io5";
+import { FaRegCalendarCheck } from "react-icons/fa";
+import { TbCloudDataConnection } from "react-icons/tb";
+
 
 const SidebarMenuData = [
   {
@@ -11,7 +18,7 @@ const SidebarMenuData = [
     id: 2,
     label: "Clients data",
     path: "/clients",
-    icon: <FaHome style={{ fontSize: "19px" }} />,
+    icon: <TbCloudDataConnection  style={{ fontSize: "19px" }} />,
     children: [
       { id: 2.1, label: "My Wallets", path: "/wallets" },
       { id: 2.2, label: "Fund Wallets", path: "/wallets/deposit" },
@@ -22,7 +29,7 @@ const SidebarMenuData = [
     id: 3,
     label: "Calendar",
     path: "/calendar",
-    icon: <FaHome style={{ fontSize: "20px" }} />,
+    icon: <FaRegCalendarCheck  style={{ fontSize: "20px" }} />,
     children: [
       { id: 3.1, label: "Make Transfer", path: "/transfers" },
       { id: 3.2, label: "Tranfer History", path: "/transfers/history" },
@@ -32,7 +39,7 @@ const SidebarMenuData = [
     id: 4,
     label: "Schedule",
     path: "/schedule",
-    icon: <FaHome style={{ fontSize: "20px" }} />,
+    icon: < AiOutlineSchedule style={{ fontSize: "20px" }} />,
     children: [
       { id: 4.1, label: "New Conversion", path: "/conversions" },
       { id: 4.2, label: "Conversion History", path: "/conversions/history" },
@@ -42,19 +49,19 @@ const SidebarMenuData = [
     id: 5,
     label: "Payment",
     path: "/payment",
-    icon: <FaHome style={{ fontSize: "20px" }} />,
+    icon: <RiSecurePaymentLine style={{ fontSize: "20px" }} />,
   },
   {
     id: 6,
     label: "History",
     path: "/history",
-    icon: <FaHome style={{ fontSize: "20px" }} />,
+    icon: <MdOutlineWorkHistory  style={{ fontSize: "20px" }} />,
   },
   {
     id: 7,
     label: "Setting",
     path: "/settings",
-    icon: <FaHome style={{ fontSize: "20px" }} />,
+    icon: <IoSettings style={{ fontSize: "20px" }} />,
   },
 ];
 
