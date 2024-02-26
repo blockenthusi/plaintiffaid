@@ -214,3 +214,276 @@ button:hover {
     line-height: 1.5;
     gap: 10px;
 }
+
+
+@media screen and ( max-width:800px){
+    .whyHolderWrap{
+        flex-direction:column-reverse;
+    }
+    .whyLeft{
+        width: 100%;
+        height: 100%;
+        margin-top: 10px;
+    }
+    
+    .whyHolder{
+        height: 850px;
+        margin-bottom: 30px;
+    }
+    .whyRight {
+        width: 80%;
+    }
+    .whyleftWrapper{
+        margin-top: 10px;
+    }
+    .whyleftWrapper h1{
+        font-size: 30px;
+    }
+    .whyleftWrapper p{
+        font-size: 20px;
+    }
+    .whyleftWrapper p:first-child{
+        margin-left: -10px;
+    }
+    
+    .storyHolder{
+        width: 100%;
+        margin-bottom: 200px;
+    }
+    .stroyHolderWrap{
+        width: 100%;
+        flex-direction: column;
+    }
+    .storyRight{
+        width: 100%;
+    }
+    .storyRight h1{
+        margin-top: 80px;
+        margin-left: 27px;
+        font-size: 30px;
+    }
+    .storyRightt p{
+        font-size: 20px;
+    }
+    .storyRightt h3{
+        font-size: 24px;
+    }
+    .stroyLeftt{
+        width: 100%;
+        margin-top: -150px;
+        /* margin-bottom: 50px; */
+    }
+    .storie{
+        width: 100%;
+    }
+    .storie h2{
+        margin-left: 27px;
+        margin-top: -15px;
+    }
+    .storie p{
+        margin-left: 27px;
+        padding-right: 10px;
+        font-size: 20px;
+        margin-bottom: -30px;
+    }
+    .stories button{
+        width: 30%;
+        height: 40px;
+        font-size: 18px;
+        margin-left: 27px;
+        margin-top: 20px;
+    }
+    .csrHolderWrap{
+        flex-direction: column;
+    }
+    .storyRightt{
+        width: 100%;
+        height: 55%;
+        margin-top: -150px;
+    }
+    .stroyLeftt h1 {
+        font-size: 30px;
+        margin-bottom: -80px;
+    }
+    .csrHolder{
+        margin-bottom: 70px;
+    }
+}
+
+
+
+@media screen and ( max-width:428px){
+    .whyHolderWrap{
+        flex-direction:column-reverse;
+    }
+    .whyLeft{
+        width: 100%;
+        height: 100%;
+        margin-top: 10px;
+    }
+    
+    .whyHolder{
+        height: 800px;
+        margin-bottom: 30px;
+    }
+    .whyRight {
+        width: 80%;
+    }
+    .whyleftWrapper{
+        margin-top: 10px;
+    }
+    .whyleftWrapper h1{
+        font-size: 24px;
+    }
+    .whyleftWrapper p{
+        font-size: 14px;
+    }
+    .whyleftWrapper p:first-child{
+        margin-left: -10px;
+    }
+    
+    .storyHolder{
+        width: 100%;
+        margin-bottom: 200px;
+    }
+    .stroyHolderWrap{
+        width: 100%;
+        flex-direction: column;
+    }
+    .storyRight{
+        width: 100%;
+    }
+    .storyRight h1{
+        margin-top: 80px;
+        margin-left: 27px;
+        font-size: 24px;
+    }
+    .stroyLeftt{
+        width: 100%;
+        margin-top: -150px;
+        /* margin-bottom: 50px; */
+    }
+    .storie{
+        width: 100%;
+    }
+    .storie h2{
+        margin-left: 27px;
+        margin-top: -15px;
+    }
+    .storie p{
+        margin-left: 27px;
+        padding-right: 10px;
+        font-size: 12px;
+        margin-bottom: -30px;
+    }
+    .stories button{
+        width: 35%;
+        height: 35px;
+        font-size: 14px;
+        margin-left: 27px;
+        margin-top: 20px;
+    }
+    .csrHolderWrap{
+        flex-direction: column;
+    }
+    .storyRightt{
+        width: 100%;
+        height: 55%;
+        margin-top: -150px;
+    }
+    .stroyLeftt h1 {
+        font-size: 24px;
+        margin-bottom: -80px;
+    }
+    .csrHolder{
+        margin-bottom: 70px;
+    }
+}
+
+
+
+
+@media screen and ( max-width:320px){
+.whyHolderWrap{
+    flex-direction:column-reverse;
+}
+.whyLeft{
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+}
+
+.whyHolder{
+    height: 800px;
+    margin-bottom: 30px;
+}
+.whyRight {
+    width: 80%;
+}
+.whyleftWrapper{
+    margin-top: 10px;
+}
+.whyleftWrapper h1{
+    font-size: 24px;
+}
+.whyleftWrapper p{
+    font-size: 14px;
+}
+.whyleftWrapper p:first-child{
+    margin-left: -10px;
+}
+
+.storyHolder{
+    width: 100%;
+    margin-bottom: 200px;
+}
+.stroyHolderWrap{
+    width: 100%;
+    flex-direction: column;
+}
+.storyRight{
+    width: 100%;
+}
+.storyRight h1{
+    margin-top: 80px;
+    margin-left: 27px;
+    font-size: 24px;
+}
+.stroyLeftt{
+    width: 100%;
+    margin-top: -80px;
+}
+.storie{
+    width: 100%;
+}
+.storie h2{
+    margin-left: 27px;
+    margin-top: -15px;
+}
+.storie p{
+    margin-left: 27px;
+    padding-right: 10px;
+    font-size: 12px;
+    margin-bottom: -30px;
+}
+.stories button{
+    width: 35%;
+    height: 35px;
+    font-size: 14px;
+    margin-left: 27px;
+    margin-top: 20px;
+}
+.csrHolderWrap{
+    flex-direction: column;
+}
+.storyRightt{
+    width: 100%;
+}
+.stroyLeftt h1 {
+    font-size: 24px;
+    margin-bottom: -30px;
+}
+.csrHolder{
+    margin-bottom: 70px;
+}
+}

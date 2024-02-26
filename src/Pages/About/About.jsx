@@ -5,16 +5,22 @@ import goal from "../../assets/goal.png"
 import data from "../../assets/data.png"
 import both from "../../assets/both.png"
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import Dropdown from "../../Components/Dropdown/Dropdown";
+
 
 export default function AboutPage() {
+  const [show, setShow] = useState(false);
+
   return (
     <>
-      <Header />
+      <Header show={show} setShow={setShow} />
+      {show === true ? <Dropdown /> : null}
       <div className="whyHolder">
         <div className="whyHolderWrap">
           <div className="whyLeft">
             <div className="whyleftWrapper">
-              <p style={{ fontSize: "30px", color: "black" }}>About Us</p>
+              <p  style={{ fontSize: "30px", color: "black" }}>About Us</p>
               <h1>Why PlaintiffAid?</h1>
               <p>
                 We’re more than just a tech company. We’ve got goals, hopes, and

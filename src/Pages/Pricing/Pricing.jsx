@@ -4,11 +4,17 @@ import { FaCheck } from "react-icons/fa";
 import Header from "../../Components/Header/Header";
 import PricingCard from "../../Components/pricingcard/PricingCard";
 import Footer from "../../Components/Footer/Footer";
+import { useState } from "react";
+import Dropdown from "../../Components/Dropdown/Dropdown";
+
 
 const Pricing = () => {
+  const [show, setShow] = useState(false);
+
   return (
     <>
-      <Header />
+      <Header show={show} setShow={setShow} />
+      {show === true ? <Dropdown /> : null}
       <section className="first-section">
         <p>
           Flexible plans with live support, free training, and <br /> worry-free

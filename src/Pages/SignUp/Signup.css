@@ -176,6 +176,7 @@ header{
     font-size: 15px;
     border-radius: 5px;
 }
+
 @media screen and (max-width:428px){
     .box{
         width: 60%;
