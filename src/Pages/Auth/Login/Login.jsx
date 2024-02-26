@@ -74,7 +74,7 @@ const Login = () => {
                     <p
                       style={{
                         color: "red",
-                        fontSize: "13px",
+                        fontSize: "12px",
                         paddingLeft: "35px",
                       }}
                     >
@@ -99,7 +99,7 @@ const Login = () => {
                     <p
                       style={{
                         color: "red",
-                        fontSize: "13px",
+                        fontSize: "12px",
                         paddingLeft: "35px",
                       }}
                     >
