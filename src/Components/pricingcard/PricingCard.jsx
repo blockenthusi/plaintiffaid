@@ -1,5 +1,6 @@
 import './PricingCard.css'
-import { FaCheck } from "react-icons/fa"
+import { FaCheck } from "react-icons/fa" 
+import { Link } from 'react-router-dom'
 
 
 
@@ -41,9 +42,10 @@ const PricingCard = (props) => {
         )}
 
         </div>
-
+        <Link className='link' to="/signup">
         <button>Try for free</button>
-
+        </Link>
+       
        
 
 

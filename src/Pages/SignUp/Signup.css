@@ -80,6 +80,10 @@ header{
     padding-top: 13px;
     margin-bottom: 30px;
 }
+.pguy{
+    color: red;
+    font-size: 12px;
+}
 .inputDiv input{
     width: 100%;
     height: 60%;
@@ -127,6 +131,7 @@ header{
    display: flex;
    justify-content: center;
    align-items: center;
+   transition : all 350mm  ease-in;
   
   }
 
@@ -147,6 +152,8 @@ header{
     /* top: 0;
     left: 0; */
     backdrop-filter: blur(5px);
+    animation: backInUp;
+    animation-duration: 2s;
 }
 .messageImageDiv{
     width: 30%;
