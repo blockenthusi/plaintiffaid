@@ -4,6 +4,7 @@ import { HiMenu } from "react-icons/hi";
 import { GiCancel } from "react-icons/gi";
 import { IoIosClose } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
 const Header = ({ show, setShow }) => {
@@ -18,19 +19,23 @@ const Header = ({ show, setShow }) => {
           </div>
           <div className="midHeader">
             <ul>
-              <Link className="link" to="/about">
+              <NavLink to="/about" className={({isActive})=>
+        isActive ? "active" : "inactive"}>
                 <li>About</li>
-              </Link>
-              <Link className="link" to="/pricing">
+              </NavLink>
+              <NavLink to="/pricing" className={({isActive})=>
+        isActive ? "active" : "inactive"}>
               <li>Pricing</li>
-              </Link>
+              </NavLink>
               
-              <Link className="link" to="/service">
+              <NavLink to="/service" className={({isActive})=>
+        isActive ? "active" : "inactive"}>
                 <li>Services</li>
-              </Link>
-              <Link className="link" to="/contact">
+              </NavLink>
+              <NavLink to="/contact" className={({isActive})=>
+        isActive ? "active" : "inactive"}>
                 <li>Contact Us</li>
-              </Link>
+              </NavLink>
 
               <Link className="link" to="/login">
                 <li>Login</li>
