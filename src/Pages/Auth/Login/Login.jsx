@@ -48,7 +48,7 @@ const Login = () => {
       data
     );
     console.log(res);
-    toast.success("login sucessful!,proceed to dashboard");
+    toast.success("login sucessful!");
     setTimeout(() =>{
       Nav("/dashboard");
   }, 5000);
