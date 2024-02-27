@@ -1,22 +1,30 @@
 import React, {useState} from "react";
 import "./ForgotPassword.css";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa6";
 import { MdSlowMotionVideo } from "react-icons/md";
 import logo from "../../../assets/logo.png";
 import { Link } from "react-router-dom";
-import { ClipLoader } from "react-spinners";
+import { HashLoader } from "react-spinners";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
 import * as yup from "yup";
 import { toast } from "react-toastify";
 
 const ForgotPassword = () => {
-
+  const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
+
+    const handleShowpassword = () => {
+      setShowPassword(!showPassword);
+    };
     
   const schema = yup
     .object({
       email: yup.string().required("Input email"),
+      password: yup.string().required("Input password"),
     })
     .required();
 
@@ -28,10 +36,29 @@ const ForgotPassword = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    setLoading(true);
-    toast.success("Hi, check your email");
-    setLoading(false);
+  const onSubmit =  async (data) => {
+    try{ 
+      setLoading(true);
+      const res = await axios.post(
+        "https://plaintiff-backend.onrender.com/api_v1/forgotPassword",
+        data
+      );
+      console.log(res);
+      toast.success("Hi, check your email");
+      setTimeout(() =>{
+        Nav("/login");
+    }, 5000);
+      setLoading(false);
+     }
+
+     catch (err) {
+      if (err.response.data.message) {
+        toast.error(err.response.data.message);
+        setLoading(false);
+      }
+      setLoading(false);
+    }
+  
   };
 
   return (
@@ -64,11 +91,33 @@ const ForgotPassword = () => {
               <p style={{ fontSize: "12px", color: "red" }}>
                 {errors?.email?.message}
               </p>
+              <div className="lowerText">
+                <p>New Password</p>
+                {showPassword ? (
+                      <FaRegEye
+                        onClick={handleShowpassword}
+                        style={{ color: "#003482ff", fontSize: "12px", marginLeft: "20%" }}
+                      />
+                    ) : (
+                      <FaEyeSlash
+                        onClick={handleShowpassword}
+                        style={{ color: "#003482ff", fontSize: "12px" }}
+                      />
+                    )}
+              </div>
+            
+              <input type={showPassword ? "text" : "password"} {...register("password")}/>
+
+            <p style={{ fontSize: "12px", color: "red" }}>
+            {errors?.email?.message}
+            </p>
+            
+                            
 
               <div className="resetBtn">
                 
               {loading ? (
-                    <ClipLoader color="yellow" size="20px" />
+                    <HashLoader color="blue" size="20px" />
                   ) : (
                     <button>Reset</button>
                   )}

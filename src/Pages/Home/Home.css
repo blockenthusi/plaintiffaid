@@ -369,9 +369,9 @@
   position: absolute;
   top: 0px;
   left: 50%;
-  margin-left: -1px;
+  margin-left: -2px;
   width: 2px;
-  height: 90px;
+  height: 85px;
   background: #003482ff;
   content: " ";
 }

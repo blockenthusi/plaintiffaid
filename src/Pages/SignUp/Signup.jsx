@@ -1,27 +1,32 @@
 import "./Signup.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Messages from "../../assets/Messages.png";
+// import Messages from "../../assets/Messages.png";
 import logo2 from "../../assets/logo2.png";
 import image from "../../assets/image.png";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { toast } from "react-toastify";
-import 'animate.css';
-
-
+import "animate.css";
+import axios from "axios";
+import HashLoader from "react-spinners/HashLoader";
 
 
 const Signup = () => {
-  const [pop, setPop] = useState(false);
+  
   const [loading, setLoading] = useState(false);
 
   const schema = yup
     .object({
-      firmname: yup.string().required("Input your firm's name"),
+      FirmName: yup.string().required("Input your firm's name"),
       email: yup.string().required("input an email"),
-      phonenumber: yup.string().min(11).max(14).required("input your phone number"),
+      PhoneNumber: yup
+        .string()
+        .matches(/^\d+$/, "PhoneNumber must a number")
+        .min(11)
+        .max(14)
+        .required("input your phone number"),
       password: yup.string().required("Input password"),
       confirmPassword: yup
         .string()
@@ -38,13 +43,23 @@ const Signup = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    setLoading(true);
-    toast.success("login successful");
-    setLoading(false);
-    setInterval(() => {
-      setPop(true)
-    }, 2000);
+  const onSubmit = async (data) => {
+    try {
+      setLoading(true);
+      const res = await axios.post(
+        "https://plaintiff-backend.onrender.com/api_v1/signup",
+        data
+      );
+      console.log(res);
+      toast.success("kindly check your email");
+      setLoading(false);
+    } catch (err) {
+      if (err.response.data.message) {
+        toast.error(err.response.data.message);
+        setLoading(false);
+      }
+      setLoading(false);
+    }
   };
 
   return (
@@ -68,15 +83,15 @@ const Signup = () => {
         <div className="right">
           <p>Sign up !</p>
 
-          <form  method="post" onSubmit={handleSubmit(onSubmit)}>
+          <form method="post" onSubmit={handleSubmit(onSubmit)}>
             <div className="inputDiv">
               <input
                 placeholder="Firm Name"
                 type="text"
-                {...register("firmname")}
+                {...register("FirmName")}
               />
               <p style={{ fontSize: "12px", color: "red" }}>
-                {errors?.firmname?.message}
+                {errors?.FirmName?.message}
               </p>
             </div>
 
@@ -91,10 +106,10 @@ const Signup = () => {
               <input
                 placeholder="Phone Number"
                 type="text"
-                {...register("phonenumber")}
+                {...register("PhoneNumber")}
               />
               <p style={{ fontSize: "12px", color: "red" }}>
-                {errors?.phonenumber?.message}
+                {errors?.PhoneNumber?.message}
               </p>
             </div>
             <div className="inputDiv">
@@ -120,11 +135,10 @@ const Signup = () => {
               </p>
             </div>
             {loading ? (
-                    <ClipLoader color="yellow" size="20px" />
-                  ) : (
-                    <button>Submit</button>
-                  )}
-
+              <HashLoader color="blue" size="16px" />
+            ) : (
+              <button>Submit</button>
+            )}
           </form>
 
           <h3 className="loginAccounts">
@@ -136,7 +150,7 @@ const Signup = () => {
         </div>
       </div>
 
-      {pop ? (
+      {/* {pop ? (
         <div className="confirmHold">
           <div className="box">
             <div className="messageImageDiv">
@@ -152,7 +166,7 @@ const Signup = () => {
             <button>Resend Email</button>
           </div>
         </div>
-      ) : null}
+      ) : null} */}
     </main>
   );
 };

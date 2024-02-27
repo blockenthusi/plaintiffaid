@@ -6,16 +6,20 @@ import { FaEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import Image from "../../../assets/Image.jpg";
-import { ClipLoader } from "react-spinners";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { toast } from "react-toastify";
+import axios from "axios";
+import HashLoader from "react-spinners/HashLoader";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const Nav = useNavigate();
 
   const handleShowpassword = () => {
     setShowPassword(!showPassword);
@@ -36,11 +40,31 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+   try{ 
     setLoading(true);
-    toast.success("login successfull");
+    const res = await axios.post(
+      "https://plaintiff-backend.onrender.com/api_v1/login",
+      data
+    );
+    console.log(res);
+    toast.success("login sucessful!,proceed to dashboard");
+    setTimeout(() =>{
+      Nav("/dashboard");
+  }, 5000);
     setLoading(false);
+   }
+
+   catch (err) {
+    if (err.response.data.message) {
+      toast.error(err.response.data.message);
+      setLoading(false);
+    }
+    setLoading(false);
+  }
   };
+
+
 
   return (
     <div className="loginHolder">
@@ -139,7 +163,7 @@ const Login = () => {
 
                 <div className="loginButton">
                   {loading ? (
-                    <ClipLoader color="yellow" size="20px" />
+                    <HashLoader color="blue" size="20px" />
                   ) : (
                     <button>Login</button>
                   )}
