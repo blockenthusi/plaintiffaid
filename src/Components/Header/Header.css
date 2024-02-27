@@ -79,13 +79,13 @@ li{
 } */
 ul {
     text-align: center;
-    font-weight: 600;
+    font-weight: 500;
     transition: all .35s ease;
     font-family: 'poppins'
   }
   
   
-  ul li {
+ul li {
     display: inline-block;
     list-style: outside none none;
     margin: .10em 1em;
@@ -94,6 +94,7 @@ ul {
     position: relative;
     text-decoration: none;
     font-size: 16px;
+    font-weight: 600;
     font-family: 'poppins'
   }
   
@@ -199,7 +200,18 @@ ul li:hover {
  
   
 }
-.link{
+/* .link{
+  text-decoration: none;
+  outline: none;
+  color: black;
+} */
+
+.active{
+  text-decoration: none;
+  outline: none;
+  color: #003482ff;
+}
+.inactive{
   text-decoration: none;
   outline: none;
   color: black;
@@ -399,6 +411,51 @@ img{
   
   }
   
+  ul{
+    display: none;
+  }
+
+  .header{
+    justify-content: flex-end;
+    padding-right: 10px;
+
+  }
+
+  
+  .rightHeader button{
+    display: none;
+}
+.rightHeader1 button{
+    width: 120px;
+    height: 30px;
+    border: none;
+    background-color: #003482ff;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease 0s;
+     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.lowerHeader{
+  padding: 5px;
+  gap: 10px;
+}
+img{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+ }
+}
+@media screen and (max-width:428px) {
+  .burger {
+    display: flex;
+    color: #003482ff;
+  
+  }
   
   ul{
     display: none;
