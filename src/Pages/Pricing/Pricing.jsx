@@ -13,8 +13,9 @@ const Pricing = () => {
 
   return (
     <>
-      <Header show={show} setShow={setShow} />
+    <Header show={show} setShow={setShow} />
       {show === true ? <Dropdown /> : null}
+
       <section className="first-section">
         <p>
           Flexible plans with live support, free training, and <br /> worry-free
