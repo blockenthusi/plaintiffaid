@@ -3515,6 +3515,9 @@
   font-family: "poppins";
 }
 @media screen and (max-width:428px) {
+  .videoHolder{
+    display: none;
+  }
   .desccHolder{
     /* background: blue; */
     width: 100%;
