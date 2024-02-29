@@ -50,3 +50,17 @@ aside {
   }
 
 }
+
+.searchInput{
+  border: 1px solid rgb(5, 5, 28) ;
+  height: 35px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clientInput{
+  border: 1px solid rgb(16, 16, 54);
+  width: 95%;
+}

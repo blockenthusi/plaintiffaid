@@ -19,6 +19,7 @@ import Schedule from "./Components/route/schedule";
 import Payment from "./Components/route/payment";
 import Calendar from "./Components/route/calendar";
 import ConfirmedEmail from "./Pages/SignUp/ConfirmedEmail";
+import Verification from "./Pages/Auth/Verification/Verification";
 
 function App() {
   return (
@@ -41,7 +42,7 @@ function App() {
         <Route path="/payments" element={<Payment />} />
         <Route path="/calendars" element={<Calendar />} />
         <Route path="/schedules" element={<Schedule />} />
-        <Route path="/verification" element={<ConfirmedEmail/>} />
+        <Route path="/verification/:token" element={<Verification/>} />
       </Routes>
     </>
   );
