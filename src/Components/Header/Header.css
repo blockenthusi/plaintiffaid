@@ -25,8 +25,8 @@
 
 }
 
-.lowerHeader{
-    width: 100%;
+.headerswrap{
+    width: 105%;
     height: 100%;
     background-color: white;
     display: flex;
@@ -44,11 +44,11 @@
     justify-content: center;
     align-items: center;
 }
-.leftHeader h1{
+/* .leftHeader h1{
     font-size: 20px;
     color: #003482ff;
     font-family: 'poppins';
-}
+} */
 
 img{
   width: 50%;
@@ -62,21 +62,7 @@ img{
     align-items: center;
 }
 
-/* ul{
-    width: 65%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 25px;
-    font-size: 15px;
-     
-}
 
-li{
-
-    font-weight: 900;
-    list-style: none;
-} */
 ul {
     text-align: center;
     font-weight: 600;
@@ -250,7 +236,7 @@ ul li:hover {
     transition: all 0.3s ease 0s;
      /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
-.lowerHeader{
+.headerswrap{
   padding: 5px;
   gap: 10px;
 }
@@ -307,7 +293,7 @@ ul li:hover {
     transition: all 0.3s ease 0s;
      /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
-.lowerHeader{
+.headerswrap{
   padding: 5px;
   gap: 10px;
 }
@@ -381,7 +367,7 @@ img{
     transition: all 0.3s ease 0s;
      /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
-.lowerHeader{
+.headerswrap{
   padding: 5px;
   gap: 10px;
 }
@@ -407,6 +393,7 @@ img{
   .header{
     justify-content: flex-end;
     padding-right: 10px;
+    height: 10vh;
 
   }
 
@@ -429,16 +416,80 @@ img{
     transition: all 0.3s ease 0s;
      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.lowerHeader{
+.headerswrap{
   padding: 5px;
   gap: 10px;
+} 
+
+ .leftHeader{
+  width: 55%;
+}
+img{
+width: 150px;
+height: 105px;
+object-fit: cover;
+}
+}
+
+
+
+@media screen and (width <= 375px) {
+  .burger {
+    display: flex;
+    color: #003482ff;
+  
+  }
+  
+  
+  ul{
+    display: none;
+  }
+
+  .header{
+    justify-content: flex-end;
+    padding-right: 10px;
+    height: 8vh;
+
+  }
+
+  
+  .rightHeader button{
+    display: none;
+}
+.rightHeader1 button{
+    width: 120px;
+    height: 30px;
+    border: none;
+    background-color: #003482ff;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease 0s;
+     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.headerswrap{
+  padding: 10px;
+  gap: 5px;
+}
+
+.leftHeader{
+      width: 60%;
 }
 img{
   width: 150px;
-  height: 150px;
+  height: 105px;
   object-fit: cover;
  }
 }
+
+
+
+
+
 
 
 

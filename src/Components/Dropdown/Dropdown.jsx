@@ -18,13 +18,16 @@ export default function Dropdown(){
         <Link className="link" to="/about">
         <p>About</p>
         </Link>
+
             <Link className="link" to="/">
             <GiPentarrowsTornado style={{fontSize: "25px", color: "#003482ff"}}/>
             </Link>
         </div>
 
         <div className="option">
-            <p>Pricing</p>
+        <Link className="link" to="/pricing">
+        <p>Pricing</p>
+            </Link>
             <GiPentarrowsTornado style={{fontSize: "25px",color: "#003482ff"}}/>
         </div>
 

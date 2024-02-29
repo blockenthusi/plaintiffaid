@@ -17,6 +17,7 @@ import law from "../../assets/law.jpg";
 import law3 from "../../assets/law3.avif";
 import { Link } from "react-router-dom";
 
+
 export default function Home() {
   const [show, setShow] = useState(false);
   const list = [
@@ -36,6 +37,9 @@ export default function Home() {
       topic: "Check out the protected libray",
     },
   ];
+
+  
+  
   return (
     <>
       <Header show={show} setShow={setShow} />
@@ -65,7 +69,7 @@ export default function Home() {
           </div>
 
           <div className="videoHolder">
-            <img src={Variation} className="vid" />
+            <img src={Variation} className="vid"  />
 
             <div className="boxx">
               <div className="top">
@@ -114,7 +118,7 @@ export default function Home() {
               <div className="leftHold">
                 <img src={court} alt />
               </div>
-              <div className="rightHold">
+              <div className="righttHold">
                 <div className="desc">
                   <GiPentarrowsTornado />
                   <p>Dedicated security team and 247 technical support</p>
@@ -139,7 +143,7 @@ export default function Home() {
                 </div>
                 <div className="descs">
                   <Link className="link" to="/signup">
-                  <button className="butz">Try for free</button>
+                  <button className="bbutz">Try for free</button>
                   </Link>
                  
                 </div>
@@ -200,15 +204,15 @@ export default function Home() {
                 <img src={freq} alt />
               </div>
               <div className="rightHoldd">
-                <div className="descc">
-                  <GiPentarrowsTornado />
+                <div className="mary">
+                  <GiPentarrowsTornado  style={{fontSize: "14px"}}/>
                   <p>What industries do you serve?</p>
                 </div>
-                <div className="descc">
+                <div className="mary">
                   <GiPentarrowsTornado />
                   <p>Do you offer free version solutions?</p>
                 </div>
-                <div className="descc">
+                <div className="mary">
                   <GiPentarrowsTornado />
                   <p>Do I need a web Application for client data Management?</p>
                 </div>
@@ -220,4 +224,4 @@ export default function Home() {
       <Footer />
     </>
   );
-}
+        }

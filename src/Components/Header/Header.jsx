@@ -1,8 +1,7 @@
 import "./Header.css";
 import React, { useState } from "react";
 import { HiMenu } from "react-icons/hi";
-import { GiCancel } from "react-icons/gi";
-import { IoIosClose } from "react-icons/io";
+import { IoCloseSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
@@ -10,7 +9,7 @@ const Header = ({ show, setShow }) => {
   return (
     <>
       <div className="header">
-        <div className="lowerHeader">
+        <div className="headerswrap">
           <div className="leftHeader">
             <Link className="link" to="/">
               <img src={logo} alt="logo" />
@@ -44,14 +43,16 @@ const Header = ({ show, setShow }) => {
             
           </div>
           <div className="rightHeader1">
+          <Link className="link" to="/signup">
             <button className="btn">Try for free</button>
+            </Link>
           </div>
 
           <div className="burger" onClick={() => setShow(!show)}>
             {show === false ? (
               <HiMenu style={{ direction: "right", duration: "0.5" }} />
             ) : (
-              <IoIosClose
+              <IoCloseSharp 
                 style={{
                   color: "#003482ff",
                   fontSize: "30px",
