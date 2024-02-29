@@ -29,7 +29,7 @@ export default function Clients() {
         <ClientTable />
       </DashboardLayout>
       <Drawer
-        visible={visible}
+        open={visible}
         title={
           <div className="flex  justify-between items-center ">
             <p className="text-base">Client Information</p>
