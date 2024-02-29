@@ -6,7 +6,7 @@ import verified from "../../../assets/verified.png";
 
 export default function () {
   const { token } = useParams();
-  const [isVerified, setIsVerified] = useState(2);
+  const [isVerified, setIsVerified] = useState(1);
   console.log(token);
   const nav = useNavigate();
 
