@@ -39,7 +39,7 @@ aside {
   @apply font-bold;
 
   &::after {
-    content: '';
+    content: "";
     display: block;
     height: 3px;
     width: 45%;
@@ -48,11 +48,10 @@ aside {
     @apply bg-blue-700 rounded;
     z-index: 1;
   }
-
 }
 
-.searchInput{
-  border: 1px solid rgb(5, 5, 28) ;
+.searchInput {
+  border: 1px solid rgb(5, 5, 28);
   height: 35px;
   font-size: 12px;
   display: flex;
@@ -60,7 +59,32 @@ aside {
   align-items: center;
 }
 
-.clientInput{
+.clientInput {
   border: 1px solid rgb(16, 16, 54);
   width: 95%;
+}
+
+.demo-app-main {
+  flex-grow: 1;
+  padding: 3em;
+}
+
+.fc {
+  /* the calendar root */
+  max-width: 1400px;
+  margin: 0 auto;
+  /* background-color: blue; */
+}
+
+.demo-app {
+  display: flex;
+  min-height: 100%;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+
+
+.demo-app-sidebar-section {
+  padding: 2em;
 }

@@ -191,6 +191,17 @@ ul li:hover {
   color: black;
 }
 
+.active{
+  text-decoration: none;
+  outline: none;
+  color: #003482ff;
+  font-weight: bolder;
+}
+.inactive{
+  text-decoration: none;
+  outline: none;
+  color: black;
+}
 
 @media  screen and (width >= 1212px) {
   .burger {

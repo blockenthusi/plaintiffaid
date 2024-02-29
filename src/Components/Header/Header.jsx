@@ -4,6 +4,7 @@ import { HiMenu } from "react-icons/hi";
 import { IoCloseSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { NavLink } from "react-router-dom";
 
 const Header = ({ show, setShow }) => {
   return (
@@ -17,19 +18,31 @@ const Header = ({ show, setShow }) => {
           </div>
           <div className="midHeader">
             <ul>
-              <Link className="link" to="/about">
+              <NavLink
+                to="/about"
+                className={({ isActive }) => (isActive ? "active" : "inactive")}
+              >
                 <li>About</li>
-              </Link>
-              <Link className="link" to="/pricing">
-              <li>Pricing</li>
-              </Link>
-              
-              <Link className="link" to="/service">
+              </NavLink>
+              <NavLink
+                to="/pricing"
+                className={({ isActive }) => (isActive ? "active" : "inactive")}
+              >
+                <li>Pricing</li>
+              </NavLink>
+
+              <NavLink
+                to="/service"
+                className={({ isActive }) => (isActive ? "active" : "inactive")}
+              >
                 <li>Services</li>
-              </Link>
-              <Link className="link" to="/contact">
+              </NavLink>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) => (isActive ? "active" : "inactive")}
+              >
                 <li>Contact Us</li>
-              </Link>
+              </NavLink>
 
               <Link className="link" to="/login">
                 <li>Login</li>
@@ -38,13 +51,12 @@ const Header = ({ show, setShow }) => {
           </div>
           <div className="rightHeader">
             <Link className="link" to="/signup">
-            <button className="btn">Try PlaintiffAid </button>
+              <button className="btn">Try PlaintiffAid </button>
             </Link>
-            
           </div>
           <div className="rightHeader1">
-          <Link className="link" to="/signup">
-            <button className="btn">Try for free</button>
+            <Link className="link" to="/signup">
+              <button className="btn">Try for free</button>
             </Link>
           </div>
 
@@ -52,7 +64,7 @@ const Header = ({ show, setShow }) => {
             {show === false ? (
               <HiMenu style={{ direction: "right", duration: "0.5" }} />
             ) : (
-              <IoCloseSharp 
+              <IoCloseSharp
                 style={{
                   color: "#003482ff",
                   fontSize: "30px",

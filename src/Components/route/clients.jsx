@@ -8,7 +8,10 @@ import { MdOutlineClose } from "react-icons/md";
 
 export default function Clients() {
   const [visible, setVisible] = useState(false);
-
+  const [firstname, setFirstname] = useState("")
+  const id = JSON.parse(localStorage.getItem("user")).UserID
+  console.log(id)
+  console.log(firstname)
   return (
     <>
       <DashboardLayout>
@@ -42,7 +45,7 @@ export default function Clients() {
         closable={false}
       >
         <div className="space-y-2">
-          <Input label=" Firstname" className="clientInput" />
+          <Input label=" Firstname" className="clientInput" value={firstname} onChange={(e)=>setFirstname(e.target.value)}/>
           <Input label=" Lastname" className="clientInput" />
           <Input label=" Email" className="clientInput" />
           <Input label=" Phonenumber" className="clientInput" />
