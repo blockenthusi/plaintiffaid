@@ -10,8 +10,6 @@ export default function Clients() {
   const [visible, setVisible] = useState(false);
   const [firstname, setFirstname] = useState("")
   const id = JSON.parse(localStorage.getItem("user")).UserID
-  console.log(id)
-  console.log(firstname)
   return (
     <>
       <DashboardLayout>
