@@ -36,7 +36,7 @@ export default function Schedule() {
         open={visible}
         title={
           <div className="flex  justify-between items-center ">
-            <p className="text-base">Client Information</p>
+            <p className="text-base">Schedule Appointment</p>
             <p onClick={() => setVisible(false)}>
               <MdOutlineClose className="text-lg cursor-pointer" />
             </p>
@@ -67,7 +67,7 @@ export default function Schedule() {
             <HashLoader color="blue" size="16px" />
           ) : (
             <button className="client_btn bg-blue-900 w-40 h-10 rounded text-white text-sm ">
-              Batch Upload
+              Schedule
             </button>
           )}
         </div>

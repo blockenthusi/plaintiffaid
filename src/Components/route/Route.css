@@ -1,7 +1,7 @@
 
 
   .settingsInput{
-    border: 1px solid blue;
+    border: 1px solid #003482ff;
     
   }
 
@@ -16,4 +16,74 @@
 .firm_p{
   font-size: 19px;
 }
+
+
+.paymentHolder{
+  width: 60%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  border: 3px solid #003482ff;
+  border-radius: 35px;
+}
+
+.paymentWrap{
+  width: 90%;
+  height: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.paymentImageWrap{
+  width: 45%;
+  height: 70%;
+  display : flex;
+  justify-content: center;
+}
+
+.paymentImageWrap img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.paymentInputWrap{
+  width: 45%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.paymentInputWrap h1{
+  font-size: 20px;
+  color: #003482ff; 
+  font-weight: 800;
+}
+
+.payplan{
+  width: 100%;
+  height: 30%;
+  margin-top: 2%;
+}
+.payAmount{
+  width: 100%;
+  height: 30%;
+}
+.payBtn{
+  width: 100%;
+  height: 10%;
+}
+
+
+.payBtn button{
+  width: 100%;
+  height: 30px;
+  border-radius: 0;
+}
+
+
+
 
