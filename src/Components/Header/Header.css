@@ -194,7 +194,7 @@ ul li:hover {
 .active{
   text-decoration: none;
   outline: none;
-  color: #003482ff;
+  color: #55DBCB;
   font-weight: bolder;
 }
 .inactive{
