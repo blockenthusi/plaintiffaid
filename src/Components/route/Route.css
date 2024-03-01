@@ -85,12 +85,14 @@
 }
 
 .textAreaText{
-  width: 95%;
-  height: 40px;
+  width: 93%;
+  height: 60px;
   display: flex;
   flex-direction: column;
-  border: 1px solid;
+  border: 1px solid black;
+  margin-top: 4%;
   padding: 6px;
+  border-radius: 3px;
 }
 
 
