@@ -153,8 +153,9 @@ export default function Clients() {
             key={resetInput ? "reset" : "normal"}
           />
 
+          <label htmlFor="casedescription">Case Description</label>
           <textarea
-            className="clientInput"
+            className="textAreaText"
             value={CaseDescription}
             onChange={(e) => setCaseDescription(e.target.value)}
             ref={fileInputRef}
