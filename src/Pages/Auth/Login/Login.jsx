@@ -47,9 +47,9 @@ const Login = () => {
       "https://plaintiff-backend.onrender.com/api_v1/login",
       data
     );
-    console.log(res.data.data.UserID);
-    const {UserID} = res.data.data
-    localStorage.setItem("user", JSON.stringify({UserID}))
+    console.log(res.data.data);
+    const {UserID,Username} = res.data.data
+    localStorage.setItem("user", JSON.stringify({UserID,Username}))
     toast.success("login sucessful!");
     setTimeout(() =>{
       Nav("/dashboard");
