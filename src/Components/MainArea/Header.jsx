@@ -1,4 +1,7 @@
 export default function HeaderComponent() {
+  const name = JSON.parse(localStorage.getItem("user"))?.Username;
+  console.log(name)
+
   return (
     <>
       <header className="auth__header w-full z-50 top-0 left-0 px-7 py-4 border-b border-gray-200">
@@ -46,7 +49,7 @@ export default function HeaderComponent() {
                     />
                   </svg>
                 </span>
-                <span className="profile__user">Obodo Emmanuella </span>{" "}
+                <span className="profile__user">{name} </span>{" "}
               </div>
             </div>
           </div>

@@ -8,12 +8,44 @@ import {
 } from "@nextui-org/table";
 import Panel from "../Panel/Panel";
 import Search from "../Input/Search";
+import { useEffect, useState } from "react";
+import axios from "axios";
 export default function ClientTable() {
+  const id = JSON.parse(localStorage.getItem("user"))?.UserID;
+  const [client, setClient] = useState([]);
+  const [filter, setFilter] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const getClientInformation = async () => {
+    try {
+      const res = await axios.get(
+        `https://plaintiff-backend.onrender.com/api_v1/getClients/${id}`
+      );
+      setClient(res?.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    getClientInformation();
+  }, []);
+
+  const result = client.filter((item) => {
+    const FirstName = item.FirstName.toString();
+    const LastName = item.LastName.toLowerCase().includes(search.toLowerCase());
+    const Matched = FirstName.includes(search.toLowerCase());
+    return LastName || Matched;
+  });
+
+  useEffect(() => {
+    setFilter(result);
+  }, [search, client]);
+
   return (
     <>
       <div className="mt-8">
         <Panel title="Client History">
-          <Search />
+          <Search value={search} onChange={(e) => setSearch(e.target.value)} />
           <Table
             removeWrapper
             isStriped
@@ -30,92 +62,21 @@ export default function ClientTable() {
               <TableColumn>Phone Number</TableColumn>
               <TableColumn> Address</TableColumn>
               <TableColumn>Gender</TableColumn>
-              <TableColumn>Case Title</TableColumn>
-              <TableColumn>Case Description</TableColumn>
+              {/* <TableColumn>Case Title</TableColumn>
+              <TableColumn>Case Description</TableColumn> */}
             </TableHeader>
 
-            <TableBody
-              className="bg-blue-800"
-              emptyContent={"No rows to display."}
-            >
-              <TableRow className="h-14 py-5">
-                <TableCell>Lorem ipsum dolor </TableCell>
-                <TableCell>Lorem, ipsum dolor.</TableCell>
-                <TableCell>Lorem, ipsum.</TableCell>
-                <TableCell>lorem</TableCell>
-                <TableCell>Lorem ipsum dolor sit.</TableCell>
-                <TableCell>hi</TableCell>
-                <TableCell>hi</TableCell>
-                <TableCell >
-                  Lorem ipsum dolor sit amet consectetur, 
-                 
-                </TableCell>
-              </TableRow>
-              <TableRow className="h-14 py-5">
-                <TableCell>Lorem ipsum dolor </TableCell>
-                <TableCell>Lorem, ipsum dolor.</TableCell>
-                <TableCell>Lorem, ipsum.</TableCell>
-                <TableCell>lorem</TableCell>
-                <TableCell>Lorem ipsum dolor sit.</TableCell>
-                <TableCell>hi</TableCell>
-                <TableCell>hi</TableCell>
-                <TableCell >
-                  Lorem ipsum dolor sit amet consectetur, 
-                 
-                </TableCell>
-              </TableRow>
-              <TableRow className="h-14 py-5">
-                <TableCell>Lorem ipsum dolor </TableCell>
-                <TableCell>Lorem, ipsum dolor.</TableCell>
-                <TableCell>Lorem, ipsum.</TableCell>
-                <TableCell>lorem</TableCell>
-                <TableCell>Lorem ipsum dolor sit.</TableCell>
-                <TableCell>hi</TableCell>
-                <TableCell>hi</TableCell>
-                <TableCell >
-                  Lorem ipsum dolor sit amet consectetur, 
-                 
-                </TableCell>
-              </TableRow>
-              <TableRow className="h-14 py-5">
-                <TableCell>Lorem ipsum dolor </TableCell>
-                <TableCell>Lorem, ipsum dolor.</TableCell>
-                <TableCell>Lorem, ipsum.</TableCell>
-                <TableCell>lorem</TableCell>
-                <TableCell>Lorem ipsum dolor sit.</TableCell>
-                <TableCell>hi</TableCell>
-                <TableCell>hi</TableCell>
-                <TableCell >
-                  Lorem ipsum dolor sit amet consectetur, 
-                 
-                </TableCell>
-              </TableRow>
-              <TableRow className="h-14 py-5">
-                <TableCell>Lorem ipsum dolor </TableCell>
-                <TableCell>Lorem, ipsum dolor.</TableCell>
-                <TableCell>Lorem, ipsum.</TableCell>
-                <TableCell>lorem</TableCell>
-                <TableCell>Lorem ipsum dolor sit.</TableCell>
-                <TableCell>hi</TableCell>
-                <TableCell>hi</TableCell>
-                <TableCell >
-                  Lorem ipsum dolor sit amet consectetur, 
-                 
-                </TableCell>
-              </TableRow>
-              <TableRow className="h-14 py-5">
-                <TableCell>Lorem ipsum dolor </TableCell>
-                <TableCell>Lorem, ipsum dolor.</TableCell>
-                <TableCell>Lorem, ipsum.</TableCell>
-                <TableCell>lorem</TableCell>
-                <TableCell>Lorem ipsum dolor sit.</TableCell>
-                <TableCell>hi</TableCell>
-                <TableCell>hi</TableCell>
-                <TableCell >
-                  Lorem ipsum dolor sit amet consectetur, 
-                 
-                </TableCell>
-              </TableRow>
+            <TableBody emptyContent={"No rows to display."}>
+              {result?.map((row) => (
+                <TableRow key={row.id} className="h-14 py-5">
+                  <TableCell>{row.FirstName}</TableCell>
+                  <TableCell>{row.LastName}</TableCell>
+                  <TableCell>{row.Email}</TableCell>
+                  <TableCell>{row.ContactNumber}</TableCell>
+                  <TableCell>{row.Address}</TableCell>
+                  <TableCell>{row.Gender}</TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </Panel>
