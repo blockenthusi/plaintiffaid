@@ -63,6 +63,15 @@ aside {
   border: 1px solid rgb(16, 16, 54);
   width: 95%;
 }
+.clientInputs {
+  border: 1px solid rgb(16, 16, 54);
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* background-color: red; */
+}
 
 .demo-app-main {
   flex-grow: 1;

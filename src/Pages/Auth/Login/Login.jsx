@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Login.css";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
@@ -14,15 +14,27 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import HashLoader from "react-spinners/HashLoader";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../../../Context/AuthContext";
+
+
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { isAuthenticated } = useContext(AuthContext);
+  const { setIsAuthenticated } = useContext(AuthContext);
+  
 
   const Nav = useNavigate();
 
   const handleShowpassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
+    Nav("/dashboard")
+    Nav("/")
   };
 
   const schema = yup
@@ -48,10 +60,12 @@ const Login = () => {
       data
     );
     console.log(res.data.data);
+    const userData = res.data.data
+    localStorage.setItem("users",JSON.stringify({userData}))
     const {UserID,Username} = res.data.data
     localStorage.setItem("user", JSON.stringify({UserID,Username}))
     toast.success("login sucessful!");
-    setTimeout(() =>{
+    setTimeout(() =>{ 
       Nav("/dashboard");
   }, 5000);
     setLoading(false);

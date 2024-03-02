@@ -10,11 +10,16 @@ import { HashLoader } from "react-spinners";
 export default function Schedule() {
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [firstname, setFirstname] = useState("");
+  const [clientName, setClientName] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
   const [email, setemail] = useState("");
-  const [CaseDescription, setCaseDescription] = useState("");
+  const [schedule, setSchedule] = useState("");
   const [resetInput, setResetInput] = useState(false);
   const fileInputRef = useRef(null);
+  console.log(date);
+
+  
 
   return (
     <>
@@ -47,6 +52,15 @@ export default function Schedule() {
       >
         <div className="space-y-2">
           <Input
+            label="Client Name"
+            className="clientInput"
+            type="text"
+            value={clientName}
+            onChange={(e) => setClientName(e.target.value)}
+            ref={fileInputRef}
+            key={resetInput ? "reset" : "normal"}
+          />
+          <Input
             label=" Email"
             className="clientInput"
             type="email"
@@ -55,10 +69,35 @@ export default function Schedule() {
             ref={fileInputRef}
             key={resetInput ? "reset" : "normal"}
           />
-          <textarea
+          <Input
+            label="Date of Appointment "
             className="clientInput"
-            value={CaseDescription}
-            onChange={(e) => setCaseDescription(e.target.value)}
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            ref={fileInputRef}
+            key={resetInput ? "reset" : "normal"}
+          />
+          <Input
+            label="Time of Appointment"
+            className="clientInput"
+            type="text"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            ref={fileInputRef}
+            key={resetInput ? "reset" : "normal"}
+          />
+
+          <label
+            style={{ fontSize: "15px", marginLeft: "1%" }}
+            htmlFor="casedescription"
+          >
+            Schedule details
+          </label>
+          <textarea
+            className="textAreaText"
+            value={schedule}
+            onChange={(e) => setSchedule(e.target.value)}
             ref={fileInputRef}
             key={resetInput ? "reset" : "normal"}
           ></textarea>
@@ -66,7 +105,7 @@ export default function Schedule() {
           {loading ? (
             <HashLoader color="blue" size="16px" />
           ) : (
-            <button className="client_btn bg-blue-900 w-40 h-10 rounded text-white text-sm ">
+            <button className="clientBtn bg-blue-900 w-40 h-10 rounded text-white text-sm ">
               Schedule
             </button>
           )}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import DashboardLayout from "../../Pages/Dashboard/Dashboard";
 import PageHeader from "../Header/PageHeader";
 import FullCalendar from "@fullcalendar/react";
@@ -7,8 +7,19 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import resourceTimelinePlugin from "@fullcalendar/resource-timeline";
 // import { formatDate, createEventId } from './utils'; // Import necessary utility functions
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+} from "@nextui-org/modal";
+import Input from "../Input/Input";
 
 export default function Calendar() {
+  const [loading, setLoading] = useState(false);
+  const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
   const [weekendsVisible, setWeekendsVisible] = useState(true);
   const [currentEvents, setCurrentEvents] = useState([]);
 
@@ -17,11 +28,11 @@ export default function Calendar() {
   }
 
   function handleDateSelect(selectInfo) {
-    let title = prompt('Please enter a new title for your event');
+    let title = onOpen();
 
     let calendarApi = selectInfo.view.calendar;
 
-    calendarApi.unselect(); 
+    calendarApi.unselect();
 
     if (title) {
       calendarApi.addEvent({
@@ -29,13 +40,17 @@ export default function Calendar() {
         title,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
-        allDay: selectInfo.allDay
+        allDay: selectInfo.allDay,
       });
     }
   }
 
   function handleEventClick(clickInfo) {
-    if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
+    if (
+      confirm(
+        `Are you sure you want to delete the event '${clickInfo.event.title}'`
+      )
+    ) {
       clickInfo.event.remove();
     }
   }
@@ -56,7 +71,13 @@ export default function Calendar() {
   function renderSidebarEvent(event) {
     return (
       <li key={event.id}>
-        <b>{formatDate(event.start, { year: 'numeric', month: 'short', day: 'numeric' })}</b>
+        <b>
+          {formatDate(event.start, {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })}
+        </b>
         <i>{event.title}</i>
       </li>
     );
@@ -64,12 +85,10 @@ export default function Calendar() {
 
   function renderSidebar() {
     return (
-      <div className='demo-app-sidebar'>
-        <div className='demo-app-sidebar-section'>
+      <div className="demo-app-sidebar">
+        <div className="demo-app-sidebar-section">
           {/* <h2>All Events ({currentEvents.length})</h2> */}
-          <ul>
-            {currentEvents.map(renderSidebarEvent)}
-          </ul>
+          <ul>{currentEvents.map(renderSidebarEvent)}</ul>
         </div>
       </div>
     );
@@ -79,17 +98,22 @@ export default function Calendar() {
     <>
       <DashboardLayout>
         <PageHeader title="Calendar" />
-        <div className='demo-app'>
+        <div className="demo-app">
           {renderSidebar()}
-          <div className='demo-app-main'>
+          <div className="demo-app-main">
             <FullCalendar
-              plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, resourceTimelinePlugin]}
+              plugins={[
+                dayGridPlugin,
+                timeGridPlugin,
+                interactionPlugin,
+                resourceTimelinePlugin,
+              ]}
               headerToolbar={{
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,resourceTimelineDay'
+                left: "prev,next today",
+                center: "title",
+                right: "dayGridMonth,timeGridWeek,resourceTimelineDay",
               }}
-              initialView='resourceTimelineDay'
+              initialView="resourceTimelineDay"
               editable={true}
               selectable={true}
               selectMirror={true}
@@ -107,6 +131,79 @@ export default function Calendar() {
             />
           </div>
         </div>
+        <Modal
+          isOpen={isOpen}
+          placement="top"
+          onOpenChange={onOpenChange}
+          hideCloseButton={true}
+          className="rounded "
+        >
+          <ModalContent className="">
+            <ModalHeader className="">Schedule Appointment</ModalHeader>
+            <ModalBody className="">
+              <div className="space-y-3 p-2 ">
+                <Input
+                  label="Client Name"
+                  className="clientInput"
+                  type="text"
+                  // value={clientName}
+                  // onChange={(e) => setClientName(e.target.value)}
+                  // ref={fileInputRef}
+                  // key={resetInput ? "reset" : "normal"}
+                />
+                <Input
+                  label=" Email"
+                  className="clientInput"
+                  type="email"
+                  // value={email}
+                  // onChange={(e) => setemail(e.target.value)}
+                  // ref={fileInputRef}
+                  // key={resetInput ? "reset" : "normal"}
+                />
+                {/* <Input
+                  label="Date of Appointment "
+                  className="clientInput"
+                  type="date"
+                  // value={date}
+                  // onChange={(e) => setDate(e.target.value)}
+                  // ref={fileInputRef}
+                  // key={resetInput ? "reset" : "normal"}
+                /> */}
+                <Input
+                  label="Time of Appointment"
+                  className="clientInput"
+                  type="text"
+                  // value={time}
+                  // onChange={(e) => setTime(e.target.value)}
+                  // ref={fileInputRef}
+                  // key={resetInput ? "reset" : "normal"}
+                />
+
+                <label
+                  style={{ fontSize: "15px", marginLeft: "1%" }}
+                  htmlFor="casedescription"
+                >
+                  Schedule details
+                </label>
+                <textarea
+                  className="textAreaText"
+                  // value={schedule}
+                  // onChange={(e) => setSchedule(e.target.value)}
+                  // ref={fileInputRef}
+                  // key={resetInput ? "reset" : "normal"}
+                ></textarea>
+                
+                {loading ? (
+                  <HashLoader color="blue" size="16px" />
+                ) : (
+                  <button className="clientBtn bg-blue-900 w-40 h-10 rounded text-white text-sm ">
+                    Schedule
+                  </button>
+                )}
+              </div>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
       </DashboardLayout>
     </>
   );

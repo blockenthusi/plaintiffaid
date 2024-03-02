@@ -6,6 +6,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import { HashRouter as Router } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AuthProvider from "./Context/AuthProvider.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -13,8 +14,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
     <Router>
       <NextUIProvider>
+      <AuthProvider >
         <App />
+        </AuthProvider>
       </NextUIProvider>
     </Router>
   </React.StrictMode>
 );
+
+
+
+      
+    

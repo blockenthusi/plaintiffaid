@@ -18,7 +18,23 @@ export default function Payment() {
   const handlePlanChange = (event) => {
     setSelectedPlan(event.target.value); // Update selected plan
   };
-
+const userData = JSON.parse(localStorage.getItem("users"))
+  function payKorapay() {
+    const referenceValue = "PLA"+ Math.random() * 1000
+    window.Korapay.initialize({
+        key: "pk_test_dnNs1J1QPgrDwCqWBYJPaYZQeD7XDFSbDHqV8BnV",
+        reference: referenceValue,
+        amount: paymentPlans[selectedPlan], 
+        currency: "NGN",
+        customer: {
+          name: "userData.userData.name",
+          email: userData.userData.Email,
+        },
+        notification_url: "https://example.com/webhook"
+    });
+}
+// console.log(userData.userData.Email)
+  
   return (
     <>
       <DashboardLayout>
@@ -37,8 +53,9 @@ export default function Payment() {
                   id="paymentPlan"
                   value={selectedPlan}
                   onChange={handlePlanChange}
+                className="select_plan"
                 >
-                  <option value="">Select</option>
+                  {/* <option value="">Select</option> */}
                   {Object.keys(paymentPlans).map((plan) => (
                     <option key={plan} value={plan}>
                       {plan}
@@ -49,6 +66,7 @@ export default function Payment() {
               <div className="payAmount">
                 <label style={{color:"#003482ff", fontWeight: "700" }}htmlFor="selectedAmount">Selected amount:</label>
                 <input
+                className="amountInput"
                   type="text"
                   id="selectedAmount"
                   value={paymentPlans[selectedPlan]}
@@ -57,7 +75,7 @@ export default function Payment() {
               </div>
 
               <div className="payBtn">
-                <button>Pay</button>
+                <button onClick={payKorapay}>Pay</button>
               </div>
             </div>
           </div>

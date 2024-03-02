@@ -21,7 +21,7 @@ import Calendar from "./Components/route/calendar";
 import ConfirmedEmail from "./Pages/SignUp/ConfirmedEmail";
 // import Verification from "./Pages/Auth/Verification/Verification";
 import Verification from "./Pages/Auth/Verification/Verification"
-// import PrivateRoutes from "./Pages/PrivateRoute";
+import PrivateRoutes from "./Pages/PrivateRoute";
 
 function App() {
   return (
@@ -45,10 +45,10 @@ function App() {
         <Route path="/calendars" element={<Calendar />} />
         <Route path="/schedules" element={<Schedule />} />
         <Route path="/verification/:token" element={<Verification/>} />
-        {/* <Route element={<PrivateRoutes/>}>
+        <Route element={<PrivateRoutes/>}>
           <Route   path="/" element={<Home/>} />
           <Route   path="/dashboard" element={<Dashboards/>} />
-        </Route> */}
+        </Route>
         <Route path="*" element={<p>There's nothing here: 404!</p>} />
       </Routes>
       

@@ -24,14 +24,11 @@ export default function ScheduleTable() {
           }}
         >
           <TableHeader>
-            <TableColumn>First Name </TableColumn>
-            <TableColumn>Last Name </TableColumn>
+            <TableColumn>Client Name </TableColumn>
             <TableColumn>Email </TableColumn>
-            <TableColumn>Phone Number</TableColumn>
-            <TableColumn> Address</TableColumn>
-            <TableColumn>Gender</TableColumn>
-            <TableColumn>Case Title</TableColumn>
-            <TableColumn>Case Description</TableColumn>
+            <TableColumn>Date for Appointment</TableColumn>
+            <TableColumn> Time of Appointement</TableColumn>
+            <TableColumn>Schedule Detail</TableColumn>
           </TableHeader>
 
           <TableBody emptyContent={"No rows to display."}></TableBody>

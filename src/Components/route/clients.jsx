@@ -11,6 +11,7 @@ import HashLoader from "react-spinners/HashLoader";
 
 export default function Clients() {
   const [visible, setVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [firstname, setFirstname] = useState("");
   const [Gender, setGender] = useState("");
   const [contactNumber, setcontactNumber] = useState("");
@@ -22,16 +23,7 @@ export default function Clients() {
   const [loading, setLoading] = useState(false);
   const [resetInput, setResetInput] = useState(false);
   const fileInputRef = useRef(null);
-  console.log(
-    firstname,
-    Gender,
-    contactNumber,
-    email,
-    address,
-    lastname,
-    caseName,
-    CaseDescription
-  );
+  const [selectedFiles, setSelectedFiles] = useState(null);
   const id = JSON.parse(localStorage.getItem("user"))?.UserID;
 
   const handleSubmit = async (data) => {
@@ -50,10 +42,9 @@ export default function Clients() {
           CaseDescription,
         }
       );
-      console.log(res);
       toast.success("Client added Successfully");
       setLoading(false);
-      setResetInput(true)
+      setResetInput((prev) => !prev);
     } catch (err) {
       if (err.response.data.message) {
         toast.error(err.response.data.message);
@@ -62,13 +53,54 @@ export default function Clients() {
       setLoading(false);
     }
   };
+
+  const batchTemplate = async () => {
+    try {
+      const response = await axios.get(
+        `https://plaintiff-backend.onrender.com/api_v1/download-template/${id}`,
+        {
+          responseType: "blob",
+        }
+      );
+
+      // Create a Blob object from the response data
+      const blob = new Blob([response.data], {
+        type: response.headers["content-type"],
+      });
+
+      // Create a URL for the Blob object
+      const blobUrl = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = "Plaintiff_Aid.xlsx";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+
+      // Append the link to the document body
+      document.body.appendChild(link);
+
+      // Trigger a click event to initiate the download
+      link.click();
+
+      // Clean up: remove the Blob URL and the link element
+      URL.revokeObjectURL(blobUrl);
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Error downloading template:", error);
+    }
+  };
+
   return (
     <>
       <DashboardLayout>
         <PageHeader title="Client Data" />
         <div className="w-full h-16 flex">
           <div className="h-full w-[95%] flex justify-end items-center space-x-4 ">
-            <button className="client_btn bg-blue-900  w-40 h-8 rounded text-white text-sm ">
+            <button
+              className="client_btn bg-blue-900  w-40 h-8 rounded text-white text-sm "
+              onClick={() => setIsVisible(true)}
+            >
               Batch Upload
             </button>
             <button
@@ -94,7 +126,7 @@ export default function Clients() {
         maskClosable={false}
         closable={false}
       >
-        <div className="space-y-2">
+        <div className="space-y-3">
           <Input
             label=" Firstname"
             className="clientInput"
@@ -172,6 +204,52 @@ export default function Clients() {
               Batch Upload
             </button>
           )}
+        </div>
+      </Drawer>
+      <Drawer
+        open={isVisible}
+        title={
+          <div className="flex  justify-between items-center ">
+            <p className="text-base">Batch Upload</p>
+            <p onClick={() => setIsVisible(false)}>
+              <MdOutlineClose className="text-lg cursor-pointer" />
+            </p>
+          </div>
+        }
+        maskClosable={false}
+        closable={false}
+      >
+        <div className="space-y-2 flex flex-col ">
+          <p onClick={batchTemplate} className="cursor-pointer ">
+            Download Template
+          </p>
+          <label
+            htmlFor=""
+            className="h-14 w-80 pl-2  p-1 rounded text-sm outline-none border flex item-center"
+          >
+            <Input
+              label=" "
+              className="cursor-pointer "
+              value={Gender}
+              onChange={(e) => setGender(e.target.value)}
+              ref={fileInputRef}
+              key={resetInput ? "reset" : "normal"}
+              type="file"
+            />
+          </label>
+
+          <div className="ml-1">
+            {loading ? (
+              <HashLoader color="blue" size="16px" />
+            ) : (
+              <button
+                className="client_btn bg-blue-900 w-40 h-10 rounded text-white text-sm "
+                onClick={() => handleSubmit()}
+              >
+                Submit
+              </button>
+            )}
+          </div>
         </div>
       </Drawer>
     </>
