@@ -17,7 +17,7 @@ export default function Schedule() {
   const [schedule, setSchedule] = useState("");
   const [resetInput, setResetInput] = useState(false);
   const fileInputRef = useRef(null);
-  console.log(date);
+
 
   
 
