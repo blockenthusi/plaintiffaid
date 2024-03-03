@@ -5,21 +5,50 @@ import Input from "../Input/Input";
 import ScheduleTable from "../Tables/ScheduleTable";
 import { useRef, useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
-import { HashLoader } from "react-spinners";
+import axios from "axios";
+import { toast } from "react-toastify";
+import HashLoader from "react-spinners/HashLoader";
+
 
 export default function Schedule() {
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [clientName, setClientName] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-  const [email, setemail] = useState("");
-  const [schedule, setSchedule] = useState("");
   const [resetInput, setResetInput] = useState(false);
   const fileInputRef = useRef(null);
+  const [clientName, setClientName] = useState("")
+  const [clientEmail, setClientEmail] = useState("")
+  const [dateOfAppointment, setDateOfAppointment] = useState("")
+  const [scheduleDetails, setScheduleDetails] = useState("")
+  const [timeOfAppointment, setTimeOfAppointment] = useState("")
+  const id = JSON.parse(localStorage.getItem("user"))?.UserID;
 
 
-  
+
+  const handleSubmit = async (data) => {
+    try {
+      setLoading(true);
+      const res = await axios.post(
+        `https://plaintiff-backend.onrender.com/api_v1/create-schedule/${id}`,
+        {
+          clientName,
+          clientEmail,
+          dateOfAppointment,
+          timeOfAppointment,
+          scheduleDetails,
+        }
+      );
+      toast.success("Schedule created");
+      setLoading(false);
+      setResetInput((prev) => !prev);
+    } catch (err) {
+      if (err.response.data.message) {
+        toast.error(err.response.data.message);
+        setLoading(false);
+      }
+      setLoading(false);
+    }
+    console.log()
+  };
 
   return (
     <>
@@ -64,8 +93,8 @@ export default function Schedule() {
             label=" Email"
             className="clientInput"
             type="email"
-            value={email}
-            onChange={(e) => setemail(e.target.value)}
+            value={clientEmail}
+            onChange={(e) => setClientEmail(e.target.value)}
             ref={fileInputRef}
             key={resetInput ? "reset" : "normal"}
           />
@@ -73,8 +102,8 @@ export default function Schedule() {
             label="Date of Appointment "
             className="clientInput"
             type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
+            value={dateOfAppointment}
+            onChange={(e) => setDateOfAppointment(e.target.value)}
             ref={fileInputRef}
             key={resetInput ? "reset" : "normal"}
           />
@@ -82,8 +111,8 @@ export default function Schedule() {
             label="Time of Appointment"
             className="clientInput"
             type="text"
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
+            value={timeOfAppointment}
+            onChange={(e) => setTimeOfAppointment(e.target.value)}
             ref={fileInputRef}
             key={resetInput ? "reset" : "normal"}
           />
@@ -96,8 +125,8 @@ export default function Schedule() {
           </label>
           <textarea
             className="textAreaText"
-            value={schedule}
-            onChange={(e) => setSchedule(e.target.value)}
+            value={scheduleDetails}
+            onChange={(e) => setScheduleDetails(e.target.value)}
             ref={fileInputRef}
             key={resetInput ? "reset" : "normal"}
           ></textarea>
@@ -105,7 +134,9 @@ export default function Schedule() {
           {loading ? (
             <HashLoader color="blue" size="16px" />
           ) : (
-            <button className="clientBtn bg-blue-900 w-40 h-10 rounded text-white text-sm ">
+            <button className="clientBtn bg-blue-900 w-40 h-10 rounded text-white text-sm "
+            onClick={() => handleSubmit()}
+            >
               Schedule
             </button>
           )}

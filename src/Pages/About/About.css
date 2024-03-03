@@ -362,6 +362,9 @@ button:hover {
         width: 100%;
         margin-top: -150px;
         /* margin-bottom: 50px; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .storie{
         width: 100%;
@@ -390,6 +393,9 @@ button:hover {
         width: 100%;
         height: 55%;
         margin-top: -150px;
+    }
+    .storyRightt{
+        font-size: 12px;
     }
     .stroyLeftt h1 {
         font-size: 24px;

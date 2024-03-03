@@ -1,7 +1,6 @@
 import "./Signup.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-// import Messages from "../../assets/Messages.png";
 import logo2 from "../../assets/logo2.png";
 import image from "../../assets/image.png";
 import { useForm } from "react-hook-form";
@@ -16,6 +15,14 @@ import HashLoader from "react-spinners/HashLoader";
 const Signup = () => {
   
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+
+  
+  const handleShowpassword = () => {
+    setShowPassword(!showPassword);
+  };
+
 
   const schema = yup
     .object({
@@ -115,8 +122,9 @@ const Signup = () => {
             <div className="inputDiv">
               <input
                 placeholder="Password"
-                type="text"
+                type={showPassword ? "text" : "password"}
                 {...register("password")}
+                
               />
               <p style={{ fontSize: "12px", color: "red" }}>
                 {errors?.password?.message}
@@ -127,7 +135,7 @@ const Signup = () => {
             <div className="inputDiv">
               <input
                 placeholder="Confirm Password"
-                type="text"
+                type={showPassword ? "text" : "password"}
                 {...register("confirmPassword")}
               />
               <p style={{ fontSize: "12px", color: "red" }}>

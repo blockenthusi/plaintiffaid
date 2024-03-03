@@ -33,8 +33,7 @@ const Login = () => {
 
   const handleLoginSuccess = () => {
     setIsAuthenticated(true);
-    Nav("/dashboard")
-    Nav("/")
+    
   };
 
   const schema = yup
@@ -64,6 +63,7 @@ const Login = () => {
     localStorage.setItem("users",JSON.stringify({userData}))
     const {UserID,Username} = res.data.data
     localStorage.setItem("user", JSON.stringify({UserID,Username}))
+    handleLoginSuccess();
     toast.success("login sucessful!");
     setTimeout(() =>{ 
       Nav("/dashboard");
@@ -87,7 +87,7 @@ const Login = () => {
       <div className="loginHolderWrap">
         <div className="toplogo">
           <img src="logo.png" alt="" />
-          <Link className="link" to="/">
+          <Link className="link" to="/signup">
             <FaArrowLeftLong style={{ color: "#003482ff" }} />
           </Link>
         </div>

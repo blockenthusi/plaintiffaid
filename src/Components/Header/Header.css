@@ -442,6 +442,58 @@ object-fit: cover;
 }
 }
 
+@media screen and (width <= 428px) {
+  .burger {
+    display: flex;
+    color: #003482ff;
+  
+  }
+  
+  
+  ul{
+    display: none;
+  }
+
+  .header{
+    justify-content: flex-end;
+    padding-right: 10px;
+    height: 8vh;
+
+  }
+
+  
+  .rightHeader button{
+    display: none;
+}
+.rightHeader1 button{
+    width: 120px;
+    height: 30px;
+    border: none;
+    background-color: #003482ff;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease 0s;
+     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.headerswrap{
+  padding: 10px;
+  gap: 5px;
+}
+
+.leftHeader{
+      width: 60%;
+}
+img{
+  width: 150px;
+  height: 105px;
+  object-fit: cover;
+ }
+}
 
 
 @media screen and (width <= 375px) {

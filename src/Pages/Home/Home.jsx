@@ -18,8 +18,12 @@ import law3 from "../../assets/law3.avif";
 import { Link } from "react-router-dom";
 
 
+
 export default function Home() {
   const [show, setShow] = useState(false);
+
+
+  
   const list = [
     {
       image: law1 ,

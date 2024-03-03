@@ -201,7 +201,7 @@ export default function Clients() {
               className="client_btn bg-blue-900 w-40 h-10 rounded text-white text-sm "
               onClick={() => handleSubmit()}
             >
-              Batch Upload
+              Add client
             </button>
           )}
         </div>

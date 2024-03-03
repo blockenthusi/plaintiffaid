@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import "./ForgotPassword.css";
+import "./Newpassword.css"
 import { FaArrowLeftLong } from "react-icons/fa6";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaRegEye } from "react-icons/fa6";
 import { MdSlowMotionVideo } from "react-icons/md";
-import logo from "../../../assets/logo.png";
+import logo from "../../assets/logo.png"
 import { Link } from "react-router-dom";
 import { HashLoader } from "react-spinners";
 import { useForm } from "react-hook-form";
@@ -12,10 +14,13 @@ import * as yup from "yup";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../../../Context/AuthContext";
+import AuthContext from "../../Context/AuthContext";
 import { useEffect } from "react";
 
-const ForgotPassword = () => {
+
+
+const Newpassword = () => {
+    const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const { isAuthenticated } = useContext(AuthContext);
 
@@ -26,11 +31,13 @@ const ForgotPassword = () => {
     }
   }, []);
 
+  const handleShowpassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const schema = yup
     .object({
-      email: yup.string().required("Input email"),
-      // newPassword: yup.string().required("Input new password"),
+      newPassword: yup.string().required("Input new password"),
     })
     .required();
 
@@ -64,8 +71,8 @@ const ForgotPassword = () => {
     }
   };
 
-  return (
-    <div className="forgotPasswordHolder">
+return(
+        <div className="forgotPasswordHolder">
       <div className="forgotPasswordWrapper">
         <div className="forgotPasswordHead">
           <div className="forgotPasswordHeadLeft">
@@ -85,16 +92,34 @@ const ForgotPassword = () => {
               className="enteryInput"
               onSubmit={handleSubmit(onSubmit)}
             >
-              <div className="upperText">
-                <p>Email address</p>
+              
+              <div className="lowerText">
+                <p>New Password</p>
+                {showPassword ? (
+                  <FaRegEye
+                    onClick={handleShowpassword}
+                    style={{
+                      color: "#003482ff",
+                      fontSize: "12px",
+                      marginLeft: "20%",
+                    }}
+                  />
+                ) : (
+                  <FaEyeSlash
+                    onClick={handleShowpassword}
+                    style={{ color: "#003482ff", fontSize: "12px" }}
+                  />
+                )}
               </div>
 
-              <input type="email" {...register("email")} />
+              <input
+                type={showPassword ? "text" : "password"}
+                {...register("newPassword")}
+              />
 
               <p style={{ fontSize: "12px", color: "red" }}>
-                {errors?.email?.message}
+                {errors?.newPassword?.message}
               </p>
-
               <div className="resetBtn">
                 {loading ? (
                   <HashLoader color="blue" size="20px" />
@@ -117,4 +142,11 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+
+export default Newpassword
+
+
+
+
+
+

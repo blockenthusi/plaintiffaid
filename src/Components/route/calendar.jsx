@@ -6,6 +6,9 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import resourceTimelinePlugin from "@fullcalendar/resource-timeline";
+import axios from "axios";
+import { toast } from "react-toastify";
+import HashLoader from "react-spinners/HashLoader";
 // import { formatDate, createEventId } from './utils'; // Import necessary utility functions
 import {
   Modal,
@@ -22,6 +25,41 @@ export default function Calendar() {
   const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
   const [weekendsVisible, setWeekendsVisible] = useState(true);
   const [currentEvents, setCurrentEvents] = useState([]);
+  const [clientName, setClientName] = useState("")
+  const [clientEmail, setClientEmail] = useState("")
+  const [dateOfAppointment, setDateOfAppointment] = useState("")
+  const [scheduleDetails, setScheduleDetails] = useState("")
+  const [timeofAppointment, setTimeOfAppointment] = useState("")
+  const id = JSON.parse(localStorage.getItem("user"))?.UserID;
+
+
+
+  const handleSubmit = async (data) => {
+    try {
+      setLoading(true);
+      const res = await axios.post(
+        `https://plaintiff-backend.onrender.com/api_v1/create-schedule/${id}`,
+        {
+          clientName,
+          clientEmail,
+          dateOfAppointment,
+          timeofAppointment,
+          scheduleDetails,
+        }
+      );
+      toast.success("Schedule created");
+      setLoading(false);
+      setResetInput((prev) => !prev);
+    } catch (err) {
+      if (err.response.data.message) {
+        toast.error(err.response.data.message);
+        setLoading(false);
+      }
+      setLoading(false);
+    }
+    
+  };
+
 
   function handleWeekendsToggle() {
     setWeekendsVisible(!weekendsVisible);
@@ -131,7 +169,7 @@ export default function Calendar() {
             />
           </div>
         </div>
-        <Modal
+        {/* <Modal
           isOpen={isOpen}
           placement="top"
           onOpenChange={onOpenChange}
@@ -146,8 +184,8 @@ export default function Calendar() {
                   label="Client Name"
                   className="clientInput"
                   type="text"
-                  // value={clientName}
-                  // onChange={(e) => setClientName(e.target.value)}
+                  value={clientName}
+                  onChange={(e) => setClientName(e.target.value)}
                   // ref={fileInputRef}
                   // key={resetInput ? "reset" : "normal"}
                 />
@@ -155,26 +193,26 @@ export default function Calendar() {
                   label=" Email"
                   className="clientInput"
                   type="email"
-                  // value={email}
-                  // onChange={(e) => setemail(e.target.value)}
+                  value={clientEmail}
+                  onChange={(e) => setClientEmail(e.target.value)}
                   // ref={fileInputRef}
                   // key={resetInput ? "reset" : "normal"}
                 />
-                {/* <Input
+                { <Input
                   label="Date of Appointment "
                   className="clientInput"
                   type="date"
-                  // value={date}
-                  // onChange={(e) => setDate(e.target.value)}
-                  // ref={fileInputRef}
-                  // key={resetInput ? "reset" : "normal"}
-                /> */}
+                   value={dateOfAppointment}
+                   onChange={(e) => setDateOfAppointment(e.target.value)}
+                    // ref={fileInputRef}
+                    // key={resetInput ? "reset" : "normal"}
+                /> } 
                 <Input
                   label="Time of Appointment"
                   className="clientInput"
                   type="text"
-                  // value={time}
-                  // onChange={(e) => setTime(e.target.value)}
+                  value={timeofAppointment}
+                  onChange={(e) => setTimeOfAppointment(e.target.value)}
                   // ref={fileInputRef}
                   // key={resetInput ? "reset" : "normal"}
                 />
@@ -187,8 +225,8 @@ export default function Calendar() {
                 </label>
                 <textarea
                   className="textAreaText"
-                  // value={schedule}
-                  // onChange={(e) => setSchedule(e.target.value)}
+                  value={scheduleDetails}
+                  onChange={(e) => setScheduleDetails(e.target.value)}
                   // ref={fileInputRef}
                   // key={resetInput ? "reset" : "normal"}
                 ></textarea>
@@ -196,14 +234,15 @@ export default function Calendar() {
                 {loading ? (
                   <HashLoader color="blue" size="16px" />
                 ) : (
-                  <button className="clientBtn bg-blue-900 w-40 h-10 rounded text-white text-sm ">
+                  <button className="clientBtn bg-blue-900 w-40 h-10 rounded text-white text-sm "
+                  onClick={() => handleSubmit()}>
                     Schedule
                   </button>
                 )}
               </div>
             </ModalBody>
           </ModalContent>
-        </Modal>
+        </Modal> */}
       </DashboardLayout>
     </>
   );

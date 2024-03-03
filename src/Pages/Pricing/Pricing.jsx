@@ -8,8 +8,10 @@ import { useState } from "react";
 import Dropdown from "../../Components/Dropdown/Dropdown";
 
 
+
 const Pricing = () => {
   const [show, setShow] = useState(false);
+
 
   return (
     <>

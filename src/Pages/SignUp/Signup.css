@@ -92,6 +92,14 @@ header{
     outline: none;
     /* background: green; */
 }
+
+/* .inputDivInput{
+    width: 100%;
+    height: 60%;
+    border: none;
+    color: #242424;
+    outline: none;
+} */
 ::placeholder {
     color: #003382;
     opacity: 1;
