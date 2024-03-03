@@ -9,20 +9,17 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
 
-
 export default function Schedule() {
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [resetInput, setResetInput] = useState(false);
   const fileInputRef = useRef(null);
-  const [clientName, setClientName] = useState("")
-  const [clientEmail, setClientEmail] = useState("")
-  const [dateOfAppointment, setDateOfAppointment] = useState("")
-  const [scheduleDetails, setScheduleDetails] = useState("")
-  const [timeOfAppointment, setTimeOfAppointment] = useState("")
+  const [clientName, setClientName] = useState("");
+  const [clientEmail, setClientEmail] = useState("");
+  const [dateOfAppointment, setDateOfAppointment] = useState("");
+  const [scheduleDetails, setScheduleDetails] = useState("");
+  const [timeOfAppointment, setTimeOfAppointment] = useState("");
   const id = JSON.parse(localStorage.getItem("user"))?.UserID;
-
-
 
   const handleSubmit = async (data) => {
     try {
@@ -39,7 +36,13 @@ export default function Schedule() {
       );
       toast.success("Schedule created");
       setLoading(false);
-      setResetInput((prev) => !prev);
+      setLoading(false);
+      setClientName("");
+      setClientEmail("");
+      setDateOfAppointment("");
+      setTimeOfAppointment("");
+      setScheduleDetails("");
+      setVisible(false);
     } catch (err) {
       if (err.response.data.message) {
         toast.error(err.response.data.message);
@@ -47,7 +50,6 @@ export default function Schedule() {
       }
       setLoading(false);
     }
-    console.log()
   };
 
   return (
@@ -86,8 +88,8 @@ export default function Schedule() {
             type="text"
             value={clientName}
             onChange={(e) => setClientName(e.target.value)}
-            ref={fileInputRef}
-            key={resetInput ? "reset" : "normal"}
+            // ref={fileInputRef}
+            // key={resetInput ? "reset" : "normal"}
           />
           <Input
             label=" Email"
@@ -95,8 +97,8 @@ export default function Schedule() {
             type="email"
             value={clientEmail}
             onChange={(e) => setClientEmail(e.target.value)}
-            ref={fileInputRef}
-            key={resetInput ? "reset" : "normal"}
+            // ref={fileInputRef}
+            // key={resetInput ? "reset" : "normal"}
           />
           <Input
             label="Date of Appointment "
@@ -104,8 +106,8 @@ export default function Schedule() {
             type="date"
             value={dateOfAppointment}
             onChange={(e) => setDateOfAppointment(e.target.value)}
-            ref={fileInputRef}
-            key={resetInput ? "reset" : "normal"}
+            // ref={fileInputRef}
+            // key={resetInput ? "reset" : "normal"}
           />
           <Input
             label="Time of Appointment"
@@ -113,8 +115,8 @@ export default function Schedule() {
             type="text"
             value={timeOfAppointment}
             onChange={(e) => setTimeOfAppointment(e.target.value)}
-            ref={fileInputRef}
-            key={resetInput ? "reset" : "normal"}
+            // ref={fileInputRef}
+            // key={resetInput ? "reset" : "normal"}
           />
 
           <label
@@ -127,15 +129,16 @@ export default function Schedule() {
             className="textAreaText"
             value={scheduleDetails}
             onChange={(e) => setScheduleDetails(e.target.value)}
-            ref={fileInputRef}
-            key={resetInput ? "reset" : "normal"}
+            // ref={fileInputRef}
+            // key={resetInput ? "reset" : "normal"}
           ></textarea>
 
           {loading ? (
             <HashLoader color="blue" size="16px" />
           ) : (
-            <button className="clientBtn bg-blue-900 w-40 h-10 rounded text-white text-sm "
-            onClick={() => handleSubmit()}
+            <button
+              className="clientBtn bg-blue-900 w-40 h-10 rounded text-white text-sm "
+              onClick={() => handleSubmit()}
             >
               Schedule
             </button>

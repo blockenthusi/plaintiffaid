@@ -1,6 +1,6 @@
 export default function HeaderComponent() {
   const name = JSON.parse(localStorage.getItem("user"))?.Username;
-  console.log(name)
+ 
 
   return (
     <>
