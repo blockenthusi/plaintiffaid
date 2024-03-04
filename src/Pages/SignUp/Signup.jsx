@@ -1,5 +1,5 @@
 import "./Signup.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import logo2 from "../../assets/logo2.png";
 import image from "../../assets/image.png";
@@ -11,18 +11,14 @@ import "animate.css";
 import axios from "axios";
 import HashLoader from "react-spinners/HashLoader";
 
-
 const Signup = () => {
-  
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const nav = useNavigate();
 
-
-  
   const handleShowpassword = () => {
     setShowPassword(!showPassword);
   };
-
 
   const schema = yup
     .object({
@@ -57,8 +53,9 @@ const Signup = () => {
         "https://plaintiff-backend.onrender.com/api_v1/signup",
         data
       );
-      console.log(res);
+      nav("/login");
       toast.success("kindly check your email");
+  
       setLoading(false);
     } catch (err) {
       if (err.response.data.message) {
@@ -124,7 +121,6 @@ const Signup = () => {
                 placeholder="Password"
                 type={showPassword ? "text" : "password"}
                 {...register("password")}
-                
               />
               <p style={{ fontSize: "12px", color: "red" }}>
                 {errors?.password?.message}

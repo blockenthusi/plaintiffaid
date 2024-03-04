@@ -3,6 +3,7 @@ import AuthContext from './AuthContext';
 
 const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  console.log(isAuthenticated)
 
   // Implement login/logout logic here, updating isAuthenticated
 

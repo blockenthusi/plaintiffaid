@@ -12,7 +12,7 @@ import AuthContext from '../Context/AuthContext';
     return <Navigate to="/login" replace />;
   }
 
-  return <Outlet />;
+  return <Outlet />; 
 };
 
 

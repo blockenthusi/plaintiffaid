@@ -10,19 +10,14 @@ import AuthProvider from "./Context/AuthProvider.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-      <ToastContainer />
+    <ToastContainer />
 
     <Router>
       <NextUIProvider>
-      <AuthProvider >
-        <App />
+        <AuthProvider>
+          <App />
         </AuthProvider>
       </NextUIProvider>
     </Router>
   </React.StrictMode>
 );
-
-
-
-      
-    
