@@ -23,7 +23,7 @@ export default function Clients() {
   const [loading, setLoading] = useState(false);
   const [resetInput, setResetInput] = useState(false);
   const fileInputRef = useRef(null);
-  const [selectedFiles, setSelectedFiles] = useState(null);
+  const [file, setFile] = useState(null);
   const id = JSON.parse(localStorage.getItem("user"))?.UserID;
 
   const handleSubmit = async (data) => {
@@ -71,12 +71,10 @@ export default function Clients() {
         }
       );
 
-      // Create a Blob object from the response data
       const blob = new Blob([response.data], {
         type: response.headers["content-type"],
       });
 
-      // Create a URL for the Blob object
       const blobUrl = URL.createObjectURL(blob);
 
       const link = document.createElement("a");
@@ -85,13 +83,10 @@ export default function Clients() {
       link.target = "_blank";
       link.rel = "noopener noreferrer";
 
-      // Append the link to the document body
       document.body.appendChild(link);
 
-      // Trigger a click event to initiate the download
       link.click();
 
-      // Clean up: remove the Blob URL and the link element
       URL.revokeObjectURL(blobUrl);
       document.body.removeChild(link);
     } catch (error) {
@@ -99,6 +94,29 @@ export default function Clients() {
     }
   };
 
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
+  };
+
+  const handleBatchUpload = async () => {
+    try {
+      if (file) {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        const res = await axios.post(
+          `https://plaintiff-backend.onrender.com/api_v1/batch_Upload/${id}/${id}`,
+          formData
+        );
+        console.log(res);
+        setIsVisible(false);
+      } else {
+        console.log("No file selected.");
+      }
+    } catch (err) {
+      console.log(err, "error");
+    }
+  };
   return (
     <>
       <DashboardLayout>
@@ -236,13 +254,9 @@ export default function Clients() {
             className="h-14 w-80 pl-2  p-1 rounded text-sm outline-none border flex item-center"
           >
             <Input
-              label=" "
               className="cursor-pointer "
-              value={Gender}
-              onChange={(e) => setGender(e.target.value)}
-              ref={fileInputRef}
-              key={resetInput ? "reset" : "normal"}
               type="file"
+              onChange={handleFileChange}
             />
           </label>
 
@@ -252,7 +266,7 @@ export default function Clients() {
             ) : (
               <button
                 className="client_btn bg-blue-900 w-40 h-10 rounded text-white text-sm "
-                onClick={() => handleSubmit()}
+                onClick={() => handleBatchUpload()}
               >
                 Submit
               </button>
