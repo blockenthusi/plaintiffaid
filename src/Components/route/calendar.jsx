@@ -169,7 +169,7 @@ export default function Calendar() {
             />
           </div>
         </div>
-        {/* <Modal
+        <Modal
           isOpen={isOpen}
           placement="top"
           onOpenChange={onOpenChange}
@@ -242,7 +242,7 @@ export default function Calendar() {
               </div>
             </ModalBody>
           </ModalContent>
-        </Modal> */}
+        </Modal>
       </DashboardLayout>
     </>
   );

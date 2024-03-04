@@ -6,6 +6,8 @@ export default function History() {
     <>
       <DashboardLayout>
         <PageHeader title="History" />
+
+        
       </DashboardLayout>
     </>
   );
