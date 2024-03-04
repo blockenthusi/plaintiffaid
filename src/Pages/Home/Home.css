@@ -11,7 +11,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f7f5f5ff;
+  background:linear-gradient(to right, rgba(247, 245, 245, 0.596),  rgba(231, 229, 229, 0.863)), url("../../assets/Clientbackground.png");
+  /* background-color: #f7f5f5ff; */
 }
 
 .wrapper {
@@ -21,7 +22,7 @@
   justify-content: center;
   align-items: center;
   gap: 2%;
-  background-color: #f7f5f5ff;
+  /* background-color: #f7f5f5ff; */
 }
 
 .videoHolder {
@@ -576,7 +577,9 @@
   }
 }
 
-
+@media screen and (width: 1024px) {
+    
+}
 @media (min-width: 768px) and (max-width: 991px) {
   .wrapper{
     display: flex;
