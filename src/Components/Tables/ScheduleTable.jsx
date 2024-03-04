@@ -8,8 +8,40 @@ import {
 } from "@nextui-org/table";
 import Panel from "../Panel/Panel";
 import Search from "../Input/Search";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function ScheduleTable() {
+  const id = JSON.parse(localStorage.getItem("user"))?.UserID;
+  const [client, setClient] = useState([]);
+  const [filter, setFilter] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const getSchedule = async () => {
+    try {
+      const res = await axios.get(
+        `https://plaintiff-backend.onrender.com/api_v1/schedules/all_schedules/${id}`
+      );
+      setClient(res?.data?.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    getSchedule();
+  }, []);
+
+  const result = client.filter((item) => {
+    const FirstName = item.FirstName.toString();
+    const LastName = item.LastName.toLowerCase().includes(search.toLowerCase());
+    const Matched = FirstName.includes(search.toLowerCase());
+    return LastName || Matched;
+  });
+
+  useEffect(() => {
+    setFilter(result);
+  }, [search, client]);
+
   return (
     <div className="mt-8">
       <Panel title="Schedule History">
@@ -31,7 +63,17 @@ export default function ScheduleTable() {
             <TableColumn>Schedule Detail</TableColumn>
           </TableHeader>
 
-          <TableBody emptyContent={"No rows to display."}></TableBody>
+          <TableBody emptyContent={"No rows to display."}>
+            {result?.map((row) => (
+              <TableRow key={row.id} className="h-14 py-5">
+                <TableCell>{row.clientName}</TableCell>
+                <TableCell>{row.clientEmail}</TableCell>
+                <TableCell>{row.dateOfAppointment}</TableCell>
+                <TableCell>{row.timeOfAppointment}</TableCell>
+                <TableCell>{row.scheduleDetails}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
         </Table>
       </Panel>
     </div>

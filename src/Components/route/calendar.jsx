@@ -25,14 +25,12 @@ export default function Calendar() {
   const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
   const [weekendsVisible, setWeekendsVisible] = useState(true);
   const [currentEvents, setCurrentEvents] = useState([]);
-  const [clientName, setClientName] = useState("")
-  const [clientEmail, setClientEmail] = useState("")
-  const [dateOfAppointment, setDateOfAppointment] = useState("")
-  const [scheduleDetails, setScheduleDetails] = useState("")
-  const [timeofAppointment, setTimeOfAppointment] = useState("")
+  const [clientName, setClientName] = useState("");
+  const [clientEmail, setClientEmail] = useState("");
+  const [dateOfAppointment, setDateOfAppointment] = useState("");
+  const [scheduleDetails, setScheduleDetails] = useState("");
+  const [timeofAppointment, setTimeOfAppointment] = useState("");
   const id = JSON.parse(localStorage.getItem("user"))?.UserID;
-
-
 
   const handleSubmit = async (data) => {
     try {
@@ -57,9 +55,7 @@ export default function Calendar() {
       }
       setLoading(false);
     }
-    
   };
-
 
   function handleWeekendsToggle() {
     setWeekendsVisible(!weekendsVisible);
@@ -178,7 +174,7 @@ export default function Calendar() {
         >
           <ModalContent className="">
             <ModalHeader className="">Schedule Appointment</ModalHeader>
-            <ModalBody className="">
+            <ModalBody className="mb-6">
               <div className="space-y-3 p-2 ">
                 <Input
                   label="Client Name"
@@ -186,8 +182,6 @@ export default function Calendar() {
                   type="text"
                   value={clientName}
                   onChange={(e) => setClientName(e.target.value)}
-                  // ref={fileInputRef}
-                  // key={resetInput ? "reset" : "normal"}
                 />
                 <Input
                   label=" Email"
@@ -195,26 +189,23 @@ export default function Calendar() {
                   type="email"
                   value={clientEmail}
                   onChange={(e) => setClientEmail(e.target.value)}
-                  // ref={fileInputRef}
-                  // key={resetInput ? "reset" : "normal"}
                 />
-                { <Input
-                  label="Date of Appointment "
-                  className="clientInput"
-                  type="date"
-                   value={dateOfAppointment}
-                   onChange={(e) => setDateOfAppointment(e.target.value)}
-                    // ref={fileInputRef}
-                    // key={resetInput ? "reset" : "normal"}
-                /> } 
+                {/* {
+                  <Input
+                    label="Date of Appointment "
+                    className="clientInput"
+                    type="date"
+                    value={dateOfAppointment}
+                    onChange={(e) => setDateOfAppointment(e.target.value)}
+                   
+                  />
+                } */}
                 <Input
                   label="Time of Appointment"
                   className="clientInput"
                   type="text"
                   value={timeofAppointment}
                   onChange={(e) => setTimeOfAppointment(e.target.value)}
-                  // ref={fileInputRef}
-                  // key={resetInput ? "reset" : "normal"}
                 />
 
                 <label
@@ -230,12 +221,13 @@ export default function Calendar() {
                   // ref={fileInputRef}
                   // key={resetInput ? "reset" : "normal"}
                 ></textarea>
-                
                 {loading ? (
                   <HashLoader color="blue" size="16px" />
                 ) : (
-                  <button className="clientBtn bg-blue-900 w-40 h-10 rounded text-white text-sm "
-                  onClick={() => handleSubmit()}>
+                  <button
+                    className="clientBtn bg-blue-900 w-40 h-10 rounded text-white text-sm "
+                    onClick={() => handleSubmit()}
+                  >
                     Schedule
                   </button>
                 )}
