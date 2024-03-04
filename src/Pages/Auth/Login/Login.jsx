@@ -58,7 +58,6 @@ const Login = () => {
       "https://plaintiff-backend.onrender.com/api_v1/login",
       data
     );
-    console.log(res.data.data);
     const userData = res.data.data
     localStorage.setItem("users",JSON.stringify({userData}))
     const {UserID,Username} = res.data.data

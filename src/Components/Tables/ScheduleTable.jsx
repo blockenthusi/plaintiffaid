@@ -22,7 +22,7 @@ export default function ScheduleTable() {
       const res = await axios.get(
         `https://plaintiff-backend.onrender.com/api_v1/schedules/all_schedules/${id}`
       );
-      setClient(res?.data?.data);
+      setClient(res?.data);
     } catch (err) {
       console.log(err);
     }
@@ -31,21 +31,26 @@ export default function ScheduleTable() {
     getSchedule();
   }, []);
 
-  const result = client.filter((item) => {
-    const FirstName = item.FirstName.toString();
-    const LastName = item.LastName.toLowerCase().includes(search.toLowerCase());
-    const Matched = FirstName.includes(search.toLowerCase());
-    return LastName || Matched;
+  const result = client?.filter((item) => {
+    const clientName = item?.clientName.toString();
+    const clientEmail = item?.clientEmail
+      .toLowerCase()
+      .includes(search.toLowerCase());
+    const Matched = clientName?.includes(search.toLowerCase());
+    return clientEmail || Matched;
   });
 
   useEffect(() => {
     setFilter(result);
   }, [search, client]);
 
+  console.log(result);
+
   return (
     <div className="mt-8">
       <Panel title="Schedule History">
-        <Search />
+        <Search value={search} onChange={(e) => setSearch(e.target.value)} />
+
         <Table
           removeWrapper
           isStriped
@@ -65,12 +70,12 @@ export default function ScheduleTable() {
 
           <TableBody emptyContent={"No rows to display."}>
             {result?.map((row) => (
-              <TableRow key={row.id} className="h-14 py-5">
-                <TableCell>{row.clientName}</TableCell>
-                <TableCell>{row.clientEmail}</TableCell>
-                <TableCell>{row.dateOfAppointment}</TableCell>
-                <TableCell>{row.timeOfAppointment}</TableCell>
-                <TableCell>{row.scheduleDetails}</TableCell>
+              <TableRow key={row?.id} className="h-14 py-5">
+                <TableCell>{row?.clientName}</TableCell>
+                <TableCell>{row?.clientEmail}</TableCell>
+                <TableCell>{row?.dateOfAppointment}</TableCell>
+                <TableCell>{row?.timeOfAppointment}</TableCell>
+                <TableCell>{row?.scheduleDetails}</TableCell>
               </TableRow>
             ))}
           </TableBody>
