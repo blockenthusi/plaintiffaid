@@ -5,9 +5,30 @@ import { GrScheduleNew } from "react-icons/gr";
 import { MdPayment } from "react-icons/md";
 import { IoPersonAddOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import axios from "axios"
+import { useState,useEffect } from "react";
 
 
 export default function Dashboards() {
+
+  const id = JSON.parse(localStorage.getItem("user"))?.UserID;
+  const [client, setClient] = useState([]);
+  // console.log(client)
+
+  const getClientInformation = async () => {
+    try {
+      const res = await axios.get(
+        `https://plaintiff-backend.onrender.com/api_v1/schedules/count/${id}`
+      );
+      setClient(res?.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    getClientInformation();
+  }, []);
+
   return (
     <>
       <DashboardLayout>
@@ -17,6 +38,7 @@ export default function Dashboards() {
             <div className="total">
               <div className="toplayer">
                 <h3>Total Clients</h3>
+                {client}
               </div>
               <div className="lowerLayer"></div>
             </div>
