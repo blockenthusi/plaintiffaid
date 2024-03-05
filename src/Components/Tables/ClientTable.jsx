@@ -10,11 +10,13 @@ import Panel from "../Panel/Panel";
 import Search from "../Input/Search";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Delete from "../../Pages/DeleteAction/Delete";
 export default function ClientTable() {
   const id = JSON.parse(localStorage.getItem("user"))?.UserID;
   const [client, setClient] = useState([]);
   const [filter, setFilter] = useState([]);
   const [search, setSearch] = useState("");
+
 
   const getClientInformation = async () => {
     try {
@@ -62,8 +64,8 @@ export default function ClientTable() {
               <TableColumn>Phone Number</TableColumn>
               <TableColumn> Address</TableColumn>
               <TableColumn>Gender</TableColumn>
-              {/* <TableColumn>Case Title</TableColumn>
-              <TableColumn>Case Description</TableColumn> */}
+              {/* {/* <TableColumn>Case Title</TableColumn> */}
+              {/* <TableColumn>Action</TableColumn>  */}
             </TableHeader>
 
             <TableBody emptyContent={"No rows to display."}>
@@ -75,6 +77,9 @@ export default function ClientTable() {
                   <TableCell>{row.ContactNumber}</TableCell>
                   <TableCell>{row.Address}</TableCell>
                   <TableCell>{row.Gender}</TableCell>
+                  {/* <TableCell onClick={() =>setRemove(true)}>{row.Delete}</TableCell>
+                  {remove?
+                  <Delete/>: null} */}
                 </TableRow>
               ))}
             </TableBody>

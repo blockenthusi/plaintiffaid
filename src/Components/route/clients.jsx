@@ -117,6 +117,27 @@ export default function Clients() {
       console.log(err, "error");
     }
   };
+
+  // const deleteApi = async () => {
+  //   const apiUrl = ""
+
+  //   try {
+  //     const response = await axios.delete(apiUrl, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     console.log("DELETE request successful");
+  //     console.log("Response data:", response.data); 
+  //   } catch (error) {
+      
+  //     console.error("There was a problem with the DELETE request:", error);
+  //   }
+  // };
+
+  // deleteApi();
+
+
   return (
     <>
       <DashboardLayout>
@@ -221,7 +242,7 @@ export default function Clients() {
           ></textarea>
 
           {loading ? (
-            <HashLoader color="blue" size="16px" />
+            <button><HashLoader color="blue" size="16px" /></button>
           ) : (
             <button
               className="client_btn bg-blue-900 w-40 h-10 rounded text-white text-sm "

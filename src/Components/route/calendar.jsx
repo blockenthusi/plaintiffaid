@@ -29,10 +29,11 @@ export default function Calendar() {
   const [clientEmail, setClientEmail] = useState("");
   const [dateOfAppointment, setDateOfAppointment] = useState("");
   const [scheduleDetails, setScheduleDetails] = useState("");
-  const [timeofAppointment, setTimeOfAppointment] = useState("");
+  const [timeOfAppointment, setTimeOfAppointment] = useState("");
   const id = JSON.parse(localStorage.getItem("user"))?.UserID;
-
+ 
   const handleSubmit = async (data) => {
+    
     try {
       setLoading(true);
       const res = await axios.post(
@@ -41,11 +42,12 @@ export default function Calendar() {
           clientName,
           clientEmail,
           dateOfAppointment,
-          timeofAppointment,
+          timeOfAppointment,
           scheduleDetails,
         }
       );
       toast.success("Schedule created");
+      onClose()
       setLoading(false);
       setResetInput((prev) => !prev);
     } catch (err) {
@@ -62,13 +64,14 @@ export default function Calendar() {
   }
 
   function handleDateSelect(selectInfo) {
+    setDateOfAppointment(selectInfo.startStr);
     let title = onOpen();
-
     let calendarApi = selectInfo.view.calendar;
 
     calendarApi.unselect();
 
     if (title) {
+      
       calendarApi.addEvent({
         id: createEventId(),
         title,
@@ -204,7 +207,7 @@ export default function Calendar() {
                   label="Time of Appointment"
                   className="clientInput"
                   type="text"
-                  value={timeofAppointment}
+                  value={timeOfAppointment}
                   onChange={(e) => setTimeOfAppointment(e.target.value)}
                 />
 

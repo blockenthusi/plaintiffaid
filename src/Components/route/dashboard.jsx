@@ -7,27 +7,35 @@ import { IoPersonAddOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import axios from "axios"
 import { useState,useEffect } from "react";
-
+// import UpcomingTable from "../Tables/Upcoming"
 
 export default function Dashboards() {
 
   const id = JSON.parse(localStorage.getItem("user"))?.UserID;
   const [client, setClient] = useState([]);
+  const [allClient, setAllClient] = useState([]);
+  const [upcomingEvent, setUpcomingEvent] = useState([])
   // console.log(client)
 
-  const getClientInformation = async () => {
-    try {
-      const res = await axios.get(
-        `https://plaintiff-backend.onrender.com/api_v1/schedules/count/${id}`
-      );
-      setClient(res?.data.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  useEffect(() => {
-    getClientInformation();
-  }, []);
+
+const getSchedule = async () => {
+  try {
+    const res = await axios.get(
+      `https://plaintiff-backend.onrender.com/api_v1/schedules/all_schedules/${id}`
+      
+    );
+    setClient(res?.data);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
+useEffect(() => {
+  getSchedule();
+}, []);
+
+
 
   return (
     <>
@@ -38,9 +46,10 @@ export default function Dashboards() {
             <div className="total">
               <div className="toplayer">
                 <h3>Total Clients</h3>
-                {client}
               </div>
-              <div className="lowerLayer"></div>
+              <div className="lowerLayer">
+                <h3 style={{color: "white"}}></h3>
+              </div>
             </div>
             <div 
             style={{backgroundColor: "#e0fbfc",
@@ -48,10 +57,12 @@ export default function Dashboards() {
             className="total"
             >
               <div className="toplayer" style={{color: "#003482ff"}}>
-              <h3>Total schedules</h3>
+              <h3>Total Schedules</h3>
               </div>
                  
-              <div className="lowerLayer"></div>
+              <div className="lowerLayer">
+              <h3>{client?.length}</h3>
+              </div>
               </div>
               
             <div style={{backgroundColor: "#98c1d9"}}className="total" >
@@ -85,7 +96,8 @@ export default function Dashboards() {
               
             </div>
             <div className="upcomingEvents">
-              <p>Upcoming Events</p>
+          
+              {/* <UpcomingTable/> */}
             </div>
           </div>
         </div>

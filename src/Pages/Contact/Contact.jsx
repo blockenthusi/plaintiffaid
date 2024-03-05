@@ -22,7 +22,7 @@ export default function Contact() {
     return(
         <div className="contactHolder">
       <div className="contactWrapper">
-        <Header/>
+        <Header show={show} setShow={setShow}/>
       {
       show === true?<Dropdown/>: null
      }

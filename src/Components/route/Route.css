@@ -185,7 +185,14 @@ flex-direction: column;
   height: 45%;
   display: flex;
   gap: 5px;
+  justify-content: center;
+  align-items: center;
   font-family: Raleway;
+}
+.lowerLayer h3{
+  font-size: 40px;
+  font-weight: 700;
+  color: #003482ff;
 }
 
 .quickAccess{

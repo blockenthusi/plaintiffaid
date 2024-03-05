@@ -15,9 +15,9 @@ export default function DashboardLayout({ children }) {
   const Nav = useNavigate();
   useEffect(()=> {
     if (!isAuthenticated){
-      Nav("/login")
-      
+      Nav("/login") 
     }
+    
   }, [])
   
   return (

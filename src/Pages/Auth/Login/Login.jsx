@@ -178,7 +178,7 @@ const Login = () => {
 
                 <div className="loginButton">
                   {loading ? (
-                    <HashLoader color="blue" size="20px" />
+                    <button><HashLoader color="blue" size="20px" /></button>
                   ) : (
                     <button>Login</button>
                   )}

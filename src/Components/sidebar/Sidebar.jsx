@@ -5,6 +5,7 @@ import { Modal } from "antd";
 import { useState } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
 
+
 export default function Sidebar() {
   const menu = SidebarMenuData;
   const location = useLocation();
@@ -25,7 +26,7 @@ export default function Sidebar() {
     <>
       <aside className="sidebar w-[250px]">
         <div className="sidebar__brand flex items-center justify-center  bg-white px-4 py-2">
-          <img
+           <img
             src={logo}
             alt="plaintiffaid logo"
             className="w-full h-10  flex items-center justify-center "

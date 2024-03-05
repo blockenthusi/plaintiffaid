@@ -20,8 +20,8 @@ export default function ScheduleTable() {
   const getSchedule = async () => {
     try {
       const res = await axios.get(
-        `https://plaintiff-backend.onrender.com/api_v1/schedules/all/${id}`
-        // router.get("/schedules/all/:UserID")
+        `https://plaintiff-backend.onrender.com/api_v1/schedules/all_schedules/${id}`
+        
       );
       setClient(res?.data);
     } catch (err) {
