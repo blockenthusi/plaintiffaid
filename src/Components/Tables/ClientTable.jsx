@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -6,31 +7,56 @@ import {
   TableHeader,
   TableRow,
 } from "@nextui-org/table";
+import { MdDelete } from "react-icons/md";
 import Panel from "../Panel/Panel";
 import Search from "../Input/Search";
-import { useEffect, useState } from "react";
 import axios from "axios";
-import Delete from "../../Pages/DeleteAction/Delete";
+import { toast } from "react-toastify";
+import { Modal } from "antd";
+
 export default function ClientTable() {
   const id = JSON.parse(localStorage.getItem("user"))?.UserID;
   const [client, setClient] = useState([]);
-  const [filter, setFilter] = useState([]);
   const [search, setSearch] = useState("");
+  const [deleted, setDeleted] = useState(false);
+  const [selectedClient, setSelectedClient] = useState({});
 
+  useEffect(() => {
+    getClientInformation();
+  }, []);
 
   const getClientInformation = async () => {
     try {
       const res = await axios.get(
         `https://plaintiff-backend.onrender.com/api_v1/getClients/${id}`
       );
-      setClient(res?.data.data);
+      setClient(res?.data?.data);
+      if (res?.data && res?.data?.data && Array.isArray(res?.data?.data)) {
+        const clientData = res?.data?.data.map((item) => {
+          return { CaseID: item.CaseID, ClientID: item.ClientID };
+        });
+        localStorage.setItem("clients", JSON.stringify(clientData));
+      } else {
+        console.error("Invalid response structure");
+      }
     } catch (err) {
-      console.log(err);
+      console.error("Error fetching client information:", err);
     }
   };
-  useEffect(() => {
-    getClientInformation();
-  }, []);
+
+  const handleDelete = async (caseID, clientID) => {
+    try {
+      await axios.delete(
+        `https://plaintiff-backend.onrender.com/api_v1/client/delete/${id}/${caseID}/${clientID}`
+      );
+      toast.success("Deleted Successfully");
+      getClientInformation();
+      setDeleted(false); // Close the modal after successful deletion
+    } catch (err) {
+      console.error("Error deleting client:", err);
+      toast.error("Failed to delete client");
+    }
+  };
 
   const result = client.filter((item) => {
     const FirstName = item.FirstName.toString();
@@ -39,9 +65,10 @@ export default function ClientTable() {
     return LastName || Matched;
   });
 
-  useEffect(() => {
-    setFilter(result);
-  }, [search, client]);
+  const showDeleteModal = (caseID, clientID) => {
+    setSelectedClient({ caseID, clientID });
+    setDeleted(true);
+  };
 
   return (
     <>
@@ -60,14 +87,12 @@ export default function ClientTable() {
             <TableHeader>
               <TableColumn>First Name </TableColumn>
               <TableColumn>Last Name </TableColumn>
-              <TableColumn>Email </TableColumn>
+              <TableColumn className="">Email </TableColumn>
               <TableColumn>Phone Number</TableColumn>
               <TableColumn> Address</TableColumn>
               <TableColumn>Gender</TableColumn>
-              {/* {/* <TableColumn>Case Title</TableColumn> */}
-              {/* <TableColumn>Action</TableColumn>  */}
+              <TableColumn>Action</TableColumn>
             </TableHeader>
-
             <TableBody emptyContent={"No rows to display."}>
               {result?.map((row) => (
                 <TableRow key={row.id} className="h-14 py-5">
@@ -77,15 +102,37 @@ export default function ClientTable() {
                   <TableCell>{row.ContactNumber}</TableCell>
                   <TableCell>{row.Address}</TableCell>
                   <TableCell>{row.Gender}</TableCell>
-                  {/* <TableCell onClick={() =>setRemove(true)}>{row.Delete}</TableCell>
-                  {remove?
-                  <Delete/>: null} */}
+                  <TableCell>
+                    <MdDelete
+                      className="text-xl cursor-pointer"
+                      onClick={() => showDeleteModal(row.CaseID, row.ClientID)}
+                    />
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </Panel>
       </div>
+      <Modal
+        open={deleted}
+        onOk={() =>
+          handleDelete(selectedClient.caseID, selectedClient.clientID)
+        }
+        onCancel={() => setDeleted(false)}
+        okButtonProps={{
+          className: "bg-blue-900 text-white rounded w-10 text-sm px-2",
+          size: "small",
+        }}
+        okText="Yes"
+        cancelButtonProps={{ hidden: true }}
+      >
+        <h1>
+          <p className="text-red-700">
+            Are you sure you want to delete this client?
+          </p>
+        </h1>
+      </Modal>
     </>
   );
 }

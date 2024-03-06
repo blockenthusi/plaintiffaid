@@ -45,7 +45,6 @@ export default function ScheduleTable() {
     setFilter(result);
   }, [search, client]);
 
-  console.log(result);
 
   return (
     <div className="mt-8">

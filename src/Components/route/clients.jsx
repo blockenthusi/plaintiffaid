@@ -26,7 +26,7 @@ export default function Clients() {
   const [file, setFile] = useState(null);
   const id = JSON.parse(localStorage.getItem("user"))?.UserID;
 
-  const handleSubmit = async (data) => {
+  const handleSubmit = async () => {
     try {
       setLoading(true);
       const res = await axios.post(
@@ -53,6 +53,7 @@ export default function Clients() {
       setcaseName("");
       setCaseDescription("");
       setVisible(false);
+      getClientInformation()
     } catch (err) {
       if (err.response.data.message) {
         toast.error(err.response.data.message);
@@ -117,26 +118,6 @@ export default function Clients() {
       console.log(err, "error");
     }
   };
-
-  // const deleteApi = async () => {
-  //   const apiUrl = ""
-
-  //   try {
-  //     const response = await axios.delete(apiUrl, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-  //     console.log("DELETE request successful");
-  //     console.log("Response data:", response.data); 
-  //   } catch (error) {
-      
-  //     console.error("There was a problem with the DELETE request:", error);
-  //   }
-  // };
-
-  // deleteApi();
-
 
   return (
     <>
@@ -242,7 +223,9 @@ export default function Clients() {
           ></textarea>
 
           {loading ? (
-            <button><HashLoader color="blue" size="16px" /></button>
+            <button>
+              <HashLoader color="blue" size="16px" />
+            </button>
           ) : (
             <button
               className="client_btn bg-blue-900 w-40 h-10 rounded text-white text-sm "
