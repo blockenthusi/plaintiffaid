@@ -188,7 +188,11 @@ export default function Home() {
                   <h4>{props.topic}</h4>
                 </div>
                 <div className="learn">
-                  <p>Learn more..</p>
+                  <p>
+                 <a href="https://www.juriseducation.com/blog/highest-paid-lawyers"> 
+                    Learn more..
+                </a>
+                    </p>
                 </div>
               </div>
             ))}
