@@ -10,21 +10,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import * as yup from "yup";
 import { toast } from "react-toastify";
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../../../Context/AuthContext";
-import { useEffect } from "react";
+// import { useContext } from "react";
+// import AuthContext from "../../../Context/AuthContext";
+// import { useEffect } from "react";
 
 const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
-  const { isAuthenticated } = useContext(AuthContext);
+  
 
-  const Nav = useNavigate();
-  useEffect(() => {
-    if (!isAuthenticated) {
-      Nav("/login");
-    }
-  }, []);
+  
 
 
   const schema = yup
@@ -46,11 +41,11 @@ const ForgotPassword = () => {
     try {
       setLoading(true);
       const res = await axios.put(
-        "https://plaintiff-backend.onrender.com/api_v1/reset",
+        "https://plaintiff-backend.onrender.com/api_v1/forgot-password",
         data
       );
       console.log(res);
-      toast.success("Password reset successfully!");
+      toast.success("An email has been sent to you" );
       setTimeout(() => {
         Nav("/login");
       }, 5000);

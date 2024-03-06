@@ -22,14 +22,7 @@ import { useEffect } from "react";
 const Newpassword = () => {
     const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { isAuthenticated } = useContext(AuthContext);
-
-  const Nav = useNavigate();
-  useEffect(() => {
-    if (!isAuthenticated) {
-      Nav("/login");
-    }
-  }, []);
+ 
 
   const handleShowpassword = () => {
     setShowPassword(!showPassword);
@@ -53,7 +46,7 @@ const Newpassword = () => {
     try {
       setLoading(true);
       const res = await axios.put(
-        "https://plaintiff-backend.onrender.com/api_v1/reset",
+        "https://plaintiff-backend.onrender.com/api_v1/reset-password",
         data
       );
       console.log(res);
@@ -122,7 +115,7 @@ return(
               </p>
               <div className="resetBtn">
                 {loading ? (
-                  <HashLoader color="blue" size="20px" />
+                  <button className="spin"><HashLoader color="blue" size="20px" /></button>
                 ) : (
                   <button>Reset</button>
                 )}

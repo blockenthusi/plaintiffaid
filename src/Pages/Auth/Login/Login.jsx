@@ -59,6 +59,8 @@ const Login = () => {
       data
     );
     const userData = res.data.data
+    const userToken = res.data.data.Token
+    localStorage.setItem("userToken",userToken)
     localStorage.setItem("users",JSON.stringify({userData}))
     const {UserID,Username} = res.data.data
     localStorage.setItem("user", JSON.stringify({UserID,Username}))
@@ -178,7 +180,7 @@ const Login = () => {
 
                 <div className="loginButton">
                   {loading ? (
-                    <button><HashLoader color="blue" size="20px" /></button>
+                    <button className="spin"><HashLoader color="blue" size="20px" /></button>
                   ) : (
                     <button>Login</button>
                   )}

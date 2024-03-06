@@ -20,18 +20,23 @@ export default function Sidebar() {
     nav("/");
     console.log("clicked");
     isLoggedOut(false);
+    localStorage.removeItem("userToken")
   };
 
   return (
     <>
       <aside className="sidebar w-[250px]">
+        <NavLink to="/">
         <div className="sidebar__brand flex items-center justify-center  bg-white px-4 py-2">
-           <img
-            src={logo}
-            alt="plaintiffaid logo"
-            className="w-full h-10  flex items-center justify-center "
-          />
-        </div>
+         
+         <img
+          src={logo}
+          alt="plaintiffaid logo"
+          className="w-full h-10  flex items-center justify-center "
+        />
+      </div>
+        </NavLink>
+       
 
         <div className=" sidebar__menu__container rounded-tr-[40px] mt-7 h-full pt-4  bg-blue-900">
           <div className="container">

@@ -139,7 +139,7 @@ const Signup = () => {
               </p>
             </div>
             {loading ? (
-              <button><HashLoader color="blue" size="16px" /></button>
+              <button  className="spin"><HashLoader color="blue" size="16px" /></button>
             ) : (
               <button>Submit</button>
             )}

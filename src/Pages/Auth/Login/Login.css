@@ -217,7 +217,11 @@
   /* justify-content: flex-start;
   align-items: flex-start; */
 }
-
+.spin{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
   
 @media  screen and (width <= 1024px) {
