@@ -109,13 +109,20 @@ export default function Clients() {
           `https://plaintiff-backend.onrender.com/api_v1/batch_Upload/${id}/${id}`,
           formData
         );
-        console.log(res);
+        if (res.status == 500){
+          toast.error(res.data.message)
+          return;
+        }
+
+        toast.success(res.data.message);
         setIsVisible(false);
       } else {
         console.log("No file selected.");
+        toast.info("No file selected.");
       }
     } catch (err) {
       console.log(err, "error");
+      toast.info(err, "error");
     }
   };
 

@@ -58,7 +58,7 @@ export default function UpcomingTable() {
               "No upcoming schedules found less than 7 days from now excluding yesterday."
             }
           >
-            {/* {upcoming?.map((row) => (
+            {upcoming?.map((row) => (
                 <TableRow key={row?.id} className="h-14 py-5">
                   <TableCell>{row?.clientName}</TableCell>
                   <TableCell>{row?.clientEmail}</TableCell>
@@ -66,7 +66,7 @@ export default function UpcomingTable() {
                   <TableCell>{row?.timeOfAppointment}</TableCell>
                   <TableCell>{row?.scheduleDetails}</TableCell>
                 </TableRow>
-              ))} */}
+              ))}
             {[]}
           </TableBody>
         </Table>

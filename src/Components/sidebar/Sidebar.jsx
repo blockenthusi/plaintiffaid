@@ -25,7 +25,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <aside className="sidebar w-[250px] lg:block hidden">
+      <aside className="sidebar w-[250px]">
         <NavLink to="/">
         <div className="sidebar__brand flex items-center justify-center  bg-white px-4 py-2">
          

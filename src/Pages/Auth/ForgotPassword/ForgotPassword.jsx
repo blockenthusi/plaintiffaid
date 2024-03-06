@@ -11,9 +11,7 @@ import axios from "axios";
 import * as yup from "yup";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-// import { useContext } from "react";
-// import AuthContext from "../../../Context/AuthContext";
-// import { useEffect } from "react";
+
 
 const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
