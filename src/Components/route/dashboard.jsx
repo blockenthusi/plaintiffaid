@@ -24,6 +24,7 @@ export default function Dashboards() {
       setSchedule(res?.data);
     } catch (err) {
       console.log(err);
+      toast.error(err);
     }
   };
 
@@ -35,6 +36,7 @@ export default function Dashboards() {
       setClient(res?.data.data);
     } catch (err) {
       console.log(err);
+      toast.error(err);
     }
   };
   useEffect(() => {

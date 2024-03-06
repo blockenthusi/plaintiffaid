@@ -11,7 +11,7 @@ import { MdDelete } from "react-icons/md";
 import Panel from "../Panel/Panel";
 import Search from "../Input/Search";
 import axios from "axios";
-import { toast } from "react-toastify";
+
 import { Modal } from "antd";
 
 export default function ClientTable() {

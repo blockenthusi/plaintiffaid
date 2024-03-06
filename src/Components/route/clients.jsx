@@ -92,6 +92,7 @@ export default function Clients() {
       document.body.removeChild(link);
     } catch (error) {
       console.error("Error downloading template:", error);
+      toast.error("Error downloading template:", error);
     }
   };
 
@@ -99,23 +100,58 @@ export default function Clients() {
     setFile(event.target.files[0]);
   };
 
+  // const handleBatchUpload = async () => {
+  //   try {
+  //     if (file) {
+  //       const formData = new FormData();
+  //       formData.append("file", file);
+
+  //       const res = await axios.post(
+  //         `https://plaintiff-backend.onrender.com/api_v1/batch_Upload/${id}/${id}`,
+  //         formData
+  //       );
+  //       console.log(res);
+  //       setIsVisible(false);
+  //     } else {
+  //       console.log("No file selected.");
+  //       toast.error("No file selected.");
+  //     }
+  //   } catch (err) {
+  //     console.log(err, "error");
+  //     toast.error(err, "error");
+  //   }
+  // };
+
   const handleBatchUpload = async () => {
     try {
       if (file) {
         const formData = new FormData();
         formData.append("file", file);
-
+  
         const res = await axios.post(
           `https://plaintiff-backend.onrender.com/api_v1/batch_Upload/${id}/${id}`,
           formData
         );
-        console.log(res);
+  
+        // Check if the response contains data and a message
+        if (res.data && res.data.data && res.data.message) {
+          const { data, message } = res.data;
+          console.log("Data uploaded successfully:", data);
+          toast.success("Data uploaded successfully:", data);
+          console.log("Message:", message);
+        } else {
+          console.log("Unexpected response format:", res.data);
+          toast.error("Unexpected response format:", res.data);
+        }
+  
         setIsVisible(false);
       } else {
         console.log("No file selected.");
+        toast.error("No file selected.");
       }
     } catch (err) {
-      console.log(err, "error");
+      console.error("Error uploading file:", err);
+      toast.error("Error uploading file.");
     }
   };
 
