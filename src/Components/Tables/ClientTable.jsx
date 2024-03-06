@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -13,36 +13,33 @@ import Search from "../Input/Search";
 import axios from "axios";
 
 import { Modal } from "antd";
+import AuthContext from "../../Context/AuthContext";
+import { toast } from "react-toastify";
 
 export default function ClientTable() {
   const id = JSON.parse(localStorage.getItem("user"))?.UserID;
-  const [client, setClient] = useState([]);
   const [search, setSearch] = useState("");
   const [deleted, setDeleted] = useState(false);
   const [selectedClient, setSelectedClient] = useState({});
+  const { clients, getClientInformation } = useContext(AuthContext)
+  const [result, setResult] = useState([]);
 
   useEffect(() => {
     getClientInformation();
   }, []);
 
-  const getClientInformation = async () => {
-    try {
-      const res = await axios.get(
-        `https://plaintiff-backend.onrender.com/api_v1/getClients/${id}`
-      );
-      setClient(res?.data?.data);
-      if (res?.data && res?.data?.data && Array.isArray(res?.data?.data)) {
-        const clientData = res?.data?.data.map((item) => {
-          return { CaseID: item.CaseID, ClientID: item.ClientID };
-        });
-        localStorage.setItem("clients", JSON.stringify(clientData));
-      } else {
-        console.error("Invalid response structure");
-      }
-    } catch (err) {
-      console.error("Error fetching client information:", err);
+  useEffect(() => {
+    if (!clients) {
+      return;
     }
-  };
+    const filteredClients = clients.filter((item) => {
+      const FirstName = item.FirstName.toString();
+      const LastName = item.LastName.toLowerCase().includes(search.toLowerCase());
+      const Matched = FirstName.includes(search.toLowerCase());
+      return LastName || Matched;
+    })
+    setResult(filteredClients)
+  }, [clients])
 
   const handleDelete = async (caseID, clientID) => {
     try {
@@ -51,19 +48,12 @@ export default function ClientTable() {
       );
       toast.success("Deleted Successfully");
       getClientInformation();
-      setDeleted(false); // Close the modal after successful deletion
+      setDeleted(true); // Close the modal after successful deletion
     } catch (err) {
       console.error("Error deleting client:", err);
-      toast.error("Failed to delete client");
+      toast.error(err.response.data.message);
     }
   };
-
-  const result = client.filter((item) => {
-    const FirstName = item.FirstName.toString();
-    const LastName = item.LastName.toLowerCase().includes(search.toLowerCase());
-    const Matched = FirstName.includes(search.toLowerCase());
-    return LastName || Matched;
-  });
 
   const showDeleteModal = (caseID, clientID) => {
     setSelectedClient({ caseID, clientID });
@@ -94,7 +84,7 @@ export default function ClientTable() {
               <TableColumn>Action</TableColumn>
             </TableHeader>
             <TableBody emptyContent={"No rows to display."}>
-              {result?.map((row) => (
+              {result.map((row) => (
                 <TableRow key={row.id} className="h-14 py-5">
                   <TableCell>{row.FirstName}</TableCell>
                   <TableCell>{row.LastName}</TableCell>

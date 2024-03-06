@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import DashboardLayout from "../../Pages/Dashboard/Dashboard";
 import PageHeader from "../Header/PageHeader";
 import ClientTable from "../Tables/ClientTable";
@@ -8,6 +8,7 @@ import { MdOutlineClose } from "react-icons/md";
 import axios from "axios";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
+import AuthContext from "../../Context/AuthContext";
 
 export default function Clients() {
   const [visible, setVisible] = useState(false);
@@ -23,13 +24,14 @@ export default function Clients() {
   const [loading, setLoading] = useState(false);
   const [resetInput, setResetInput] = useState(false);
   const fileInputRef = useRef(null);
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState();
   const id = JSON.parse(localStorage.getItem("user"))?.UserID;
+  const { getClientInformation } = useContext(AuthContext);
 
   const handleSubmit = async () => {
     try {
       setLoading(true);
-      const res = await axios.post(
+      await axios.post(
         `https://plaintiff-backend.onrender.com/api_v1/save_client/${id}`,
         {
           firstname,
@@ -43,7 +45,9 @@ export default function Clients() {
         }
       );
       toast.success("Client added Successfully");
+
       setLoading(false);
+      // reset form inputs
       setFirstname("");
       setGender("");
       setcontactNumber("");
@@ -52,7 +56,9 @@ export default function Clients() {
       setLastname("");
       setcaseName("");
       setCaseDescription("");
+      // close sidebar
       setVisible(false);
+      // refetch client information
       getClientInformation()
     } catch (err) {
       if (err.response.data.message) {
@@ -100,39 +106,17 @@ export default function Clients() {
     setFile(event.target.files[0]);
   };
 
-  // const handleBatchUpload = async () => {
-  //   try {
-  //     if (file) {
-  //       const formData = new FormData();
-  //       formData.append("file", file);
-
-  //       const res = await axios.post(
-  //         `https://plaintiff-backend.onrender.com/api_v1/batch_Upload/${id}/${id}`,
-  //         formData
-  //       );
-  //       console.log(res);
-  //       setIsVisible(false);
-  //     } else {
-  //       console.log("No file selected.");
-  //       toast.error("No file selected.");
-  //     }
-  //   } catch (err) {
-  //     console.log(err, "error");
-  //     toast.error(err, "error");
-  //   }
-  // };
-
   const handleBatchUpload = async () => {
     try {
       if (file) {
         const formData = new FormData();
         formData.append("file", file);
-  
+
         const res = await axios.post(
           `https://plaintiff-backend.onrender.com/api_v1/batch_Upload/${id}/${id}`,
           formData
         );
-  
+
         // Check if the response contains data and a message
         if (res.data && res.data.data && res.data.message) {
           const { data, message } = res.data;
@@ -143,15 +127,20 @@ export default function Clients() {
           console.log("Unexpected response format:", res.data);
           toast.error("Unexpected response format:", res.data);
         }
-  
+
+        // refetch client information
+        getClientInformation();
+        // toggle off the upload side bar
         setIsVisible(false);
+        // reset input fields
+        setResetInput(prev => !prev)
       } else {
         console.log("No file selected.");
         toast.error("No file selected.");
       }
     } catch (err) {
-      console.error("Error uploading file:", err);
-      toast.error("Error uploading file.");
+      console.error("Error uploading file:", err.response);
+      toast.error(err.response.data.message);
     }
   };
 
