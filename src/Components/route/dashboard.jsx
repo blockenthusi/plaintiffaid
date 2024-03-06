@@ -51,7 +51,7 @@ export default function Dashboards() {
         <PageHeader title="Dashboard" />
         <div className="dashboardWrap">
           <div className="dashboardLeft">
-            <div className=" flex flex-col space-x-4 py-4 h-28 rounded bg-[#0C4761] text-white w-64 text-center ">
+            <div className=" flex flex-col space-x-4 py-4 h-28 rounded bg-[#145ac9ff] text-white w-64 text-center ">
               <h3 className="text-[30px]">Total Clients</h3>
               <p className="text-[20px] text-white "> ( {client.length} )</p>
             </div>
@@ -62,13 +62,13 @@ export default function Dashboards() {
               }}
               className=""
             >
-              <div className=" flex flex-col space-x-4 py-2 h-28 rounded bg-[#0C4761] text-white w-64 text-center ">
+              <div className=" flex flex-col space-x-4 py-2 h-28 rounded bg-[#98c1d9ff] text-white w-64 text-center ">
                 <h3 className="text-[30px]">Total schedules</h3>
                 <p className="text-[20px] text-white "> ({schedule.length}) </p>
               </div>
             </div>
 
-            <div style={{ backgroundColor: "#98c1d9" }} className="total">
+            <div style={{ backgroundColor: "#145ac9ff" }} className="total">
               <div className="toplayer">
                 <h3>Total Payments</h3>
               </div>

@@ -92,7 +92,7 @@ const ForgotPassword = () => {
 
               <div className="resetBtn">
                 {loading ? (
-                  <HashLoader color="blue" size="20px" />
+                  <button className="btnLoader"><HashLoader color="blue" size="20px" /></button>
                 ) : (
                   <button>Reset</button>
                 )}
