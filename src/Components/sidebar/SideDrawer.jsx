@@ -8,7 +8,7 @@ export default function SideDrawer({ isOpenDrawer, content }) {
   return (
     <>
       <div className={containerClass}>
-        <div className="w-[71%] h-full cursor-not-allowed"></div>
+        <div className="lg:w-[71%] w-full h-full cursor-not-allowed"></div>
         <div className="w-[24rem] h-full flex flex-col bg-white overflow-y-auto px-2">
             {content()}
         </div>

@@ -24,6 +24,7 @@ import Verification from "./Pages/Auth/Verification/Verification"
 import PrivateRoutes from "./Pages/PrivateRoute";
 import Newpassword from "./Pages/Newpassword/Newpassword";
 
+
 function App() {
   return (
     <>

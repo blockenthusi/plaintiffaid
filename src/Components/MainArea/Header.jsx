@@ -1,5 +1,9 @@
+import { RxHamburgerMenu } from "react-icons/rx";
+import logo from "../../assets/logo.png"
+
 export default function HeaderComponent() {
   const name = JSON.parse(localStorage.getItem("user"))?.Username;
+  
  
 
   return (
@@ -7,6 +11,13 @@ export default function HeaderComponent() {
       <header className="auth__header w-full z-50 top-0 left-0 px-7 py-4 border-b border-gray-200">
         <div className="auth__header__inner flex  justify-end items-center ">
           <div className="auth__header__actions flex justify-center items-center">
+          <div className="logomedia lg:hidden block">
+              <img
+          src={logo}
+          alt="plaintiffaid logo"
+          className="w-full h-10  flex items-center justify-center "
+        />
+              </div>
             <div className="notifications flex justify-center w-20">
               <svg
                 className="w-6 h-6 text-gray-800  transition-transform transform hover:rotate-12 hover:text-green-800 cursor-pointer"
@@ -24,8 +35,9 @@ export default function HeaderComponent() {
                 />
               </svg>
             </div>
+             
+            <div className="profile flex items-center justify-center lg:block hidden ">
 
-            <div className="profile flex items-center justify-center  ">
               <div
                 id="dropdownDefaultButton"
                 data-dropdown-toggle="dropdown"
@@ -52,6 +64,7 @@ export default function HeaderComponent() {
                 <span className="profile__user">{name} </span>{" "}
               </div>
             </div>
+            <div className="lg:hidden block"><RxHamburgerMenu size={20} /></div>
           </div>
         </div>
       </header>

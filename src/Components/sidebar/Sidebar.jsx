@@ -25,7 +25,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <aside className="sidebar w-[250px]">
+      <aside className="sidebar w-[250px] lg:block hidden">
         <NavLink to="/">
         <div className="sidebar__brand flex items-center justify-center  bg-white px-4 py-2">
          
@@ -54,7 +54,7 @@ export default function Sidebar() {
                 >
                   <NavLink
                     to={menuItem.path}
-                    className="group relative cursor-pointer flex items-center  gap-3 rounded-sm py-2 px-3 text-[15px]  w-full  capitalize whitespace-nowrap h-10  duration-300 ease-in-out hover:bg-[white] hover:text-blue-900"
+                    className="group relative cursor-pointer flex  items-center  gap-3 rounded-sm py-2 px-3 text-[15px]  w-full  capitalize whitespace-nowrap h-10  duration-300 ease-in-out hover:bg-[white] hover:text-blue-900"
                   >
                     {menuItem.icon}
                     {menuItem.label}

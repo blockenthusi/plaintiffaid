@@ -25,7 +25,7 @@ const ForgotPassword = () => {
   const schema = yup
     .object({
       email: yup.string().required("Input email"),
-      // newPassword: yup.string().required("Input new password"),
+      
     })
     .required();
 
