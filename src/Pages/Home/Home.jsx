@@ -46,7 +46,7 @@ export default function Home() {
         <div className="wrapper">
           <div className="textHolder">
             <div className="textFrame">
-              <h1>Everything your law firm needs. All in one place.</h1>
+              <h1 className="animate-charcter">Everything your law firm needs. All in one place.</h1>
               <p>The #1 Legal Practice Management Software</p>
             </div>
 
