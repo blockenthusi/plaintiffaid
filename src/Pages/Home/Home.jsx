@@ -17,16 +17,12 @@ import law from "../../assets/law.jpg";
 import law3 from "../../assets/law3.avif";
 import { Link } from "react-router-dom";
 
-
-
 export default function Home() {
   const [show, setShow] = useState(false);
 
-
-  
   const list = [
     {
-      image: law1 ,
+      image: law1,
       alt: "img1",
       topic: "Adjournment of legal bill",
     },
@@ -42,8 +38,6 @@ export default function Home() {
     },
   ];
 
-  
-  
   return (
     <>
       <Header show={show} setShow={setShow} />
@@ -58,7 +52,7 @@ export default function Home() {
 
             <div className="demo">
               <Link className="link" to="/request">
-              <button className="btn">Request a Demo</button>
+                <button className="btn">Request a Demo</button>
               </Link>
             </div>
 
@@ -73,7 +67,7 @@ export default function Home() {
           </div>
 
           <div className="videoHolder">
-            <img src={Variation} className="vid"  />
+            <img src={Variation} className="vid" />
 
             <div className="boxx">
               <div className="top">
@@ -147,9 +141,8 @@ export default function Home() {
                 </div>
                 <div className="descs">
                   <Link className="link" to="/signup">
-                  <button className="bbutz">Try for free</button>
+                    <button className="bbutz">Try for free</button>
                   </Link>
-                 
                 </div>
               </div>
             </div>
@@ -188,7 +181,11 @@ export default function Home() {
                   <h4>{props.topic}</h4>
                 </div>
                 <div className="learn">
-                  <p>Learn more..</p>
+                  <p>
+                    <a href="https://www.juriseducation.com/blog/highest-paid-lawyers">
+                      Learn more
+                    </a>
+                  </p>
                 </div>
               </div>
             ))}
@@ -209,7 +206,7 @@ export default function Home() {
               </div>
               <div className="rightHoldd">
                 <div className="mary">
-                  <GiPentarrowsTornado  style={{fontSize: "14px"}}/>
+                  <GiPentarrowsTornado style={{ fontSize: "14px" }} />
                   <p>What industries do you serve?</p>
                 </div>
                 <div className="mary">
@@ -228,4 +225,4 @@ export default function Home() {
       <Footer />
     </>
   );
-        }
+}

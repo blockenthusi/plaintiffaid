@@ -70,11 +70,11 @@ export default function HeaderComponent() {
           </div>
         </div>
         <div  className="flex  justify-between ">
-          <div className=" bg-white  ">
+          <div className=" bg-white lg:hidden flex ">
             <img src={logo} alt="plaintiffaid logo" className="w-full h-10 " />
           </div>
 
-          <div >
+          <div className="lg:hidden flex">
             {" "}
             {!open ? (
               <IoMdMenu size={20} onClick={handleToggle} />

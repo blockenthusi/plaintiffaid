@@ -25,7 +25,7 @@ const ForgotPassword = () => {
   const schema = yup
     .object({
       email: yup.string().required("Input email"),
-      // newPassword: yup.string().required("Input new password"),
+      
     })
     .required();
 
@@ -40,8 +40,8 @@ const ForgotPassword = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const res = await axios.put(
-        "https://plaintiff-backend.onrender.com/api_v1/forgot-password",
+      const res = await axios.post(
+        `https://plaintiff-backend.onrender.com/api_v1/forgot-password`,
         data
       );
       console.log(res);
@@ -92,7 +92,7 @@ const ForgotPassword = () => {
 
               <div className="resetBtn">
                 {loading ? (
-                  <button className="btnLoader"><HashLoader color="blue" size="20px" /></button>
+                  <HashLoader color="blue" size="20px" />
                 ) : (
                   <button>Reset</button>
                 )}

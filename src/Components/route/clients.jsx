@@ -291,7 +291,9 @@ export default function Clients() {
 
           <div className="ml-1">
             {loading ? (
-              <button className="btnLoader"><HashLoader color="blue" size="16px" /></button>
+              <button className="btnLoader">
+                <HashLoader color="blue" size="16px" />
+                </button>
             ) : (
               <button
                 className="client_btn bg-blue-900 w-40 h-10 rounded text-white text-sm "

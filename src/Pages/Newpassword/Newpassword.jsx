@@ -12,10 +12,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import * as yup from "yup";
 import { toast } from "react-toastify";
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import AuthContext from "../../Context/AuthContext";
-import { useEffect } from "react";
+
 
 
 
@@ -31,6 +28,7 @@ const Newpassword = () => {
   const schema = yup
     .object({
       newPassword: yup.string().required("Input new password"),
+      confirmPassword: yup.string().required("password must match")
     })
     .required();
 
@@ -112,6 +110,34 @@ return(
 
               <p style={{ fontSize: "12px", color: "red" }}>
                 {errors?.newPassword?.message}
+              </p>
+
+              <div className="lowerText">
+                <p>Confirm Password</p>
+                {showPassword ? (
+                  <FaRegEye
+                    onClick={handleShowpassword}
+                    style={{
+                      color: "#003482ff",
+                      fontSize: "12px",
+                      marginLeft: "20%",
+                    }}
+                  />
+                ) : (
+                  <FaEyeSlash
+                    onClick={handleShowpassword}
+                    style={{ color: "#003482ff", fontSize: "12px" }}
+                  />
+                )}
+              </div>
+
+              <input
+                type={showPassword ? "text" : "password"}
+                {...register("confirmPassword")}
+              />
+
+              <p style={{ fontSize: "12px", color: "red" }}>
+                {errors?.confirmPassword?.message}
               </p>
               <div className="resetBtn">
                 {loading ? (
