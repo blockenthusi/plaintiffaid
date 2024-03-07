@@ -44,59 +44,57 @@ export default function Dashboards() {
     allClient();
   }, []);
 
-
   return (
     <>
       <DashboardLayout>
         <PageHeader title="Dashboard" />
-        <div className="dashboardWrap">
-          <div className="dashboardLeft">
-            <div className=" flex flex-col space-x-4 py-4 h-28 rounded bg-[#e1fcfcff] text-white w-64 text-center ">
-              <h3 className="text-[30px]">Total Clients</h3>
-              <p className="text-[20px] text-white "> ( {client.length} )</p>
-            </div>
-            <div
-              style={{
-                backgroundColor: "#e0fbfc",
-                boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px;",
-              }}
-              className=""
-            >
-              <div className=" flex flex-col space-x-4 py-2 h-28 rounded bg-[#98c1d9f] text-white w-64 text-center ">
-                <h3 className="text-[30px]">Total schedules</h3>
-                <p className="text-[20px] text-white "> ({schedule.length}) </p>
+
+        <section className=" h-[77vh]  w-full flex items-center justify-center  ">
+          <div className="w-[100%]  lg:h-5/6  h-[100%] flex space-x-4 lg:justify-start justify-center ">
+            <div className="w-1/5   space-y-4  items-center  py-4  rounded-sm  shadow-md   flex-col hidden lg:flex ">
+              <div className="w-4/5 h-24 bg-slate-400 rounded  items-center -center flex flex-col py-2">
+                <h3 className="text-lg">Total schedules</h3>
+
+                <p className="text-sm text-white "> ({schedule.length}) </p>
+              </div>
+              <div className="w-4/5 h-24  bg-orange-300 rounded  items-center justify-center flex flex-col">
+                <h3 className="text-lg ">Total Clients</h3>
+                <p className="text-sm text-white "> ( {client.length} )</p>
+              </div>
+              <div className="w-4/5 h-24 bg-slate-200 rounded  items-center justify-center flex flex-col">
+                <h3 className="text-base first-letter:">Total schedules</h3>
+
+                <p className="text-sm text-white "> ({schedule.length}) </p>
               </div>
             </div>
 
-            <div style={{ backgroundColor: "#e1fcfcff" }} className="total">
-              <div className="toplayer">
-                <h3>Total Payments</h3>
+            <div className="lg:w-3/4 w-full  space-y-4 h-5/6  flex flex-col ">
+              <div className="h-[25%] flex space-x-4 py-4  items-center justify-center text-center ">
+                <div className="w-4/5 h-24 bg-slate-400 rounded  items-center justify-center flex flex-col py-2">
+                  <MdPayment style={{ color: "#003482ff" }} />
+                  <Link to="/payments" className="link">
+                    <p>Get a payment plan</p>
+                  </Link>
+                </div>
+                <div className="w-4/5 h-24 bg-slate-400 rounded  items-center justify-center flex flex-col py-2">
+                  <IoPersonAddOutline style={{ color: "#003482ff" }} />
+                  <Link to="/clients" className="link">
+                    <p>Add a client</p>
+                  </Link>
+                </div>
+                <div className="w-4/5 h-24 bg-slate-400 rounded  items-center  justify-center flex flex-col py-2">
+                  <GrScheduleNew style={{ color: "#003482ff" }} />
+                  <Link to="/schedules" className="link">
+                    <p>Schedule an appointment</p>
+                  </Link>
+                </div>
               </div>
-              <div className="lowerLayer"></div>
+              <div className="">
+                <UpcomingTable />
+              </div>
             </div>
           </div>
-          <div className="dashbaordRight">
-            <div className="quickAccess">
-              <MdPayment style={{ color: "#003482ff" }} />
-              <Link to="/payments" className="link">
-                <p>Get a payment plan</p>
-              </Link>
-            </div>
-            <div style={{ backgroundColor: "#98c1d9" }} className="quickAccess">
-              <IoPersonAddOutline style={{ color: "#003482ff" }} />
-              <Link to="/clients" className="link">
-                <p>Add a client</p>
-              </Link>
-            </div>
-            <div className="quickAccess">
-              <GrScheduleNew style={{ color: "#003482ff" }} />
-              <Link to="/schedules" className="link">
-                <p>Schedule an appointment</p>
-              </Link>
-            </div>
-            <div className="upcomingEvents"><UpcomingTable/></div>
-          </div>
-        </div>
+        </section>
       </DashboardLayout>
     </>
   );

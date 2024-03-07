@@ -1,11 +1,26 @@
+import { useState } from "react";
+import logo from "../../assets/logo.png";
+import { IoMdMenu } from "react-icons/io";
+import Sidebar from "../sidebar/Sidebar";
+import { AiOutlineLogout } from "react-icons/ai";
+import SidebarMenuData from "../../data/SideBarMenu";
+import { NavLink } from "react-router-dom";
+import { RxCross2 } from "react-icons/rx";
+
 export default function HeaderComponent() {
   const name = JSON.parse(localStorage.getItem("user"))?.Username;
- 
+  const menu = SidebarMenuData;
+
+  const [open, setOpen] = useState(false);
+
+  const handleToggle = () => {
+    setOpen(!open);
+  };
 
   return (
     <>
-      <header className="auth__header w-full z-50 top-0 left-0 px-7 py-4 border-b border-gray-200">
-        <div className="auth__header__inner flex  justify-end items-center ">
+      <header className="auth__header w-full z-50 top-0 left-0 px-7 py-4 border-b border-gray-200 ">
+        <div className="auth__header__inner lg:flex hidden  justify-end items-center  ">
           <div className="auth__header__actions flex justify-center items-center">
             <div className="notifications flex justify-center w-20">
               <svg
@@ -54,7 +69,58 @@ export default function HeaderComponent() {
             </div>
           </div>
         </div>
+        <div  className="flex  justify-between ">
+          <div className=" bg-white  ">
+            <img src={logo} alt="plaintiffaid logo" className="w-full h-10 " />
+          </div>
+
+          <div >
+            {" "}
+            {!open ? (
+              <IoMdMenu size={20} onClick={handleToggle} />
+            ) : (
+              <RxCross2 onClick={handleToggle}  />
+            )}
+          </div>
+        </div>
       </header>
+      {open && (
+        <div className="w-full h-screen  top-10 z-30 bottom-0 fixed ">
+          <div className=" sidebar__menu__container rounded-tr-[40px] mt-7 h-full pt-4  bg-blue-900">
+            <div className="container">
+              <ul className="mb-6 flex flex-col justify-center  w-full ">
+                {menu.map((menuItem) => (
+                  <li
+                    key={menuItem.id}
+                    className="text-white "
+                    style={{
+                      color:
+                        location.pathname === menuItem.path
+                          ? "#55dbcb"
+                          : "#ffffff",
+                    }}
+                  >
+                    <NavLink
+                      to={menuItem.path}
+                      className="group relative cursor-pointer flex items-center  gap-3 rounded-sm py-2 px-3 text-[15px]  w-full  capitalize whitespace-nowrap h-10  duration-300 ease-in-out hover:bg-[white] hover:text-blue-900"
+                    >
+                      {menuItem.icon}
+                      {menuItem.label}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+              <div className="cursor-pointer flex items-center  gap-4 rounded-sm py-2 px-7 text-[15px]  w-full  capitalize ">
+                <AiOutlineLogout
+                  style={{ fontSize: "20px" }}
+                  className="text-white"
+                />
+                <p className="text-white">Log Out</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

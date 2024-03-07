@@ -69,7 +69,7 @@ aside {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   /* background-color: red; */
 }
 
@@ -92,8 +92,19 @@ aside {
   font-size: 14px;
 }
 
-
-
 .demo-app-sidebar-section {
   padding: 2em;
+}
+@media (max-width: 768px) {
+  aside {
+    &.sidebar {
+      transition: 0.2s ease-in-out;
+      width: 0px;
+      display: none;
+    }
+  }
+  .main__area {
+    transition: 0.2s ease-in-out;
+    margin: 0;
+  }
 }
