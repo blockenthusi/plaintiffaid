@@ -64,6 +64,7 @@
   position: absolute;
 }
 .textFrame h1 {
+  width: 100%;
   font-size: 52px;
   font-weight: 600;
   line-height: 61.0002px;
@@ -81,8 +82,8 @@
   width: 75%;
   height: 10%;
   display: flex;
-  position: absolute;
-  margin-top: 40%;
+  /* position: absolute; */
+  /* margin-top: 40%; */
 }
 
 .demo button {

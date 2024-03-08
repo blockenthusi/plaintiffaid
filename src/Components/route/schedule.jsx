@@ -8,6 +8,7 @@ import { MdOutlineClose } from "react-icons/md";
 import axios from "axios";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
+import TimePicker from 'react-time-picker'
 
 export default function Schedule() {
   const [visible, setVisible] = useState(false);
@@ -19,6 +20,7 @@ export default function Schedule() {
   const [dateOfAppointment, setDateOfAppointment] = useState("");
   const [scheduleDetails, setScheduleDetails] = useState("");
   const [timeOfAppointment, setTimeOfAppointment] = useState("");
+  const [value, onChange] = useState('10:00');
   const id = JSON.parse(localStorage.getItem("user"))?.UserID;
 
   const handleSubmit = async (data) => {
@@ -112,7 +114,7 @@ export default function Schedule() {
           <Input
             label="Time of Appointment"
             className="clientInput"
-            type="text"
+            type="time"
             value={timeOfAppointment}
             onChange={(e) => setTimeOfAppointment(e.target.value)}
             // ref={fileInputRef}

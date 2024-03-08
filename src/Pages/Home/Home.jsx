@@ -48,13 +48,13 @@ export default function Home() {
             <div className="textFrame">
               <h1 className="animate-charcter">Everything your law firm needs. All in one place.</h1>
               <p>The #1 Legal Practice Management Software</p>
-            </div>
-
-            <div className="demo">
+              <div className="demo">
               <Link className="link" to="/request">
                 <button className="btn">Request a Demo</button>
               </Link>
             </div>
+            </div>
+
 
             <div id="wrappers">
               <div id="wrapper-inner">
