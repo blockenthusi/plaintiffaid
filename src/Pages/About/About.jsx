@@ -72,7 +72,7 @@ export default function AboutPage() {
 
             <div className="stories">
               <Link className="link" to="/service">
-              <button>Read More</button>
+              <button className="readMoreBtn">Read More</button>
               </Link>
               
             </div>
