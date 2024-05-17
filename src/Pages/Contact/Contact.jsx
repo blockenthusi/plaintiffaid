@@ -29,10 +29,9 @@ export default function Contact() {
 
         <div className="intro">
           <div className="introWrapper">
-            <h1>Get in touch with me</h1>
+            <h1>Get in touch with us</h1>
             <p>
-              We’re here to help you out if you’re experiencing any issues or if
-              you’re just curious about things.
+              We’re here to help you out if you’re experiencing any issues or if you an just curious about something
             </p>
           </div>
         </div>
