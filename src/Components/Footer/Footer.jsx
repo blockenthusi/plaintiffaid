@@ -22,7 +22,7 @@ return(
                     </div>
                     <div className="conts">
                     <Link  className="link" to="/contact"> 
-                    <button>Contact us</button>
+                    <button className="contsBtn">Contact us</button>
                   </Link>
                         
                     

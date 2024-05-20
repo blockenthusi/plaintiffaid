@@ -16,9 +16,19 @@ import law1 from "../../assets/law1.jpg";
 import law from "../../assets/law.jpg";
 import law3 from "../../assets/law3.avif";
 import { Link } from "react-router-dom";
+import { TiPlus } from "react-icons/ti";
+import { LuMinus } from "react-icons/lu";
+import { motion, AnimatePresence } from "framer-motion";
+import Questions from "../../data/Questions";
+import questions from "../../data/Questions";
+import { Button } from "@nextui-org/button";
 
 export default function Home() {
   const [show, setShow] = useState(false);
+  const [activeQuestion, setAtiveQuestion] = useState(null);
+  const [plus, setPlus] = useState(true);
+
+  console.log(Questions);
 
   const list = [
     {
@@ -36,8 +46,14 @@ export default function Home() {
       alt: "img3",
       topic: "Check out the protected libray",
     },
+    {
+      image: law3,
+      alt: "img3",
+      topic: "Check out the protected libray",
+    },
   ];
 
+  
   return (
     <>
       <Header show={show} setShow={setShow} />
@@ -46,15 +62,16 @@ export default function Home() {
         <div className="wrapper">
           <div className="textHolder">
             <div className="textFrame">
-              <h1 className="animate-charcter">Everything your law firm needs. All in one place.</h1>
+              <h1 className="animate-charcter">
+                Everything your law firm needs. All in one place.
+              </h1>
               <p>The #1 Legal Practice Management Software</p>
               <div className="demo">
-              <Link className="link" to="/request">
-                <button className="btn">Request a Demo</button>
-              </Link>
+                <Link className="link" to="/request">
+                  <button className="btn">Request a Demo</button>
+                </Link>
+              </div>
             </div>
-            </div>
-
 
             <div id="wrappers">
               <div id="wrapper-inner">
@@ -170,52 +187,73 @@ export default function Home() {
           <h1>Lastest Blogs</h1>
         </div>
 
-        <div className="blogss">
-          <div className="blogCards">
-            {list?.map((props) => (
-              <div className="cardss">
-                <div className="imagerys">
-                  <img src={props.image} alt={props.alt} />
+        <div className="blogss ">
+          {list?.map((props) => (
+            <div className="group h-96  w-72 [perspective:1000px] ">
+              <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                <div className="absolute inset-0">
+                  <img
+                    className="h-full w-full  rounded-xl object-cover shadow-xl shadow-black/40 "
+                    src={props.image}
+                    alt=""
+                  />
                 </div>
-                <div className="topics">
-                  <h4>{props.topic}</h4>
-                </div>
-                <div className="learn">
-                  <p>
-                    <a href="https://www.juriseducation.com/blog/highest-paid-lawyers">
-                      Learn more
-                    </a>
-                  </p>
+                <div className="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                  <div className="flex min-h-full flex-col items-center justify-center">
+                    <h1 className="text-2xl font-bold">Hi Ella </h1>
+                    <p className="text-3xl font-bold">Designer</p>
+                    <p className="text-base  ">{props.topic}</p>
+                    <Button className=" mt-2 rounded bg-neutral-800 py-1 px-2 text-sm hover:bg-neutral-200">
+                      Learn More
+                    </Button>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-          {/* <div className="descsss">
-            <Link className="link" to="/login"><button className="butzzz">Login</button></Link>
-            
-          </div> */}
+            </div>
+          ))}
         </div>
       </div>
       <div className="desccHolder">
         <div className="desccWrapper">
-          <h1>Frequently Asked Questions</h1>
           <div className="bodyHoldd">
             <div className="bodyHoldWrapp">
               <div className="leftHoldd">
                 <img src={freq} alt />
               </div>
               <div className="rightHoldd">
-                <div className="mary">
-                  <GiPentarrowsTornado style={{ fontSize: "14px" }} />
-                  <p>What industries do you serve?</p>
-                </div>
-                <div className="mary">
-                  <GiPentarrowsTornado />
-                  <p>Do you offer free version solutions?</p>
-                </div>
-                <div className="mary">
-                  <GiPentarrowsTornado />
-                  <p>Do I need a web Application for client data Management?</p>
+                <div className="w-[100%] m-auto max-w-[1400px] bg-white p-6 lg:p-8 rounded-lg   shadow-md ">
+                  <h2 className="text-2xl mb-6 font-semibold">
+                    {" "}
+                    Frequently Asked Questions{" "}
+                  </h2>
+                  {questions.map((i) => (
+                    <div key={i?.id} className="mb-4 last:mb-0">
+                      <Button
+                        className="w-full hover:none  lg:text-xl text-left focus:outline-none  lg:p-4 bg-gray-100 rounded shadow-md flex justify-between items-center  text-sm
+                      "
+                        onClick={() =>
+                          setAtiveQuestion(
+                            activeQuestion === i.id ? null : i.id
+                          )
+                        }
+                      >
+                        {i.question}{" "}
+                        {activeQuestion === i.id ? <LuMinus /> : <TiPlus />}
+                      </Button>
+                      <AnimatePresence>
+                        {activeQuestion === i.id && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="mt-2 text-gray-600 ml-4"
+                          >
+                            <p className=" text-xs lg:text-xl ">{i.answer}</p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

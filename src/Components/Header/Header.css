@@ -68,7 +68,9 @@ ul {
     text-align: center;
     font-weight: 600;
     transition: all .35s ease;
-    font-family: 'poppins'
+    font-family: 'poppins';
+    font-size: 200px;
+
   }
   
   
@@ -136,7 +138,7 @@ ul li:hover {
     background-color: #003482ff;
     border-radius: 5px;
     color: white;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     display: flex;
     justify-content: center;
@@ -162,7 +164,7 @@ ul li:hover {
       background-color: #003482ff;
       border-radius: 5px;
       color: white;
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 600;
       display: flex;
       justify-content: center;
@@ -195,7 +197,7 @@ ul li:hover {
 .active{
   text-decoration: none;
   outline: none;
-  color: #55DBCB;
+  color:rgb(142, 143, 145);
   font-weight: bolder;
 }
 .inactive{
@@ -217,7 +219,7 @@ ul li:hover {
   }
 
   ul li{
-    font-size: 14px;
+    font-size: 18px;
   }
 
   .header{
@@ -346,7 +348,7 @@ img{
   }
   ul li{
     display: flex;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 900;
     
   }
