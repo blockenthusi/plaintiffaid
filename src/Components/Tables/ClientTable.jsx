@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -26,7 +26,7 @@ export default function ClientTable() {
 
   useEffect(() => {
     getClientInformation();
-  }, []);
+  },);
 
   useEffect(() => {
     if (!clients) {

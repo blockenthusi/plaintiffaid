@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import DashboardLayout from "../../Pages/Dashboard/Dashboard";
 import PageHeader from "../Header/PageHeader";
 import FullCalendar from "@fullcalendar/react";
@@ -15,7 +15,6 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
-  ModalFooter,
   useDisclosure,
 } from "@nextui-org/modal";
 import Input from "../Input/Input";

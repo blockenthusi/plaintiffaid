@@ -22,13 +22,38 @@ export default function Clients() {
   const [caseName, setcaseName] = useState("");
   const [CaseDescription, setCaseDescription] = useState("");
   const [loading, setLoading] = useState(false);
-  const [resetInput, setResetInput] = useState(false);
+  const [errors, setErrors] = useState({});
   const fileInputRef = useRef(null);
   const [file, setFile] = useState();
   const id = JSON.parse(localStorage.getItem("user"))?.UserID;
   const { getClientInformation } = useContext(AuthContext);
 
+  const validateInputs = () => {
+    const newErrors = {};
+    if (!firstname) newErrors.firstname = "First name is required";
+    if (!lastname) newErrors.lastname = "Last name is required";
+    if (!email) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = "Email is invalid";
+    }
+    if (!contactNumber) {
+      newErrors.contactNumber = "Contact number is required";
+    } else if (!/^\d+$/.test(contactNumber)) {
+      newErrors.contactNumber = "Contact number is invalid";
+    }
+    if (!address) newErrors.address = "Address is required";
+    if (!Gender) newErrors.Gender = "Gender is required";
+    if (!caseName) newErrors.caseName = "Case name is required";
+    if (!CaseDescription) newErrors.CaseDescription = "Case description is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async () => {
+    if (!validateInputs()) return;
+
     try {
       setLoading(true);
       await axios.post(
@@ -59,7 +84,7 @@ export default function Clients() {
       // close sidebar
       setVisible(false);
       // refetch client information
-      getClientInformation()
+      getClientInformation();
     } catch (err) {
       if (err.response.data.message) {
         toast.error(err.response.data.message);
@@ -133,7 +158,7 @@ export default function Clients() {
         // toggle off the upload side bar
         setIsVisible(false);
         // reset input fields
-        setResetInput(prev => !prev)
+        setFile(null);
       } else {
         console.log("No file selected.");
         toast.error("No file selected.");
@@ -186,16 +211,18 @@ export default function Clients() {
             value={firstname}
             onChange={(e) => setFirstname(e.target.value)}
             ref={fileInputRef}
-            key={resetInput ? "reset" : "normal"}
+            error={errors.firstname}
           />
+          {errors.firstname && <p className="text-red-600" >{errors.firstname}</p>}
           <Input
             label=" Lastname"
             className="clientInput"
             value={lastname}
             onChange={(e) => setLastname(e.target.value)}
             ref={fileInputRef}
-            key={resetInput ? "reset" : "normal"}
+            error={errors.lastname}
           />
+          {errors.lastname && <p className="text-red-600" >{errors.lastname}</p>}
           <Input
             label=" Email"
             className="clientInput"
@@ -203,49 +230,54 @@ export default function Clients() {
             value={email}
             onChange={(e) => setemail(e.target.value)}
             ref={fileInputRef}
-            key={resetInput ? "reset" : "normal"}
+            error={errors.email}
           />
+          {errors.email && <p className="text-red-600" >{errors.email}</p>}
           <Input
             label=" Phonenumber"
             className="clientInput"
             value={contactNumber}
             onChange={(e) => setcontactNumber(e.target.value)}
             ref={fileInputRef}
-            key={resetInput ? "reset" : "normal"}
+            error={errors.contactNumber}
           />
+          {errors.contactNumber && <p className="text-red-600" >{errors.contactNumber}</p>}
           <Input
             label=" Gender"
             className="clientInput"
             value={Gender}
             onChange={(e) => setGender(e.target.value)}
             ref={fileInputRef}
-            key={resetInput ? "reset" : "normal"}
+            error={errors.Gender}
           />
+          {errors.Gender && <p className="text-red-600" >{errors.Gender}</p>}
           <Input
             label=" Address"
             className="clientInput"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             ref={fileInputRef}
-            key={resetInput ? "reset" : "normal"}
+            error={errors.address}
           />
+          {errors.address && <p className="text-red-600" >{errors.address}</p>}
           <Input
             label=" Case Name"
             className="clientInput"
             value={caseName}
             onChange={(e) => setcaseName(e.target.value)}
             ref={fileInputRef}
-            key={resetInput ? "reset" : "normal"}
+            error={errors.caseName}
           />
-
+          {errors.caseName && <p className="text-red-600" >{errors.caseName}</p>}
           <label htmlFor="casedescription">Case Description</label>
           <textarea
             className="textAreaText"
             value={CaseDescription}
             onChange={(e) => setCaseDescription(e.target.value)}
             ref={fileInputRef}
-            key={resetInput ? "reset" : "normal"}
+            error={errors.CaseDescription}
           ></textarea>
+          {errors.CaseDescription && <p className="text-red-600" >{errors.CaseDescription}</p>}
 
           {loading ? (
             <button className="btnLoader">
@@ -293,7 +325,7 @@ export default function Clients() {
             {loading ? (
               <button className="btnLoader">
                 <HashLoader color="blue" size="16px" />
-                </button>
+              </button>
             ) : (
               <button
                 className="client_btn bg-blue-900 w-40 h-10 rounded text-white text-sm "
