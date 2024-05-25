@@ -1,7 +1,5 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Header from "./Components/Header/Header";
-import Footer from "./Components/Footer/Footer";
 import AboutPage from "./Pages/About/About";
 import Service from "./Pages/Service/Service";
 import Home from "./Pages/Home/Home";
@@ -18,11 +16,10 @@ import History from "./Components/route/history";
 import Schedule from "./Components/route/schedule";
 import Payment from "./Components/route/payment";
 import Calendar from "./Components/route/calendar";
-import ConfirmedEmail from "./Pages/SignUp/ConfirmedEmail";
-// import Verification from "./Pages/Auth/Verification/Verification";
 import Verification from "./Pages/Auth/Verification/Verification"
 import PrivateRoutes from "./Pages/PrivateRoute";
 import Newpassword from "./Pages/Newpassword/Newpassword";
+import Goggle from "./Pages/Goggle";
 
 function App() {
   return (
@@ -45,13 +42,14 @@ function App() {
         <Route path="/payments" element={<Payment />} />
         <Route path="/calendars" element={<Calendar />} />
         <Route path="/schedules" element={<Schedule />} />
+        <Route path="/goggle" element={<Goggle />} />
         <Route path="/verification/:token" element={<Verification/>} />
         <Route path="/newpassword/:token"  element={<Newpassword/>}/>
         <Route element={<PrivateRoutes/>}>
           {/* <Route   path="/" element={<Home/>} /> */}
           <Route   path="/dashboard" element={<Dashboards/>} />
         </Route>
-        <Route path="*" element={<p>There's nothing here: 404!</p>} />
+        <Route path="*" element={<p>There`s nothing here: 404!</p>} />
       </Routes>
       
     </>

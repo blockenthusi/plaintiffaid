@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import  { useState, useContext } from "react";
 import "./Login.css";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
@@ -15,13 +15,14 @@ import axios from "axios";
 import HashLoader from "react-spinners/HashLoader";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../../Context/AuthContext";
+import { signInWithGoggle } from "../../../Firebase";
 
 
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { isAuthenticated } = useContext(AuthContext);
+  // const { isAuthenticated } = useContext(AuthContext);
   const { setIsAuthenticated } = useContext(AuthContext);
   
 
@@ -58,6 +59,8 @@ const Login = () => {
       "https://plaintiff-backend.onrender.com/api_v1/login",
       data
     );
+    setLoading(false);
+ 
     const userData = res.data.data
     const userToken = res.data.data.Token
     localStorage.setItem("userToken",userToken)
@@ -68,11 +71,12 @@ const Login = () => {
     toast.success("login sucessful!");
     setTimeout(() =>{ 
       Nav("/dashboard");
-  }, 5000);
+  }, 2000);
     setLoading(false);
    }
 
    catch (err) {
+    setLoading(false);
     if (err.response.data.message) {
       toast.error(err.response.data.message);
       setLoading(false);
@@ -188,7 +192,7 @@ const Login = () => {
 
                 <div className="signup">
                   <p>
-                    Don't have an account?{" "}
+                    Don`t have an account?
                     <Link
                       className="link"
                       style={{ color: "#003482ff" }}

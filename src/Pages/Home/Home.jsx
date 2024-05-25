@@ -26,7 +26,6 @@ import { Button } from "@nextui-org/button";
 export default function Home() {
   const [show, setShow] = useState(false);
   const [activeQuestion, setAtiveQuestion] = useState(null);
-  const [plus, setPlus] = useState(true);
 
   console.log(Questions);
 
@@ -188,13 +187,13 @@ export default function Home() {
         </div>
 
         <div className="blogss ">
-          {list?.map((props) => (
-            <div className="group h-96  w-72 [perspective:1000px] ">
+          {list?.map((props,index) => (
+            <div className="group h-96  w-72 [perspective:1000px]  " key={index}>
               <div className="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 <div className="absolute inset-0">
                   <img
                     className="h-full w-full  rounded-xl object-cover shadow-xl shadow-black/40 "
-                    src={props.image}
+                    src={props?.image}
                     alt=""
                   />
                 </div>
@@ -202,7 +201,7 @@ export default function Home() {
                   <div className="flex min-h-full flex-col items-center justify-center">
                     <h1 className="text-2xl font-bold">Hi Ella </h1>
                     <p className="text-3xl font-bold">Designer</p>
-                    <p className="text-base  ">{props.topic}</p>
+                    <p className="text-base  ">{props?.topic}</p>
                     <Button className=" mt-2 rounded bg-neutral-800 py-1 px-2 text-sm hover:bg-neutral-200">
                       Learn More
                     </Button>

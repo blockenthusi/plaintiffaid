@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import "./Newpassword.css"
+import { useState } from "react";
+import "./Newpassword.css";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa6";
-import { MdSlowMotionVideo } from "react-icons/md";
-import logo from "../../assets/logo.png"
+import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { HashLoader } from "react-spinners";
 import { useForm } from "react-hook-form";
@@ -12,14 +11,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import * as yup from "yup";
 import { toast } from "react-toastify";
-
-
-
+import { useNavigate, useParams } from "react-router-dom";
 
 const Newpassword = () => {
-    const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
- 
+  const Nav = useNavigate();
+  const { token } = useParams();
+
+  // console.log(token);
 
   const handleShowpassword = () => {
     setShowPassword(!showPassword);
@@ -28,7 +28,7 @@ const Newpassword = () => {
   const schema = yup
     .object({
       newPassword: yup.string().required("Input new password"),
-      confirmPassword: yup.string().required("password must match")
+      confirmPassword: yup.string().required("password must match"),
     })
     .required();
 
@@ -44,14 +44,14 @@ const Newpassword = () => {
     try {
       setLoading(true);
       const res = await axios.put(
-        "https://plaintiff-backend.onrender.com/api_v1/reset-password",
+        `https://plaintiff-backend.onrender.com/api_v1/reset-password?token=${token}`,
         data
       );
       console.log(res);
       toast.success("Password reset successfully!");
       setTimeout(() => {
         Nav("/login");
-      }, 5000);
+      }, 3000);
       setLoading(false);
     } catch (err) {
       if (err.response.data.message) {
@@ -62,8 +62,8 @@ const Newpassword = () => {
     }
   };
 
-return(
-        <div className="forgotPasswordHolder">
+  return (
+    <div className="forgotPasswordHolder">
       <div className="forgotPasswordWrapper">
         <div className="forgotPasswordHead">
           <div className="forgotPasswordHeadLeft">
@@ -83,7 +83,6 @@ return(
               className="enteryInput"
               onSubmit={handleSubmit(onSubmit)}
             >
-              
               <div className="lowerText">
                 <p>New Password</p>
                 {showPassword ? (
@@ -141,7 +140,9 @@ return(
               </p>
               <div className="resetBtn">
                 {loading ? (
-                  <button className="spin"><HashLoader color="blue" size="20px" /></button>
+                  <button className="spin">
+                    <HashLoader color="blue" size="20px" />
+                  </button>
                 ) : (
                   <button>Reset</button>
                 )}
@@ -161,11 +162,4 @@ return(
   );
 };
 
-
-export default Newpassword
-
-
-
-
-
-
+export default Newpassword;
