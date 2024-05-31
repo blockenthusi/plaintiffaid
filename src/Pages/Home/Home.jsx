@@ -31,12 +31,12 @@ export default function Home() {
 
   const list = [
     {
-      image: law1,
+      image: law3,
       alt: "img1",
       topic: "Adjournment of legal bill",
     },
     {
-      image: law,
+      image: law3,
       alt: "img2",
       topic: "Top paid lawyers",
     },
@@ -199,11 +199,11 @@ export default function Home() {
                 </div>
                 <div className="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
                   <div className="flex min-h-full flex-col items-center justify-center">
-                    <h1 className="text-2xl font-bold">Hi Ella </h1>
-                    <p className="text-3xl font-bold">Designer</p>
-                    <p className="text-base  ">{props?.topic}</p>
+                    <h1 className="text-2xl font-bold">PlaintiffAid</h1>
+                    <p className="text-1xl font-bold text-white">Blog Story</p>
+                    <p className="text-base text-white">{props?.topic}</p>
                     <Button className=" mt-2 rounded bg-neutral-800 py-1 px-2 text-sm hover:bg-neutral-200">
-                      Learn More
+                      <a href="https://www.reuters.com/legal/">Learn More</a>
                     </Button>
                   </div>
                 </div>

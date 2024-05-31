@@ -53,9 +53,10 @@ const Signup = () => {
         "https://plaintiff-backend.onrender.com/api_v1/signup",
         data
       );
+      localStorage.setItem(res.data.user.email);
       nav("/login");
       toast.success("kindly check your email");
-  
+
       setLoading(false);
     } catch (err) {
       if (err.response.data.message) {
@@ -139,7 +140,9 @@ const Signup = () => {
               </p>
             </div>
             {loading ? (
-              <button  className="spin"><HashLoader color="blue" size="16px" /></button>
+              <button className="spin">
+                <HashLoader color="blue" size="16px" />
+              </button>
             ) : (
               <button>Submit</button>
             )}

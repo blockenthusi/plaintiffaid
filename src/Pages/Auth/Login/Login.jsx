@@ -1,4 +1,4 @@
-import  { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import "./Login.css";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
@@ -17,14 +17,11 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from "../../../Context/AuthContext";
 import { signInWithGoggle } from "../../../Firebase";
 
-
-
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   // const { isAuthenticated } = useContext(AuthContext);
   const { setIsAuthenticated } = useContext(AuthContext);
-  
 
   const Nav = useNavigate();
 
@@ -34,7 +31,6 @@ const Login = () => {
 
   const handleLoginSuccess = () => {
     setIsAuthenticated(true);
-    
   };
 
   const schema = yup
@@ -53,39 +49,35 @@ const Login = () => {
   });
 
   const onSubmit = async (data) => {
-   try{ 
-    setLoading(true);
-    const res = await axios.post(
-      "https://plaintiff-backend.onrender.com/api_v1/login",
-      data
-    );
-    setLoading(false);
- 
-    const userData = res.data.data
-    const userToken = res.data.data.Token
-    localStorage.setItem("userToken",userToken)
-    localStorage.setItem("users",JSON.stringify({userData}))
-    const {UserID,Username} = res.data.data
-    localStorage.setItem("user", JSON.stringify({UserID,Username}))
-    handleLoginSuccess();
-    toast.success("login sucessful!");
-    setTimeout(() =>{ 
-      Nav("/dashboard");
-  }, 2000);
-    setLoading(false);
-   }
-
-   catch (err) {
-    setLoading(false);
-    if (err.response.data.message) {
-      toast.error(err.response.data.message);
+    try {
+      setLoading(true);
+      const res = await axios.post(
+        "https://plaintiff-backend.onrender.com/api_v1/login",
+        data
+      );
+      const email = res.data.email;
+      localStorage.setItem("email", email);
+      Nav("/otp");
+      setLoading(false);
+      // const userData = res.data.data;
+      // const userToken = res.data.data.Token;
+      // localStorage.setItem("userToken", userToken);
+      // localStorage.setItem("users", JSON.stringify({ userData }));
+      // const { UserID, Username } = res.data.data;
+      // localStorage.setItem("user", JSON.stringify({ UserID, Username }));
+      // handleLoginSuccess();
+      // toast.success("login sucessful!");
+      // setTimeout(() => {}, 2000);
+      // setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      if (err.response.data.message) {
+        toast.error(err.response.data.message);
+        setLoading(false);
+      }
       setLoading(false);
     }
-    setLoading(false);
-  }
   };
-
-
 
   return (
     <div className="loginHolder">
@@ -184,7 +176,9 @@ const Login = () => {
 
                 <div className="loginButton">
                   {loading ? (
-                    <button className="spin"><HashLoader color="blue" size="20px" /></button>
+                    <button className="spin">
+                      <HashLoader color="blue" size="20px" />
+                    </button>
                   ) : (
                     <button>Login</button>
                   )}

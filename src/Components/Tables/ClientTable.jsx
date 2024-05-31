@@ -1,4 +1,4 @@
-import  { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -21,44 +21,65 @@ export default function ClientTable() {
   const [search, setSearch] = useState("");
   const [deleted, setDeleted] = useState(false);
   const [selectedClient, setSelectedClient] = useState({});
-  const { clients, getClientInformation } = useContext(AuthContext)
-  const [result, setResult] = useState([]);
+  const [clients, setClients] = useState([]);
+  const [filteredClients, setFilteredClients] = useState([]);
 
-  useEffect(() => {
-    getClientInformation();
-  },);
-
-  useEffect(() => {
-    if (!clients) {
-      return;
+  const getClientInformation = async () => {
+    try {
+      const res = await axios.get(
+        `https://plaintiff-backend.onrender.com/api_v1/get_Clients/${id}`
+      );
+      setClients(res?.data?.data || []);
+      console.log(res.data.data);
+    } catch (err) {
+      console.error(err);
     }
-    const filteredClients = clients.filter((item) => {
-      const FirstName = item.FirstName.toString();
-      const LastName = item.LastName.toLowerCase().includes(search.toLowerCase());
-      const Matched = FirstName.includes(search.toLowerCase());
-      return LastName || Matched;
-    })
-    setResult(filteredClients)
-  }, [clients])
+  };
 
-  const handleDelete = async (caseID, clientID) => {
+  useEffect(() => {
+    if (id) {
+      getClientInformation();
+    }
+  }, [id]);
+
+  useEffect(() => {
+    const filtered = clients?.filter((item) => {
+      const firstNameMatch = item?.FirstName?.toLowerCase().includes(
+        search.toLowerCase()
+      );
+      const lastNameMatch = item?.LastName?.toLowerCase().includes(
+        search.toLowerCase()
+      );
+      return firstNameMatch || lastNameMatch;
+    });
+    setFilteredClients(filtered);
+  }, [clients, search]);
+
+  const handleDelete = async () => {
+    const { caseID, clientID } = selectedClient;
+    console.log(selectedClient,id)
+
     try {
       await axios.delete(
-        `https://plaintiff-backend.onrender.com/api_v1/client/delete/${id}/${caseID}/${clientID}`
+        `https://plaintiff-backend.onrender.com/api_v1/client/delete/${id}/${clientID}/${caseID}`
       );
       toast.success("Deleted Successfully");
       getClientInformation();
-      setDeleted(true); // Close the modal after successful deletion
+      setDeleted(false); 
     } catch (err) {
       console.error("Error deleting client:", err);
-      toast.error(err.response.data.message);
+      toast.error(err.response?.data?.message || "An error occurred");
     }
   };
 
   const showDeleteModal = (caseID, clientID) => {
+    console.log(caseID,clientID)
+
     setSelectedClient({ caseID, clientID });
     setDeleted(true);
   };
+
+
 
   return (
     <>
@@ -68,34 +89,34 @@ export default function ClientTable() {
           <Table
             removeWrapper
             isStriped
-            aria-label="Wallets"
+            aria-label="Client Table"
             classNames={{
               th: "px-5 py-4 text-left bg-blue-900 text-green-50",
               td: "px-5 py-5",
             }}
           >
             <TableHeader>
-              <TableColumn>First Name </TableColumn>
-              <TableColumn>Last Name </TableColumn>
-              <TableColumn className="">Email </TableColumn>
+              <TableColumn>First Name</TableColumn>
+              <TableColumn>Last Name</TableColumn>
+              <TableColumn>Email</TableColumn>
               <TableColumn>Phone Number</TableColumn>
-              <TableColumn> Address</TableColumn>
+              <TableColumn>Address</TableColumn>
               <TableColumn>Gender</TableColumn>
               <TableColumn>Action</TableColumn>
             </TableHeader>
             <TableBody emptyContent={"No rows to display."}>
-              {result.map((row) => (
-                <TableRow key={row.id} className="h-14 py-5">
-                  <TableCell>{row.FirstName}</TableCell>
-                  <TableCell>{row.LastName}</TableCell>
-                  <TableCell>{row.Email}</TableCell>
-                  <TableCell>{row.ContactNumber}</TableCell>
-                  <TableCell>{row.Address}</TableCell>
-                  <TableCell>{row.Gender}</TableCell>
+              {filteredClients?.map((row) => (
+                <TableRow key={row?.id} className="h-14 py-5">
+                  <TableCell>{row?.FirstName}</TableCell>
+                  <TableCell>{row?.LastName}</TableCell>
+                  <TableCell>{row?.Email}</TableCell>
+                  <TableCell>{row?.ContactNumber}</TableCell>
+                  <TableCell>{row?.Address}</TableCell>
+                  <TableCell>{row?.Gender}</TableCell>
                   <TableCell>
                     <MdDelete
                       className="text-xl cursor-pointer"
-                      onClick={() => showDeleteModal(row.CaseID, row.ClientID)}
+                      onClick={() => showDeleteModal(row?.CaseID, row?.ClientID)}
                     />
                   </TableCell>
                 </TableRow>
@@ -106,9 +127,7 @@ export default function ClientTable() {
       </div>
       <Modal
         open={deleted}
-        onOk={() =>
-          handleDelete(selectedClient.caseID, selectedClient.clientID)
-        }
+        onOk={handleDelete}
         onCancel={() => setDeleted(false)}
         okButtonProps={{
           className: "bg-blue-900 text-white rounded w-10 text-sm px-2",

@@ -67,6 +67,7 @@ export default function Clients() {
           lastname,
           caseName,
           CaseDescription,
+          file,
         }
       );
       toast.success("Client added Successfully");

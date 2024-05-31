@@ -1,0 +1,125 @@
+.otpHold {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.otpWrap {
+  width: 25%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.otpLines {
+  width: 80%;
+  height: 8%;
+  display: flex;
+  /* background-color: red; */
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.otpline {
+  width: 20%;
+  height: 5px;
+  background-color: lightgray;
+}
+
+.otpMid {
+  width: 100%;
+  height: 25%;
+  /* background-color: blue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.imag {
+  width: 75%;
+  height: 40%;
+  /* background-color: black;  */
+  display: flex;
+  justify-content: center;
+  object-fit: cover;
+}
+
+.text {
+  width: 75%;
+  height: 20%;
+  color: black;
+  font-weight: 900;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+}
+.lowerText {
+  width: 75%;
+  height: 20%;
+  color: black;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.otpBox {
+  width: 70%;
+  height: 30%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.otpBoxes {
+  width: 90%;
+  height: 38%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.otp-input {
+  border: 2px solid #003482;
+}
+
+.tiny {
+  width: 50px;
+  height: 40px;
+  background-color: lightgray;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cont {
+  width: 90%;
+  height: 38%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cont button {
+  width: 55%;
+  height: 45px;
+  border-radius: 5px;
+  /* background-color: blue; */
+  background-color: #003482;
+}
